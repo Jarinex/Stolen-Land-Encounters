@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E31F8B3-11FF-473F-95A0-D8DF222580E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TweakMod</RootNamespace>
+    <AssemblyName>TweakMod</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Testing Folder\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\KingmakerAI\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugInstall|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>C:\GOG Games\PathfinderKingmaker2.0\Pathfinder Kingmaker\Mods\KingmakerAI\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseInstall|AnyCPU'">
+    <OutputPath>..\..\..\GOG Games\PathfinderKingmaker2.0\Pathfinder Kingmaker\Mods\KingmakerAI\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony-1.2">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityModManager\0Harmony-1.2.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony12">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityModManager\0Harmony12.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AuraSupportPlugin">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\AuraSupportPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Boo.Lang.dll</HintPath>
+    </Reference>
+    <Reference Include="CallOfTheWild">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Mods\CallOfTheWild\CallOfTheWild.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="dnlib">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityModManager\dnlib.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaxyCSharp">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\GalaxyCSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.MidEast">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\I18N.MidEast.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Other">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\I18N.Other.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Rare">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\I18N.Rare.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.AuraServiceLib">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Interop.AuraServiceLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="KDTree">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\KDTree.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingmaker.Import">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Kingmaker.Import.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ProperFlanking20">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Mods\ProperFlanking2\ProperFlanking20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.BaselibModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.BaselibModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CloudWebServicesModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.CloudWebServicesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.FacebookModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.FacebookModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.Networking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTrackingModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.SpatialTrackingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TimelineModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TimelineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UNETModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.WebModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityFbxPrefab">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityFbxPrefab.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityModManager">
+      <HintPath>D:\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tweaks.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="blueprints.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="info.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

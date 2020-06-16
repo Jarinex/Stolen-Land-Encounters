@@ -1,0 +1,1 @@
+CastQuickenSheetLightningAiAction	c038f6f3f3fa4b499bf3b05561f11385	Kingmaker.Controllers.Brain.Blueprints.BlueprintAiCastSpell
