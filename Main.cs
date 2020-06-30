@@ -79,7 +79,7 @@ namespace TweakMod
                 Main.library = self;
                 try
                 {
-                    Main.logger.Log("Loading Kingmaker AI");
+                    Main.logger.Log("Loading Tweak Mod");
 
 #if DEBUG                
                     bool allow_guid_generation = true;
@@ -91,10 +91,10 @@ namespace TweakMod
                     Tweaks.load();
 
 #if DEBUG
-                    string guid_file_name = @"C:\Repositories\KingmakerAI\KingmakerAI\blueprints.txt";
+                    string guid_file_name = @"C:\Users\Josiah\Desktop\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
                     CallOfTheWild.Helpers.GuidStorage.dump(guid_file_name);
 #endif
-                    CallOfTheWild.Helpers.GuidStorage.dump(@"./Mods/KingmakerAI/loaded_blueprints.txt");
+                    CallOfTheWild.Helpers.GuidStorage.dump(@"./Mods/TweakMod/loaded_blueprints.txt");
                 }
                 catch (Exception ex)
                 {
