@@ -88,7 +88,8 @@ namespace TweakMod
 #endif
                     CallOfTheWild.Helpers.GuidStorage.load(Properties.Resources.blueprints, allow_guid_generation);
 
-                    Tweaks.load();
+                    StoryTweaks.load();
+                    PrisonTweaks.load();
 
 #if DEBUG
                     string guid_file_name = @"C:\Users\Josiah\Desktop\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
