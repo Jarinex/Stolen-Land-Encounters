@@ -5,12 +5,34 @@ Tweak Mod is a mod for Pathfinder: Kingmaker that is designed to give challenge 
 I’ve always enjoyed challenge mods like SCS that people have made, and I feel that Kingmaker could definitely benefit from such a mod. Originally, Tweak Mod was designed for my own use, but I’ve really enjoyed messing with the game and improving it. Therefore, I would like others to try it as well and enjoy it.
 
 NOTE: This mod is a work in progress and very early stage! A lot of what is shown here is subject to change! I will try and get to as many encounters as I can, but I don’t know if I will get to everything. If you have any ideas, I am open! 
-I should also point out that I have only played with hsinyuhcan’s Turn-Based mod and haven’t tested this with the original RTwP.
+I should also point out that I have only played with Turn-Based mod and haven’t tested this with the original RTwP.
 
 THIS MOD REQUIRES CALL OF THE WILD BY HOLIC75!
 
-Main Story Enemy Changes:
 
+Main Story Enemy Changes (SPOILERS):
+
+Chapter 1
+
+- Stag Lord
+   - Increased Ranger levels (8 => 10)
+    - Gave the following spells
+	   - Entangle
+
+Chapter 2 
+
+- Kobold Teacher
+   - Increased Sorcerer levels (2 => 6)
+    - Gave the following spells
+	   - Magic Missle
+  (NOTE: More to come, this is just a work in progress)
+
+Chapter 3
+
+- Dread Zombie Fighter
+   - Increased Fighter levels (2 => 6)
+    - Made Greater Cleave have a cooldown of 3 turns 
+      
 - Dread Zombie Cleric
    - Increased Cleric levels (7 => 12)
     - Removed his spells as abilities and made him use spellbook
@@ -27,19 +49,45 @@ Main Story Enemy Changes:
 	    - Resist Energy Communal (Fire)
       - Boneshaker
 
+Chapter 4
+
+- Cleric of Gorum
+   - Increased Cleric levels (9 => 13)
+   - Removed the following spells
+   	-Summon Monster V
+	-Divine Favor
+	-Hold Monster (One instance)
+    - Gave the following spells
+      - Searing Pain
+      - Heal
+      - Hellfire Ray
+      - Constricting Coils
+     - Made the following spells quickened buffs
+     	-Divine Power
+	- Prayer
+
 - Defaced Sister
    - Increased Fey levels (12 => 16)
     - Gave the following spells
       - Firestorm
       - Plague Storm
+      - Storm Bolts
 
-- Cleric of Gorum
-   - Increased Cleric levels
-   - Removed Divine Power (will give as permabuff)
-    - Gave the following spells
-      - Searing Pain
+Chapter 5
 
-
+- Troll Guard
+   - Increased Stats Slightly
+   - Incresed Humanoid Levels (=> 14)
+   - Incresed Fighter Levels (=> 12)
+   - Gave Full Plate +2
+   
+   - Dwarf Magus
+   	- Increased Stats Slightly
+   	- Increased Magus Levels (14 => 18)
+	- Made the following spells quickened buffs
+		-Displacement
+		-Mirror Image
+   
 
 
 
