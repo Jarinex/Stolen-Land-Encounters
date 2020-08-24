@@ -34,7 +34,7 @@ namespace TweakMod
 
         static internal Settings settings = new Settings();
         internal static UnityModManagerNet.UnityModManager.ModEntry.ModLogger logger;
-        internal static Harmony12.HarmonyInstance harmony;
+        internal static Harmony.HarmonyInstance harmony;
         internal static LibraryScriptableObject library;
 
         static readonly Dictionary<Type, bool> typesPatched = new Dictionary<Type, bool>();
@@ -57,7 +57,7 @@ namespace TweakMod
             try
             {
                 logger = modEntry.Logger;
-                harmony = Harmony12.HarmonyInstance.Create(modEntry.Info.Id);
+                harmony = Harmony.HarmonyInstance.Create(modEntry.Info.Id);
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             }
@@ -68,8 +68,8 @@ namespace TweakMod
             }
             return true;
         }
-        [Harmony12.HarmonyPatch(typeof(LibraryScriptableObject), "LoadDictionary")]
-        [Harmony12.HarmonyPatch(typeof(LibraryScriptableObject), "LoadDictionary", new Type[0])]
+        [Harmony.HarmonyPatch(typeof(LibraryScriptableObject), "LoadDictionary")]
+        [Harmony.HarmonyPatch(typeof(LibraryScriptableObject), "LoadDictionary", new Type[0])]
         static class LibraryScriptableObject_LoadDictionary_Patch
         {
             static void Postfix(LibraryScriptableObject __instance)
@@ -89,7 +89,7 @@ namespace TweakMod
                     CallOfTheWild.Helpers.GuidStorage.load(Properties.Resources.blueprints, allow_guid_generation);
 
                     StoryTweaks.load();
-                    PrisonTweaks.load();
+
 
 #if DEBUG
                     string guid_file_name = @"C:\Users\Josiah\Desktop\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
