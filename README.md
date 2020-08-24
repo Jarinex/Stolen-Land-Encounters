@@ -81,26 +81,41 @@ Chapter 5
    - Incresed Fighter Levels (=> 12)
    - Gave Full Plate +2
    
-   - Dwarf Magus
-   	- Increased Stats Slightly
-   	- Increased Magus Levels (14 => 18)
-	- Made the following spells quickened buffs
-		-Displacement
-		-Mirror Image
+- Dwarf Magus
+  - Increased Stats Slightly
+  - Increased Magus Levels (14 => 18)
+  - Made the following spells quickened buffs
+	-Displacement
+	-Mirror Image
+	
+Chapter 6
+
+- The Wriggling Man
+   - Gave him Fire Resist 15
+   - Gave him 20 vermin levels
+   -Gave him the following spells quickened buffs
+   	-Displacement
+	
+	
    
 
 
 
-Magical Prison Encounter Changes:
+Magical Prison Encounter Changes (SPOILERS):
 
-- Ferocious Devourer 
-   - Gave him Vordakai's Fear Aura
-   - Increased levels to 18 
       
-- Thick Lizard Encounter
-   - Queen is now a cleric and will casts buff (will add to readme)
+- Thick Lizard Queen Encounter (Baneful Bog)
+   - Class Changed from Barbarian to Cleric (Has 16 levels)
+   - Increased Wisdom and decreased strength to compensate
+   - Gave the Following Spells
+   	-Bulls Strength Mass
+	-Umbral Strike (X2)
+	-Hellfire Ray (X2)
+	-Divine Power
+	
+	
 
-- Insane Wizard
+- Insane Wizard (Little Sellen Source)I 
    - Level increased to 20
    - Now has displacement as a permabuff
    - Removed the following spells 
@@ -114,8 +129,70 @@ Magical Prison Encounter Changes:
    - Gave the following spells
      - Firestorm
      - Plague Storm
-     - Tsunami
-     - Summon Elder Worm
+     - Sunburst
+     - Tarpool
+     - Seamantle
+     - Greater Dispel
+     - StormBolt
+     
+- Watchful Omen (Wicked Field)
+   - Added 20 levels of Wizard
+   - Removed Enervation
+   - Increased Natural Armor to 18
+   - Gave the following spells
+     - Wail of the Banshee
+     - Waves of Exhaustion
+     - Fear
+   - Gave the following spells as quickened buffs
+     - Frightful Aspect
+     
+ - Patient Shadow (Wicked Hill)
+   - Increased Stats 
+   - Increased Outsider Levels (28)
+   - Added 20 levels of Wizard
+   - Removed the following abilities
+   	- Vampiric Touch (was bugged to only hit the demon)
+	- Energy Dragin
+	- Enervation
+	- Moved Finger of death to spells
+   - Increased Natural Armor to 18
+   - Gave True Seeing
+   - Gave the following spells
+     - Finger of Death x2
+     - Banshee Blast
+   - Gave the following spells as quickened buffs
+     - Frightful Aspect
+
+Other Encounters (SPOILERS):
+
+- Queen Ravene 
+   - Changed Class To Cleric
+   - Buffed Stats Greatly
+   - Removed the following feats
+   	-Sneak Attacker
+	-Cornugon
+	-Dazzling Display
+	-Blinding Critical feature
+	-Shield Bash
+   - Gave the following feats
+   	-Augment Summon
+	-Combat Casting
+	-Superior Summoning
+	-Heavy Armor Proficiency
+	-Toughness
+	-Improved Initiative
+	-Bastard Sword Proficiency
+    -Gave Amulet of Natural Armor +3
+    -Gave the following Spells
+        -Overwhelming Presence
+	-Frightful Aspect
+	-Summon Monster IX
+	-Unholy Aura
+    Gave the following spells as quickened buffs
+      -Summon Monster IX (summons frost giants)
+      -Frightful Aspect
+	
+
 
 
 
