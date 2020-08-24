@@ -378,7 +378,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TweaksPrison.cs" />
     <Compile Include="TweaksStory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -389,9 +388,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="info.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
