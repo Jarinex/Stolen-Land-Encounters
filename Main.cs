@@ -19,20 +19,7 @@ namespace TweakMod
 {
     internal class Main
     {
-        internal class Settings
-        {
-            internal Settings()
-            {
-
-                using (StreamReader settings_file = File.OpenText("Mods/TweakMod/settings.json"))
-                using (JsonTextReader reader = new JsonTextReader(settings_file))
-                {
-                    JObject jo = (JObject)JToken.ReadFrom(reader);
-                }
-            }
-        }
-
-        static internal Settings settings = new Settings();
+    
         internal static UnityModManagerNet.UnityModManager.ModEntry.ModLogger logger;
         internal static Harmony.HarmonyInstance harmony;
         internal static LibraryScriptableObject library;

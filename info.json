@@ -4,6 +4,7 @@
   "Author": "Code by Holic75, Code and Help by Spacehamster, Editing by Jarinex",
   "Version": "0.0.8",
   "ManagerVersion": "0.13.0",
+  "Requirements": ["CallOfTheWild"],
   "AssemblyName": "TweakMod.dll",
   "HomePage": "",
   "EntryMethod": "TweakMod.Main.Load"
