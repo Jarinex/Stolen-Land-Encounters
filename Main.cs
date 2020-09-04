@@ -75,6 +75,8 @@ namespace TweakMod
 #endif
                     CallOfTheWild.Helpers.GuidStorage.load(Properties.Resources.blueprints, allow_guid_generation);
 
+                   
+                    SpellsTweaks.load();
                     StoryTweaks.load();
 
 

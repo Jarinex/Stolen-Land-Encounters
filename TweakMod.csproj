@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Compiling Folder\</OutputPath>
+    <OutputPath>..\Debugging Folder\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -384,6 +384,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TweaksSpells.cs" />
     <Compile Include="TweaksStory.cs" />
   </ItemGroup>
   <ItemGroup>
