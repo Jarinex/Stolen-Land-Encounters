@@ -9,6 +9,10 @@ I should also point out that I have only played with Turn-Based mod and haven’
 
 THIS MOD REQUIRES CALL OF THE WILD BY HOLIC75!
 
+This mod also requires a file called JMMT (or Jarinex Monster Mash Test), which was made by Hambeard. This file allows the swapping of enemies to new guids which can be edited. It will be included with the releases of this mod, but the source code can be downloaded here: https://github.com/Jarinex/JMMTBeta
+
+
+# Changes
 
 Main Story Enemy Changes (SPOILERS):
 
@@ -206,6 +210,7 @@ Install
 -	Download and install Unity Mod Manager 0.13.0 or later
 -	Download the mod
 -	Build it using Visual Studio 2017 Community Edition and put files into a folder called TweakMod
+-	Download JMMT (which is included in releases and can also be found here: https://github.com/Jarinex/JMMTBeta)
 -	Run the game
 
 
