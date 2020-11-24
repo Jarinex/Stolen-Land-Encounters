@@ -16,7 +16,46 @@ This mod also requires a file called JMMT (or Jarinex Monster Mash Test), which 
 
 Main Story Enemy Changes (SPOILERS):
 
-Chapter 1
+**Chapter 1**
+
+- Kalannah
+   - Changed Wizard levels (5)
+    - Removed Spells
+	   - Summon Monster II x 3
+	   - Summon Monster I x 2
+    - Added Spells
+	   - Snowball x 2
+	   - Acid Arrow x 2
+	   - Blur x 1 (Already Casted)
+	   
+- Tartuk (Sycamore)
+   - Changed Wizard levels (7)
+   - Added Spells
+	   - Haste
+	   - Blur x 1 (Already Casted)
+	   - Changed Fireball AI to be delayed for a few turns
+	   
+- Sycamore Spider Boss
+   - Changed Wizard levels (8)
+   - Increased Bite to 3d6
+   - Gave Web
+   - Gave 50 HP
+   
+- Mite Cleric
+   - Gave Acid Dart (Per the Earth Domain)
+	
+- Mite Sineshal
+   - Changed Cleric Levels (5)
+   - Added Spells
+   	-Summon Small Earth Elemental
+   - Gave Acid Dart (Per the Earth Domain)
+   
+- Mite Queen
+  - Changed Ranger Levels (5)
+  - Changed Fey Levels (1)
+   - Added Spells
+   	-Lead Blades
+
 
 - Stag Lord
    - Increased Ranger levels (8 => 10)
