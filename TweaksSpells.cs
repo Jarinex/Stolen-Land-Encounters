@@ -250,6 +250,8 @@ namespace TweakMod
             testsummongorum();
             callcylops();
             callghosts();
+            callghostsstandard();
+            callundeadfriends();
         }
 
 
@@ -326,6 +328,58 @@ namespace TweakMod
 
             var summonghosts_resource2 = Helpers.CreateAbilityResource("summonghostsResource2", "", "", "", null);
             summonghosts_resource2.SetFixedResource(2);
+
+        }
+
+        static void callghostsstandard()
+        {
+            var ghosts = library.Get<BlueprintUnit>("655ac57b330918c4aadc78a00fb2ccaf");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = ghosts),
+               Helpers.Create<CustomContextActionSpawnMonster6>(c => c.Blueprint = ghosts));
+
+            var ability = Helpers.CreateAbility("Summon Ghosts",
+                "Summon Ghosts",
+               "Summon ghosts.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var summonghosts_resource3 = Helpers.CreateAbilityResource("summonghostsResource3", "", "", "", null);
+            summonghosts_resource3.SetFixedResource(2);
+
+        }
+
+        static void callundeadfriends()
+        {
+            var skeletonarcher = library.Get<BlueprintUnit>("9928642aa0612434bbb23f478dbbf988");
+            var zombielord = library.Get<BlueprintUnit>("3f40cda42b20ee44683548d5856f035e");
+
+            var actions = Helpers.CreateRunActions(
+                Helpers.Create<CustomContextActionSpawnMonster>(c => c.Blueprint = skeletonarcher),
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = zombielord),
+               Helpers.Create<CustomContextActionSpawnMonster6>(c => c.Blueprint = zombielord));
+
+            var ability = Helpers.CreateAbility("Summon Undead",
+                "Summon Undead",
+               "Summon Undead.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var summonundead_resource3 = Helpers.CreateAbilityResource("summonundeadResource", "", "", "", null);
+            summonundead_resource3.SetFixedResource(2);
 
         }
 
