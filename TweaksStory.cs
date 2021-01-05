@@ -98,6 +98,13 @@ namespace TweakMod
         static Consideration NoBuffShieldofFaith = library.Get<BuffConsideration>("14698bcd142fb924bbb912d57c3fe712");
         static Consideration NoBuffInvisibilityGreater = library.Get<BuffConsideration>("2fc05579e43f56146a1cdaaa82e5119c");
         static Consideration AlliesNoBuff_Aid = library.Get<BuffsAroundConsideration>("d0abaad453732d040a035eb85f9d96af");
+        static Consideration NoBuffShaken = library.Get<BuffConsideration>("e2ec459247a67e444a89da48e3f02005");
+        static Consideration NoBuffFrightened = library.Get<BuffConsideration>("79e318942b12b8443b30e05e7f9198ce");
+        static Consideration NoCaster = library.Get<FactConsideration>("22d91eb7dceec4249810c476ab7d5a56");
+        static Consideration NoBuffInsanity = library.Get<BuffConsideration>("07683df074e29a54f803fab3500187ae");
+        static Consideration NoBuffConfusion = library.Get<BuffConsideration>("ae9a969accfe096438bbe83e0c05e086");
+
+
 
 
 
@@ -166,6 +173,7 @@ namespace TweakMod
             public static BlueprintAbility summonmonsterVId3 = library.Get<BlueprintAbility>("237d76aebbb28334e95d83475611cb47");
             public static BlueprintAbility dragonsbreath = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
             public static BlueprintAbility dragonsbreathblue = library.Get<BlueprintAbility>("2809e762f83cbdb47b2f8b7816cc2a34");
+            public static BlueprintAbility dragonsbreathgold = library.Get<BlueprintAbility>("e6f5453df86bd714fa33b14c994739f3");
             public static BlueprintAbility dragonsbreathsilver = library.Get<BlueprintAbility>("45e0813484581514fbfcf49939ee050d");
             public static BlueprintAbility dragonsbreathgreen = library.Get<BlueprintAbility>("48c4433acbcecae499d1d38a56f72f36");
             public static BlueprintAbility icestorm = library.Get<BlueprintAbility>("fcb028205a71ee64d98175ff39a0abf9");
@@ -176,6 +184,8 @@ namespace TweakMod
             public static BlueprintAbility hurricanebow = library.Get<BlueprintAbility>("3e9d1119d43d07c4c8ba9ebfd1671952");
             public static BlueprintAbility summonelementalgreat = library.Get<BlueprintAbility>("8eb769e3b583f594faabe1cfdb0bb696");
             public static BlueprintAbility summonelementalgreatearth = library.Get<BlueprintAbility>("3ecd589cf1a55df42a3b66940ee93ea4");
+            public static BlueprintAbility summonelementalhuge = library.Get<BlueprintAbility>("766ec978fa993034f86a372c8eb1fc10");
+            public static BlueprintAbility summonelementalhugeair = library.Get<BlueprintAbility>("2c26e78ca33e83843b1aa3f6783877bd");
             public static BlueprintAbility coldicestrike = library.Get<BlueprintAbility>("5ef85d426783a5347b420546f91a677b");
             public static BlueprintAbility heal = library.Get<BlueprintAbility>("5da172c4c89f9eb4cbb614f3a67357d3");
             public static BlueprintAbility bladebarrier = library.Get<BlueprintAbility>("36c8971e91f1745418cc3ffdfac17b74");
@@ -267,6 +277,13 @@ namespace TweakMod
             public static BlueprintAbility InvisibilityGreater = library.Get<BlueprintAbility>("ecaa0def35b38f949bd1976a6c9539e0");
             public static BlueprintAbility fester = library.Get<BlueprintAbility>("2dbe271c979d9104c8e2e6b42e208e32");
             public static BlueprintAbility aid = library.Get<BlueprintAbility>("03a9630394d10164a9410882d31572f0");
+            public static BlueprintAbility serenity = library.Get<BlueprintAbility>("d316d3d94d20c674db2c24d7de96f6a7");
+            public static BlueprintAbility boneshatter = library.Get<BlueprintAbility>("f2f1efac32ea2884e84ecaf14657298b");
+            public static BlueprintAbility causefear = library.Get<BlueprintAbility>("bd81a3931aa285a4f9844585b5d97e51");
+            public static BlueprintAbility colorspray = library.Get<BlueprintAbility>("91da41b9793a4624797921f221db653c");
+            public static BlueprintAbility auraofdoom = library.Get<BlueprintAbility>("3244b350df4c474084de760c2aaf7974");
+            public static BlueprintAbility confusion = library.Get<BlueprintAbility>("cf6c901fb7acc904e85c63b342e9c949");
+
 
         }
 
@@ -278,6 +295,11 @@ namespace TweakMod
                                                                                      new Consideration[] { },
                                                                                      new Consideration[] { },
                                                                                      base_score: 10.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell castauraofdoom = createCastSpellAction("CastAuraodDoom", Spells.auraofdoom,
+                                                                         new Consideration[] { },
+                                                                         new Consideration[] { },
+                                                                         base_score: 10.0f, combat_count: 1);
             static public BlueprintAiCastSpell divine_power_first = createCastSpellAction("CastDivinePowerFirst", Spells.divinepower,
                                                                          new Consideration[] { },
                                                                          new Consideration[] { },
@@ -349,6 +371,11 @@ namespace TweakMod
               new Consideration[] { },
               new Consideration[] { AOE_ChooseMoreEnemies },
               base_score: 10.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell castcausefeardelay = createCastSpellAction("castcausefeardelay", Spells.causefear,
+  new Consideration[] { },
+  new Consideration[] { attacktargetspriority,NoBuffShaken,NoBuffFrightened,NoCaster},
+  base_score: 10.0f, combat_count: 1, cooldown_rounds: 2, start_cooldown_rounds: 5);
 
             static public BlueprintAiCastSpell castfearwitch = createCastSpellAction("CastFearwitch", Spells.fear,
   new Consideration[] { },
@@ -426,6 +453,11 @@ namespace TweakMod
     new Consideration[] { },
     base_score: 20.0f, variant: Spells.summonelementalmediumfire, combat_count: 1);
 
+            static public BlueprintAiCastSpell summonelementalhugeair = createCastSpellAction("summonelementalhugeair", Spells.summonelementalhuge,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 40.0f, variant: Spells.summonelementalhugeair, combat_count: 1);
+
             static public BlueprintAiCastSpell stonecall = createCastSpellAction("Caststonecall", Spells.stonecall,
                  new Consideration[] { },
                  new Consideration[] { AOE_ChooseMoreEnemies },
@@ -487,7 +519,7 @@ namespace TweakMod
             static public BlueprintAiCastSpell earpierce = createCastSpellAction("castearpierce", Spells.earpiercescream,
             new Consideration[] { },
              new Consideration[] { attacktargetspriority },
-            base_score: 20.0f, combat_count: 4, start_cooldown_rounds: 1);
+            base_score: 20.0f, combat_count: 4, start_cooldown_rounds: 1, cooldown_rounds: 1);
 
             static public BlueprintAiCastSpell castsearinglight = createCastSpellAction("castsearinglight", Spells.searing_light,
                 new Consideration[] { },
@@ -507,7 +539,7 @@ namespace TweakMod
             static public BlueprintAiCastSpell casthaste = createCastSpellAction("casthaste", Spells.haste,
             new Consideration[] { },
             new Consideration[] { AlliesNoBuff_Haste },
-            base_score: 20.0f, combat_count: 2, cooldown_rounds: 2);
+            base_score: 30.0f, combat_count: 2, cooldown_rounds: 2);
 
             static public BlueprintAiCastSpell castslow = createCastSpellAction("castslow", Spells.slow,
                 new Consideration[] { },
@@ -627,6 +659,7 @@ base_score: 3.0f, combat_count:1);
                 new Consideration[] { },
                  new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
             base_score: 20.0f, combat_count: 1);
+
             static public BlueprintAiCastSpell prayergoblinshaman = createCastSpellAction("Castprayergoblinshaman", Spells.prayer,
                                    new Consideration[] { },
                                    new Consideration[] { AlliesNoBuff_Prayer,EnemiesNoDebuff_Prayer},
@@ -817,6 +850,16 @@ base_score: 20.0f, variant: Spells.summonmonsterIIId3, combat_count: 1);
     new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
     base_score: 30.0f, combat_count: 2, cooldown_rounds: 3, start_cooldown_rounds: 4);
 
+            static public BlueprintAiCastSpell castcontrolledfireballwyvern = createCastSpellAction("castcontrolledfireballwyvern", Spells.controlledfireball,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 30.0f,  cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell castcontrolledfireballstrongwyvern = createCastSpellAction("castcontrolledfireballstrongwyvern", Spells.controlledfireball,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 30.0f, cooldown_rounds: 4);
+
             static public BlueprintAiCastSpell castmagearmorsprig = createCastSpellAction("castmagearmorsprig", Spells.magearmor,
     new Consideration[] { },
     new Consideration[] { NoBuffMageArmor,TargetSelf },
@@ -850,7 +893,7 @@ base_score: 10.0f, combat_count: 1);
             static public BlueprintAiCastSpell scorchingraydelay = createCastSpellAction("castscorchingraydelay", Spells.scorchingray,
                    new Consideration[] { },
                   new Consideration[] { attacktargetspriority },
-                 base_score: 3.0f, cooldown_rounds: 1, start_cooldown_rounds: 3);
+                 base_score: 30.0f, cooldown_rounds: 1, start_cooldown_rounds: 3);
 
 
             static public BlueprintAiCastSpell usedisarm = createCastSpellAction("usedisarm", Spells.disarm,
@@ -877,6 +920,21 @@ base_score: 40.0f, cooldown_rounds: 2, combat_count: 4, start_cooldown_rounds: 5
 new Consideration[] { NoBuffVampiricTouch },
 new Consideration[] { attacktargetspriority, NotUndead},
 base_score: 40.0f, cooldown_rounds: 3, combat_count: 2, start_cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell castvampirictouchowlbear = createCastSpellAction("castvampirictouchowlbear", Spells.vampirictouch,
+new Consideration[] { NoBuffVampiricTouch },
+new Consideration[] { attacktargetspriority, NotUndead },
+base_score: 40.0f, cooldown_rounds: 3);
+
+            static public BlueprintAiCastSpell mirrorimageowlbear = createCastSpellAction("Castmirrorimageowlbear", Spells.mirrorimage,
+new Consideration[] { },
+new Consideration[] { NoBuffMirrorImage },
+base_score: 20.0f, cooldown_rounds: 6, start_cooldown_rounds: 4);
+
+            static public BlueprintAiCastSpell castfiresnakeowlbear = createCastSpellAction("castfiresnakeowlbear", Spells.firesnake,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 20.0f, cooldown_rounds: 4);
 
             static public BlueprintAiCastSpell castphantasmalkiller = createCastSpellAction("castphantasmalkiller", Spells.phantasmalkiller,
 new Consideration[] {  },
@@ -921,7 +979,7 @@ base_score: 30.0f, combat_count: 2, cooldown_rounds: 4);
             static public BlueprintAiCastSpell casthastetartuk = createCastSpellAction("casthastetartuk", Spells.haste,
 new Consideration[] { },
 new Consideration[] { AlliesNoBuff_Haste },
-base_score: 20.0f, combat_count: 2, cooldown_rounds: 3);
+base_score: 30.0f, combat_count: 2, cooldown_rounds: 3);
 
             static public BlueprintAiCastSpell castvolcanicstorm = createCastSpellAction("castvolcanicstorm ", Spells.volcanicstorm,
 new Consideration[] { },
@@ -1039,6 +1097,16 @@ new Consideration[] { },
 new Consideration[] { attacktargetspriority, NoBuffCrushingDespair,AOE_ChooseMoreEnemies },
 base_score: 10.0f, cooldown_rounds: 2, start_cooldown_rounds: 4);
 
+            static public BlueprintAiCastSpell castcrushingdespairwyvern = createCastSpellAction("castcrushingdespairwyvern", Spells.crushingdespair,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, NoBuffCrushingDespair, AOE_ChooseMoreEnemies },
+base_score: 10.0f, cooldown_rounds: 5 );
+
+            static public BlueprintAiCastSpell castconfusionwyvern = createCastSpellAction("castconfusionwyvern", Spells.confusion,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, NoBuffInsanity,NoBuffConfusion, AOE_ChooseMoreEnemies },
+base_score: 10.0f, cooldown_rounds: 5);
+
             static public BlueprintAiCastSpell summonelementallargeair = createCastSpellAction("Castsummonelementallargeair", Spells.summonelementallarge,
     new Consideration[] { },
     new Consideration[] { },
@@ -1049,6 +1117,11 @@ base_score: 10.0f, cooldown_rounds: 2, start_cooldown_rounds: 4);
                                                              new Consideration[] { LongRange },
                                                              base_score: 10.0f, start_cooldown_rounds: 4, cooldown_rounds: 2);
 
+            static public BlueprintAiCastSpell castboneshatter = createCastSpellAction("castboneshatter", Spells.boneshatter,
+                                                 new Consideration[] { },
+                                                 new Consideration[] { LongRange },
+                                                 base_score: 10.0f, start_cooldown_rounds: 2, cooldown_rounds: 2);
+
             static public BlueprintAiCastSpell castslayliving = createCastSpellAction("castslayliving", Spells.slayliving,
                                                  new Consideration[] { },
                                                  new Consideration[] {TouchInMeleeConsideration},
@@ -1057,7 +1130,7 @@ base_score: 10.0f, cooldown_rounds: 2, start_cooldown_rounds: 4);
             static public BlueprintAiCastSpell holdpersonzombiecleric = createCastSpellAction("Castholdpersonzombiecleric", Spells.holdperson,
         new Consideration[] { },
         new Consideration[] { attacktargetspriority, ChaoticBehavior },
-        base_score: 3.0f, combat_count: 3, cooldown_rounds: 2, start_cooldown_rounds: 2);
+        base_score: 20.0f, combat_count: 3, cooldown_rounds: 2, start_cooldown_rounds: 2);
 
             static public BlueprintAiCastSpell castbane = createCastSpellAction("Castbane", Spells.bane,
                          new Consideration[] { },
@@ -1117,7 +1190,7 @@ base_score: 20.0f, cooldown_rounds: 4, start_cooldown_rounds: 1);
 
             static public BlueprintAiCastSpell useweb = createCastSpellAction("Castweb", Spells.web,
      new Consideration[] { },
-      new Consideration[] { AOE_ChooseMoreEnemies },
+      new Consideration[] { AOE_ChooseMoreEnemies,LongRange },
      base_score: 50.0f, combat_count: 1);
 
             static public BlueprintAiCastSpell usephantasmalwebwitch = createCastSpellAction("usephantasmalwebwitch", Spells.phantasmalweb,
@@ -1163,7 +1236,23 @@ base_score: 3.0f, combat_count: 3, cooldown_rounds: 4 );
             static public BlueprintAiCastSpell dragonsbreathwaterelemental = createCastSpellAction("Castdragonswaterearthelemental", Spells.dragonsbreathsilver,
                 new Consideration[] { },
                 new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
-            base_score: 20.0f, combat_count: 2, cooldown_rounds: 4);
+            base_score: 40.0f, combat_count: 2, cooldown_rounds: 4);
+
+            static public BlueprintAiCastSpell dragonsbreathsilverhydra = createCastSpellAction("Castdragonsbreathsilverhydra", Spells.dragonsbreathsilver,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
+base_score: 40.0f, cooldown_rounds: 3);
+
+            static public BlueprintAiCastSpell dragonsbreathgoldhydra = createCastSpellAction("Castdragonsbreathgoldhydra", Spells.dragonsbreathgold,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
+base_score: 40.0f, cooldown_rounds: 4);
+
+
+            static public BlueprintAiCastSpell dragonsbreathgoldwyvern = createCastSpellAction("Castdragonsbreathgoldwyvern", Spells.dragonsbreathgold,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
+base_score: 40.0f, cooldown_rounds: 4);
 
             static public BlueprintAiCastSpell acidarrowearthelemental = createCastSpellAction("Castacidarrowearthelemental", Spells.acidarrow,
        new Consideration[] { },
@@ -1246,6 +1335,36 @@ base_score: 40.0f, combat_count: 1);
 new Consideration[] { },
 new Consideration[] { ArcaneCasterFocusConsiderationVordakai, attacktargetspriority },
 base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castserenity = createCastSpellAction("castserenity", Spells.serenity,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell castcolorspray = createCastSpellAction("castcolorspray", Spells.colorspray,
+new Consideration[] { },
+new Consideration[] {attacktargetspriority, AoE_AvoidFriends, AOE_ChooseMoreEnemies },
+base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell scorchingraydelaydryad = createCastSpellAction("castscorchingraydelaydryad", Spells.scorchingray,
+       new Consideration[] { },
+      new Consideration[] { attacktargetspriority },
+     base_score: 30.0f, cooldown_rounds: 1, start_cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell earpiercedryad = createCastSpellAction("castearpiercedryad", Spells.earpiercescream,
+new Consideration[] { },
+ new Consideration[] { attacktargetspriority },
+base_score: 20.0f, combat_count: 4, start_cooldown_rounds: 2, cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell dragonsbreathgreenhydra = createCastSpellAction("Castdragonsbreathgreenhydra", Spells.dragonsbreath,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
+base_score: 20.0f, variant: Spells.dragonsbreathgreen, cooldown_rounds: 4);
+
+            static public BlueprintAiCastSpell dragonsbreathgreenwyvern = createCastSpellAction("Castdragonsbreathgreenwyvern", Spells.dragonsbreath,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
+base_score: 20.0f, variant: Spells.dragonsbreathgreen, cooldown_rounds: 4);
 
         }
 
@@ -1352,7 +1471,55 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             changeHardBanditMelee();
             changeHardBanditRanged();
             changeGraveRobber();
+            changeLoneWarrior();
 
+            changeKingVesket();
+            changeLizardRattler();
+            changeLizardRangedHard();
+            changeLizardMeleeHard();
+
+            //Beasts
+
+            updatehuntedhydra();
+            updatecapitalhydra();
+            updateCR12PoisonousHydra();
+            updateCR14PoisonousHydra();
+            updateHydraStandard();
+            updateHydraAdvanced();
+            updateHydraAdvancedCR7();
+            updateHydraquickling();
+            updateHydrabloom();
+            updateHydravenom();
+            updateOwlbearillusion();
+            updateOwlbearnecro();
+            updateStrongOwlbearevocation();
+            updateStrongOwlbearnecro();
+            updateStrongOwlbeartreant();
+            updateSecretOwlbear();
+            updateenragedowlbeartreant();
+            updateBloominfusedspider();
+            updatequicklingspider();
+            updatedoomspider();
+            updatespidermatriarch();
+            updatestandardwyvern();
+            updateadvancedwyvern();
+            updateenchantmentwyvern();
+            updateevocationwyvern();
+            updatestrongenchantmentwyvern();
+            updatetransmutationwyvern();
+            updatetreantwyvern();
+            updatewyvernforked();
+
+            //Silverstep
+
+            updatesilverstepsmalltatzylwyrm();
+            updateLargeTatzlwyrm();
+            updatesilverstepfrogs();
+            changeSilverstepWerewolf();
+            changesilverstepbanditleader();
+            updatesilverstepbanditmelee();
+            changesilverstepbanditArcher();
+            changesilverstepbanditRogue();
 
 
             fixLizardWilloWispBoss();
@@ -1362,9 +1529,13 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             updatecraglinnorm();
 
             fixCandlemereWilloWispBoss();
+            fixCandlemerePriest();
 
             fixnixieprankster();
             fixnereidstandard();
+
+
+            //Goblins 
 
             fixGoblinSentry();
             fixGoblinDogcutter();
@@ -1469,6 +1640,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
             //Bald Hilltop (Ancient Curses)
 
+            changebloodmoondryad();
 
 
             //Elementals
@@ -3109,10 +3281,6 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
         }
 
 
-        
-
-
-
 
         static void updateKoboldKeyKeeper()
         {
@@ -3672,12 +3840,17 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             var boneshaman = library.Get<BlueprintUnit>("bb96b6fca3af55343a199dbbc14c4a72");
             var BoneShamanFeaturelist = library.Get<BlueprintFeature>("de7bee2497c718b4bbe623dfcc4fc78d");
             var sorcerer = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var web = library.Get<BlueprintAbility>("134cb6d492269aa4f8662700ef57449f");
             var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
             var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
             var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
             var stinkycloud = library.Get<BlueprintAbility>("68a9e6d7256f1354289a39003a46d826");
+            var blurbuff = library.Get<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
+            var magearmorbuff = library.Get<BlueprintBuff>("a92acdf18049d784eaa8f2004f5d2304");
+            
+            var magicmissle = library.Get<BlueprintAbility>("4ac47ddb9fa1eaf43a1b6809980cfbd2");
 
-
+            boneshaman.AddFacts = boneshaman.AddFacts.AddToArray(blurbuff,magearmorbuff);
 
             var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)boneshaman.AddFacts[0], "BoneShamanFeature", "d35051cea94d474485ee57c0adeea011");
             boneshaman.AddFacts[0] = clone;
@@ -3700,7 +3873,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
                  .First(c => c.CharacterClass == sorcerer);
             var newsorcererLevels = sorcererLevels.CreateCopy();
             newsorcererLevels.Levels = 7;
-            var spell_list = newsorcererLevels.SelectSpells.AddToArray(haste, slow, stinkycloud);
+            var spell_list = newsorcererLevels.SelectSpells.AddToArray(haste, slow, web,magicmissle);
             newsorcererLevels.SelectSpells = spell_list;
             boneshamanfeature.ReplaceComponent(sorcererLevels, newsorcererLevels);
 
@@ -3708,7 +3881,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
                 .OfType<LearnSpells>()
               .First(c => c.CharacterClass == sorcerer);
             var newsorcererLevels2 = sorcererLevels2.CreateCopy();
-            var spell_list2 = newsorcererLevels2.Spells.AddToArray(haste, slow, stinkycloud);
+            var spell_list2 = newsorcererLevels2.Spells.AddToArray(haste, slow, web,magicmissle);
             newsorcererLevels2.Spells = spell_list2;
             boneshamanspells.ReplaceComponent(sorcererLevels2, newsorcererLevels2);
 
@@ -3719,7 +3892,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             
 
             var brain = boneshaman.Brain;
-            brain.Actions = brain.Actions.AddToArray(AiActions.casthaste, AiActions.castslow);
+            brain.Actions = brain.Actions.AddToArray(AiActions.casthastetartuk, AiActions.castslow,AiActions.useweb,AiActions.castmagicmissletransmuter);
 
         }
 
@@ -3943,6 +4116,8 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
 
         //CHAPTER 2 Season of Bloom
+
+        //Swamp
 
         static void updateSwampWitch()
         {
@@ -4292,8 +4467,9 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             newAddClassLevels.Levels = 8;
             EasyArcherfeature.ReplaceComponent(fighterLevels, newAddClassLevels);
 
-            EasyArcher.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("e8aa3f5ca26027b4b846de538b01ee50"); 
+            EasyArcher.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("e8aa3f5ca26027b4b846de538b01ee50");
 
+            EasyArcher.GetComponent<Experience>().CR = 6;
 
             var brain = EasyArcher.Brain;
             brain.Actions = brain.Actions.AddToArray();
@@ -4310,6 +4486,8 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
 
             EasyFighter.AddFacts = EasyFighter.AddFacts.AddToArray(disarm);
+
+            EasyFighter.MaxHP = 20;
 
 
             var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)EasyFighter.AddFacts[0], "EasyFighterFeature", "42687f0bebf3414d8c02ac55b9bd4333");
@@ -4331,6 +4509,9 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             EasyFighterfeature.ReplaceComponent(fighterLevels, newAddClassLevels);
 
             EasyFighter.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("03d706655c07d804cb9d5a5583f9aec5"); //longsword +1
+            EasyFighter.Body.Armor = library.Get<BlueprintItemArmor>("1638fa11f5af1814191cf6c05cdcf2b6"); //Banded Armor
+
+            EasyFighter.GetComponent<Experience>().CR = 6;
 
 
             var brain = EasyFighter.Brain;
@@ -4381,7 +4562,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
                 .Select(c => c.CreateCopy())
                 .ToArray();
 
-
+            HardFighter.GetComponent<Experience>().CR = 6;
 
 
             var HardFighterFeature = library.Get<BlueprintFeature>("b3155989de1140548464d049a5f19ef1");
@@ -4456,7 +4637,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
             var brain = HardFighter.Brain;
             brain.Actions = brain.Actions.AddToArray(AiActions.divine_power_first, AiActions.prayergoblinshaman,AiActions.castsearinglight,
-                                                    AiActions.blesscast,AiActions.holdpersondelaybanditcleric,AiActions.castshieldoffaith,
+                                                    AiActions.blesscast,AiActions.holdpersondelaybanditcleric,AiActions.castshieldoffaith, AiActions.castsummonmonsterIV,
                                                     AiActions.castchannelpositivecleric);
 
 
@@ -4545,7 +4726,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             HardRangedFeature.ReplaceComponent(clericLevels5, newAddClassLevels5);
 
 
-
+            HardRanged.GetComponent<Experience>().CR = 6;
 
 
 
@@ -4654,13 +4835,14 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.shieldoffaith);
             auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.heroism);
 
+            GraveRobberLead.GetComponent<Experience>().CR = 8;
+
             var brain = GraveRobberLead.Brain;
             brain.Actions = brain.Actions.AddToArray(AiActions.castheroism,AiActions.dispel,AiActions.castshieldoffaith,AiActions.castfester);
 
 
 
         }
-
 
         static void changeLonelyBarrowSkeletonCR3()
         {
@@ -4703,6 +4885,8 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
             var cleave = library.Get<BlueprintFeature>("d809b6c4ff2aaff4fa70d712a70f7d7b");
 
+            
+
             CR2_SkeletalChampion.AddFacts = CR2_SkeletalChampion.AddFacts.AddToArray(cleave);
 
             var fighterLevels = CR2_SkeletalChampion.ComponentsArray
@@ -4727,6 +4911,672 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
 
         }
+
+        static void changeLoneWarrior()
+        {
+            var LoneWarrior = library.Get<BlueprintUnit>("39ace3bd77efd5546ad85b9e9947a311");
+            var barbarianClass = library.Get<BlueprintCharacterClass>("f7d7eb166b3dd594fb330d085df41853");
+            var cornugon = library.Get<BlueprintFeature>("ceea53555d83f2547ae5fc47e0399e14");
+            var swiftfoot = library.Get<BlueprintFeature>("7df32d4e9bd2cdc48b0f69b03a57754a");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var InspireFerocityFeature = library.Get<BlueprintFeature>("32c4d277007aed74c905779cd04a6fed");
+
+            LoneWarrior.AddFacts = LoneWarrior.AddFacts.AddToArray(cornugon,toughness,InspireFerocityFeature);
+
+            
+
+
+            var barbarianLevels = LoneWarrior.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == barbarianClass);
+            var newAddClassLevels = barbarianLevels.CreateCopy();
+            foreach (var selection in newAddClassLevels.Selections)
+            {
+                selection.Features = selection.Features.RemoveFromArray(swiftfoot);
+
+            }
+            LoneWarrior.ReplaceComponent(barbarianLevels, newAddClassLevels);
+
+            LoneWarrior.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("b0545291dc59cd44083e22e06448762a"); //Greatsword frost +2
+
+            LoneWarrior.GetComponent<Experience>().CR = 15;
+
+
+            var brain = LoneWarrior.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.cleave);
+
+
+
+        }
+
+        //Lizardfolks
+
+
+        static void changeKingVesket()
+        {
+            var Kingvesket = library.Get<BlueprintUnit>("5eb33299047235146936bb18a38a0af4");
+            var barbarianClass = library.Get<BlueprintCharacterClass>("f7d7eb166b3dd594fb330d085df41853");
+            var renewedvigor = library.Get<BlueprintFeature>("aad496a7c9bee224cbd01a3cf8e42061");
+            var recklesstance = library.Get<BlueprintFeature>("cb502c65dab407b4e928f5d8355cafc9");
+            var InspireFerocityFeature = library.Get<BlueprintFeature>("32c4d277007aed74c905779cd04a6fed");
+
+            Kingvesket.AddFacts = Kingvesket.AddFacts.AddToArray(recklesstance, InspireFerocityFeature);
+            Kingvesket.AddFacts = Kingvesket.AddFacts.RemoveFromArray(renewedvigor);
+
+
+
+            var barbarianLevels = Kingvesket.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == barbarianClass);
+            var newAddClassLevels = barbarianLevels.CreateCopy();
+            newAddClassLevels.Levels = 9;
+            Kingvesket.ReplaceComponent(barbarianLevels, newAddClassLevels);
+
+
+
+
+
+
+
+        }
+
+        static void changeLizardRattler()
+        {
+            var LizardRattler = library.Get<BlueprintUnit>("dda36438b8ffc9843b832d01d040b773");
+            var clericclass = library.Get<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+            var summonmonsterIV = library.Get<BlueprintAbility>("7ed74a3ec8c458d4fb50b192fd7be6ef");
+            var summonmonsterIII = library.Get<BlueprintAbility>("5d61dde0020bbf54ba1521f7ca0229dc");
+            var searing_light = library.Get<BlueprintAbility>("bf0accce250381a44b857d4af6c8e10d");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var divinepower = library.Get<BlueprintAbility>("ef16771cb05d1344989519e87f25b3c5");
+
+            LizardRattler.AddFacts = LizardRattler.AddFacts.AddToArray(combatcasting,quicken);
+
+            LizardRattler.Wisdom = 19;
+
+
+
+
+            var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)LizardRattler.AddFacts[0], "LizardRattlerFeatureNew", "14ad70e90b2045e4ad9b4af57da0235e");
+            LizardRattler.AddFacts[0] = clone;
+            clone.ComponentsArray = clone.ComponentsArray
+               .Select(c => c.CreateCopy())
+               .ToArray();
+
+
+
+            var LizardRattlerFeature = library.Get<BlueprintFeature>("14ad70e90b2045e4ad9b4af57da0235e");
+
+            var clericLevels = LizardRattlerFeature.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == clericclass);
+            var newAddClassLevels = clericLevels.CreateCopy();
+            newAddClassLevels.Levels = 7;
+            LizardRattlerFeature.ReplaceComponent(clericLevels, newAddClassLevels);
+
+            var clericLevels2 = LizardRattlerFeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericclass);
+            var newAddClassLevels2 = clericLevels2.CreateCopy();
+            var spell_list2 = newAddClassLevels2.MemorizeSpells.AddToArray(divinepower, searing_light, searing_light);
+            newAddClassLevels2.MemorizeSpells = spell_list2;
+            LizardRattlerFeature.ReplaceComponent(clericLevels2, newAddClassLevels2);
+
+            var clericLevels6 = LizardRattlerFeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericclass);
+            var newAddClassLevels6 = clericLevels6.CreateCopy();
+            var spell_list6 = newAddClassLevels6.MemorizeSpells.RemoveFromArray(summonmonsterIV);
+            newAddClassLevels6.MemorizeSpells = spell_list6;
+            LizardRattlerFeature.ReplaceComponent(clericLevels6, newAddClassLevels6);
+
+            var clericLevels5 = LizardRattlerFeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericclass);
+            var newAddClassLevels5 = clericLevels5.CreateCopy();
+            var spell_list5 = newAddClassLevels5.MemorizeSpells.RemoveFromArray(summonmonsterIII);
+            newAddClassLevels5.MemorizeSpells = spell_list5;
+            LizardRattlerFeature.ReplaceComponent(clericLevels5, newAddClassLevels5);
+
+            var clericLevels7 = LizardRattlerFeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericclass);
+            var newAddClassLevels7 = clericLevels7.CreateCopy();
+            var spell_list7 = newAddClassLevels7.MemorizeSpells.RemoveFromArray(summonmonsterIII);
+            newAddClassLevels7.MemorizeSpells = spell_list7;
+            LizardRattlerFeature.ReplaceComponent(clericLevels7, newAddClassLevels7);
+
+            var auto_metamgic2 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.divinepower);
+
+
+
+
+            var brain = LizardRattler.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.divine_power_first, AiActions.prayergoblinshaman, AiActions.castsearinglight,
+                                                    AiActions.blesscast, AiActions.holdpersondelaybanditcleric, AiActions.castshieldoffaith,
+                                                    AiActions.castchannelpositivecleric);
+
+
+
+        }
+
+        static void changeLizardMeleeHard()
+        {
+            var LizardMeleeHard = library.Get<BlueprintUnit>("4d98f6f765a999f40b587ef22f79db95");
+            var ChargeAbility = library.Get<BlueprintAbility>("c78506dd0e14f7c45a599990e4e65038");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+
+            LizardMeleeHard.AddFacts = LizardMeleeHard.AddFacts.AddToArray(ChargeAbility);
+
+
+
+
+            var fighterLevels = LizardMeleeHard.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 7;
+            LizardMeleeHard.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+            var brain = LizardMeleeHard.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.cleavesprig, AiActions.bullrush, AiActions.charge);
+
+
+        }
+
+        static void changeLizardRangedHard()
+        {
+            var LizardRangedHard = library.Get<BlueprintUnit>("360e49982bff21d45938e0df51f807eb");
+            var ChargeAbility = library.Get<BlueprintAbility>("c78506dd0e14f7c45a599990e4e65038");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+
+
+
+            LizardRangedHard.AddFacts = LizardRangedHard.AddFacts.AddToArray(ChargeAbility);
+
+
+
+
+            var fighterLevels = LizardRangedHard.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 7;
+            LizardRangedHard.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+            var brain = LizardRangedHard.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.cleavesprig, AiActions.bullrush, AiActions.charge);
+
+
+        }
+
+
+        //Silverstep
+
+        static void updatesilverstepfrogs()
+        {
+
+            var silverstepfrogs = library.Get<BlueprintUnit>("70266f804573468285cea8ae27437a8e");
+            var AnimalClass = library.Get<BlueprintCharacterClass>("4cd1757a0eea7694ba5c933729a53920");
+            
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var natrmor5 = library.Get<BlueprintUnitFact>("7661741dbb9604842a642457456fd0e4");
+            var natrmor8 = library.Get<BlueprintUnitFact>("b9342e2a6dc5165489ba3412c50ca3d1");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+
+
+
+            silverstepfrogs.AddFacts = silverstepfrogs.AddFacts.RemoveFromArray(natrmor5);
+            silverstepfrogs.AddFacts = silverstepfrogs.AddFacts.AddToArray(dodge, toughness);
+
+            var dragonLevels = silverstepfrogs.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == AnimalClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 6;
+            silverstepfrogs.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+            silverstepfrogs.GetComponent<Experience>().CR = 5;
+
+
+        }
+
+        static void updatesilverstepsmalltatzylwyrm()
+        {
+
+            var silverstepsmalltatzylwyrm = library.Get<BlueprintUnit>("b1027467a67844e2914ab07f109035da");
+            var dragonClass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var natrmor3 = library.Get<BlueprintUnitFact>("f6e106931f95fec4eb995f0d0629fb84");
+            var natrmor4 = library.Get<BlueprintUnitFact>("16fc201a83edcde4cbd64c291ebe0d07");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("9c20ebc9f7b701743944b1c76d4bf598");
+            var bite1d8 = library.Get<BlueprintItemWeapon>("c988aa874d11ff84d873508ddc9b928f");
+            var Claw1d6 = library.Get<BlueprintItemWeapon>("c76f72a862d168d44838206524366e1c");
+            var quicklingfeature = library.Get<BlueprintFeature>("78ae3b88fd3a434489fa0731ba2eab42");
+            var Claw1d4 = library.Get<BlueprintItemWeapon>("118fdd03e569a66459ab01a20af6811a");
+
+            silverstepsmalltatzylwyrm.Strength = 18;
+            silverstepsmalltatzylwyrm.Dexterity = 16;
+            silverstepsmalltatzylwyrm.Constitution = 16;
+            silverstepsmalltatzylwyrm.Intelligence = 10;
+            silverstepsmalltatzylwyrm.Wisdom = 17;
+            silverstepsmalltatzylwyrm.Charisma = 15;
+
+
+
+
+
+            silverstepsmalltatzylwyrm.AddFacts = silverstepsmalltatzylwyrm.AddFacts.RemoveFromArray(natrmor3);
+            silverstepsmalltatzylwyrm.AddFacts = silverstepsmalltatzylwyrm.AddFacts.AddToArray(dodge,natrmor4, toughness,quicklingfeature);
+
+            var dragonLevels = silverstepsmalltatzylwyrm.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == dragonClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 6;
+            silverstepsmalltatzylwyrm.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+            silverstepsmalltatzylwyrm.Body.AdditionalLimbs = silverstepsmalltatzylwyrm.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            silverstepsmalltatzylwyrm.Body.AdditionalLimbs = silverstepsmalltatzylwyrm.Body.AdditionalLimbs.RemoveFromArray(Claw1d4);
+            silverstepsmalltatzylwyrm.Body.AdditionalLimbs = silverstepsmalltatzylwyrm.Body.AdditionalLimbs.RemoveFromArray(Claw1d4);
+            silverstepsmalltatzylwyrm.Body.AdditionalLimbs = silverstepsmalltatzylwyrm.Body.AdditionalLimbs.AddToArray(bite2d6, Claw1d6, Claw1d6);
+
+
+
+            silverstepsmalltatzylwyrm.GetComponent<Experience>().CR = 9;
+
+
+        }
+
+        static void updateLargeTatzlwyrm()
+        {
+
+            var Largetatzylwyrm = library.Get<BlueprintUnit>("7e9ff4d6b96af5a45846159bc249f50d");
+            var dragonClass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+
+
+
+
+
+
+
+            Largetatzylwyrm.AddFacts = Largetatzylwyrm.AddFacts.AddToArray(dodge, toughness);
+
+            Largetatzylwyrm.MaxHP = 15;
+
+            var dragonLevels = Largetatzylwyrm.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == dragonClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 8;
+            Largetatzylwyrm.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+
+
+            Largetatzylwyrm.GetComponent<Experience>().CR = 8;
+
+
+        }
+
+        static void changesilverstepbanditleader()
+        {
+            var SilverstepLeader = library.Get<BlueprintUnit>("0fa332cc117c9034b9cf3657e9f30587");
+            var wizardClass = library.Get<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
+            var BanditNecromancerFeatureListLevel7 = library.Get<BlueprintFeature>("984e04d78ad20d14a965f7aabccb8900");
+            var coneofcold = library.Get<BlueprintAbility>("e7c530f8137630f4d9d7ee1aa7b1edc0");
+            var enervation = library.Get<BlueprintAbility>("f34fb78eaaec141469079af124bcfa0f");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var boneshatter = library.Get<BlueprintAbility>("f2f1efac32ea2884e84ecaf14657298b");
+            var fear = library.Get<BlueprintAbility>("d2aeac47450c76347aebbc02e4f463e0");
+            var blindness = library.Get<BlueprintAbility>("46fd02ad56c35224c9c91c88cd457791");
+            var holdperson = library.Get<BlueprintAbility>("c7104f7526c4c524f91474614054547e");
+            var boneshaker = library.Get<BlueprintAbility>("b7731c2b4fa1c9844a092329177be4c3");
+            var magicmissle = library.Get<BlueprintAbility>("4ac47ddb9fa1eaf43a1b6809980cfbd2");
+            var blindnessaiaction = library.Get<BlueprintAiAction>("8919ec26e5eec864cbfdc8fa018f7b2e");
+            var CauseFearAiAction = library.Get<BlueprintAiAction>("650e0cf00f552744e841bf9cc578ba34");
+
+
+            SilverstepLeader.AddFacts = SilverstepLeader.AddFacts.AddToArray(quicken);
+
+
+
+            SilverstepLeader.Intelligence = 20;
+
+
+            var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)SilverstepLeader.AddFacts[0], "SilverstepLeaderFeature", "54f053b2f4c2483fad6423d4255f2d40");
+            SilverstepLeader.AddFacts[0] = clone;
+            clone.ComponentsArray = clone.ComponentsArray
+                .Select(c => c.CreateCopy())
+                .ToArray();
+
+            var clone2 = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)BanditNecromancerFeatureListLevel7.GetComponent<AddFacts>().Facts[1], "SilverstepLeaderSpellListnew", "d6037b584a8d46ce93541cf671029994");
+            BanditNecromancerFeatureListLevel7.GetComponent<AddFacts>().Facts[1] = clone2;
+            clone2.ComponentsArray = clone2.ComponentsArray
+                .Select(c => c.CreateCopy())
+                .ToArray();
+
+
+
+            var SilverstepLeaderfeature = library.Get<BlueprintFeature>("54f053b2f4c2483fad6423d4255f2d40");
+            var SilverstepLeaderspells = library.Get<BlueprintFeature>("d6037b584a8d46ce93541cf671029994");
+
+
+            var wizardLevels = SilverstepLeaderfeature.ComponentsArray
+             .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels = wizardLevels.CreateCopy();
+            newAddClassLevels.Levels = 9;
+            SilverstepLeaderfeature.ReplaceComponent(wizardLevels, newAddClassLevels);
+
+            var wizardLevels2 = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels2 = wizardLevels2.CreateCopy();
+            var spell_list2 = newAddClassLevels2.MemorizeSpells.AddToArray(coneofcold,haste, mirrorimage, displacement,boneshatter,fear,holdperson,holdperson,boneshaker,magicmissle,magicmissle);
+            newAddClassLevels2.MemorizeSpells = spell_list2;
+            SilverstepLeaderfeature.ReplaceComponent(wizardLevels2, newAddClassLevels2);
+
+            var clericLevels3 = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels3 = clericLevels3.CreateCopy();
+            var spell_list3 = newAddClassLevels3.SelectSpells.AddToArray(coneofcold,haste,displacement,boneshatter,fear,holdperson,holdperson,mirrorimage, boneshaker,magicmissle,magicmissle);
+            newAddClassLevels3.SelectSpells = spell_list3;
+            SilverstepLeaderfeature.ReplaceComponent(clericLevels3, newAddClassLevels3);
+
+            var clericLevels4 = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels4 = clericLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.MemorizeSpells.RemoveFromArray(vampirictouch);
+            newAddClassLevels4.MemorizeSpells = spell_list4;
+            SilverstepLeaderfeature.ReplaceComponent(clericLevels4, newAddClassLevels4);
+
+            var clericLevels7 = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels7 = clericLevels7.CreateCopy();
+            var spell_list7 = newAddClassLevels7.MemorizeSpells.RemoveFromArray(blindness);
+            newAddClassLevels7.MemorizeSpells = spell_list7;
+            SilverstepLeaderfeature.ReplaceComponent(clericLevels7, newAddClassLevels7);
+
+            var clericLevelsA = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevelsA = clericLevelsA.CreateCopy();
+            var spell_listA = newAddClassLevels7.MemorizeSpells.RemoveFromArray(blindness);
+            newAddClassLevelsA.MemorizeSpells = spell_listA;
+            SilverstepLeaderfeature.ReplaceComponent(clericLevelsA, newAddClassLevelsA);
+
+            var clericLevels8 = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels8 = clericLevels8.CreateCopy();
+            var spell_list8 = newAddClassLevels8.MemorizeSpells.RemoveFromArray(enervation);
+            newAddClassLevels8.MemorizeSpells = spell_list8;
+            SilverstepLeaderfeature.ReplaceComponent(clericLevels8, newAddClassLevels8);
+
+            var clericLevels9 = SilverstepLeaderfeature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels9 = clericLevels9.CreateCopy();
+            var spell_list9 = newAddClassLevels9.MemorizeSpells.RemoveFromArray(enervation);
+            newAddClassLevels9.MemorizeSpells = spell_list9;
+            SilverstepLeaderfeature.ReplaceComponent(clericLevels9, newAddClassLevels9);
+
+
+
+            var clericLevels5 = SilverstepLeaderspells.ComponentsArray
+.OfType<LearnSpells>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels5 = clericLevels5.CreateCopy();
+            var spell_list5 = newAddClassLevels5.Spells.RemoveFromArray(enervation);
+            newAddClassLevels5.Spells = spell_list5;
+            SilverstepLeaderspells.ReplaceComponent(clericLevels5, newAddClassLevels5);
+
+            var clericLevels6 = SilverstepLeaderspells.ComponentsArray
+.OfType<LearnSpells>()
+.First(c => c.CharacterClass == wizardClass);
+            var newAddClassLevels6 = clericLevels6.CreateCopy();
+            var spell_list6 = newAddClassLevels6.Spells.AddToArray(haste,displacement,mirrorimage,coneofcold,boneshaker,magicmissle);
+            newAddClassLevels6.Spells = spell_list6;
+            SilverstepLeaderspells.ReplaceComponent(clericLevels6, newAddClassLevels6);
+
+            SilverstepLeader.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("f5528acb89757ab4fb9350f45cc4f3b4"); // Light Crossbow +1
+
+            SilverstepLeader.GetComponent<Experience>().CR = 8;
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.displacement);
+
+            var brain = SilverstepLeader.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(blindnessaiaction);
+            brain.Actions = brain.Actions.RemoveFromArray(CauseFearAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.coneofcoldelderwater,AiActions.displacementvordakai,
+                                                     AiActions.casthastetartuk,AiActions.magicmissledelay,
+                                                     AiActions.castboneshaker,AiActions.castboneshatter,
+                                                     AiActions.mirrorimage,AiActions.castfearwitch,AiActions.castblindness,AiActions.castcausefeardelay);
+
+
+
+        }
+
+        static void updatesilverstepbanditmelee()
+        {
+
+            var Silverstepbanditmelee = library.Get<BlueprintUnit>("b3028bf95b5886c43af34e5ad3067b55");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var disarm = library.Get<BlueprintAbility>("45d94c6db453cfc4a9b99b72d6afe6f6");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+
+            Silverstepbanditmelee.AddFacts = Silverstepbanditmelee.AddFacts.AddToArray(disarm);
+
+            Silverstepbanditmelee.Constitution = 16;
+
+
+            Silverstepbanditmelee.MaxHP = 15;
+
+            var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)Silverstepbanditmelee.AddFacts[0], "SilverstepmeleeFeature", "f1a14bfae1554591b37d601f4eb3b58b");
+            Silverstepbanditmelee.AddFacts[0] = clone;
+            clone.ComponentsArray = clone.ComponentsArray
+                .Select(c => c.CreateCopy())
+                .ToArray();
+
+
+            var Silverstepbanditmeleefeature = library.Get<BlueprintFeature>("f1a14bfae1554591b37d601f4eb3b58b");
+
+
+
+            var fighterLevels = Silverstepbanditmeleefeature.ComponentsArray
+             .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 8;
+            Silverstepbanditmeleefeature.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+            Silverstepbanditmelee.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("03d706655c07d804cb9d5a5583f9aec5"); //longsword +1
+            Silverstepbanditmelee.Body.Armor = library.Get<BlueprintItemArmor>("1638fa11f5af1814191cf6c05cdcf2b6"); //Banded Armor
+
+            
+
+
+
+
+            var brain = Silverstepbanditmelee.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.cleave, AiActions.usedisarm);
+
+
+
+
+
+
+
+        }
+
+        static void changesilverstepbanditArcher()
+        {
+            var silverstepbanditArcher = library.Get<BlueprintUnit>("fc8f89cb21d70204bb1ba117a2701c04");
+
+
+            var rogueClass = library.Get<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
+            var dirtytrick = library.Get<BlueprintFeature>("ed699d64870044b43bb5a7fbe3f29494");
+
+            var BanditRogueMeleeFeatureListLevel7 = library.Get<BlueprintFeature>("7e236e0a3ed53114bb30e4bd2c3c8505");
+            var BanditFighterRangedFeatureListLevel5 = library.Get<BlueprintFeature>("2ce098266434c6947b9840b8a987cdc6");
+
+
+            silverstepbanditArcher.AddFacts = silverstepbanditArcher.AddFacts.RemoveFromArray(BanditFighterRangedFeatureListLevel5);
+
+            silverstepbanditArcher.AddFacts = silverstepbanditArcher.AddFacts.AddToArray(BanditRogueMeleeFeatureListLevel7);
+
+            var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)silverstepbanditArcher.AddFacts[0], "silverstepbanditroguenewFeature", "9f70e18aa2934b8abad02e222f7ce9fb");
+            silverstepbanditArcher.AddFacts[0] = clone;
+            clone.ComponentsArray = clone.ComponentsArray
+                .Select(c => c.CreateCopy())
+                .ToArray();
+
+
+            var silverstepbanditroguenewFeature = library.Get<BlueprintFeature>("9f70e18aa2934b8abad02e222f7ce9fb");
+
+
+
+            var rogueLevels = silverstepbanditroguenewFeature.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == rogueClass);
+            var newAddClassLevels = rogueLevels.CreateCopy();
+            newAddClassLevels.Levels = 8;
+            foreach (var selection in newAddClassLevels.Selections)
+            {
+                selection.Features = selection.Features.AddToArray();
+
+            }
+            silverstepbanditroguenewFeature.ReplaceComponent(rogueLevels, newAddClassLevels);
+
+            silverstepbanditArcher.AddFacts = silverstepbanditArcher.AddFacts.AddToArray(dirtytrick);
+
+
+            silverstepbanditArcher.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("2a45458f776442e43bba57de65f9b738"); //Dagger +1
+
+            silverstepbanditArcher.Body.SecondaryHand = library.Get<BlueprintItemWeapon>("2a45458f776442e43bba57de65f9b738"); //Dagger +1
+
+
+            var brain = silverstepbanditArcher.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.usedirtytrickblind);
+
+
+            
+
+
+
+        }
+
+        static void changesilverstepbanditRogue()
+        {
+
+            var silverstepbanditrogue = library.Get<BlueprintUnit>("e6f8bba279a316d4eafe74cebb4eee1d");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var BanditRogueRangedFeatureListLevel4 = library.Get<BlueprintFeature>("518a732c7e32bbd46b90fc297120e004");
+            var BanditFighterRangedFeatureListLevel5 = library.Get<BlueprintFeature>("2ce098266434c6947b9840b8a987cdc6");
+
+           
+
+            silverstepbanditrogue.AddFacts = silverstepbanditrogue.AddFacts.RemoveFromArray(BanditRogueRangedFeatureListLevel4);
+
+            silverstepbanditrogue.AddFacts = silverstepbanditrogue.AddFacts.AddToArray(BanditFighterRangedFeatureListLevel5);
+
+
+            var clone = library.CopyAndAdd<BlueprintFeature>((BlueprintFeature)silverstepbanditrogue.AddFacts[0], "silverstepbanditnewarcherFeature", "5fed418fb9e34f89a987115596af951f");
+            silverstepbanditrogue.AddFacts[0] = clone;
+            clone.ComponentsArray = clone.ComponentsArray
+                .Select(c => c.CreateCopy())
+                .ToArray();
+
+
+            var silverstepbanditnewarcherFeature = library.Get<BlueprintFeature>("5fed418fb9e34f89a987115596af951f");
+
+
+            var fighterLevels = silverstepbanditnewarcherFeature.ComponentsArray
+             .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 6;
+            silverstepbanditnewarcherFeature.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+            silverstepbanditrogue.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("4de4658c0e9b0d146b9a08ed6f030f8a"); //Masterwork Composite Longbow
+
+            silverstepbanditrogue.GetComponent<Experience>().CR = 5;
+
+            var brain = silverstepbanditrogue.Brain;
+            brain.Actions = brain.Actions.AddToArray();
+
+
+        }
+
+        static void changeSilverstepWerewolf()
+        {
+            var SilverstepWerewolf = library.Get<BlueprintUnit>("e79c357492dac0549b9546e1e4c6dd9b");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var cornugon = library.Get<BlueprintFeature>("ceea53555d83f2547ae5fc47e0399e14");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var armorfocuschainmail = library.Get<BlueprintFeature>("adb1548368313094ba608788befff12c");
+
+
+
+
+            SilverstepWerewolf.AddFacts = SilverstepWerewolf.AddFacts.AddToArray(cornugon,armorfocuschainmail);
+
+            SilverstepWerewolf.Constitution = 20;
+
+            SilverstepWerewolf.Skills.Diplomacy = 10;
+
+
+            SilverstepWerewolf.MaxHP = 15;
+
+
+            var fighterLevels = SilverstepWerewolf.ComponentsArray
+             .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 11;
+            SilverstepWerewolf.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+
+
+
+            var brain = SilverstepWerewolf.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.cleavesprig);
+
+
+
+        }
+
+
+
+        //Miscellaneous Season of Bloom
 
 
         static void updatefakestaglord()
@@ -4806,7 +5656,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             craglinnorm.ReplaceComponent(dragonLevels, newAddClassLevels);
 
 
-            
+            craglinnorm.GetComponent<Experience>().CR = 16;
 
         }
 
@@ -4905,9 +5755,6 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
         }
 
-
-
-
         static void fixnixieprankster()
         {
 
@@ -4987,8 +5834,955 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
         }
 
+        static void fixCandlemerePriest()
+        {
+
+            var CandlemerePriest = library.Get<BlueprintUnit>("94e420a47d8297149af91310c2b1ac5b");
+            var clericClass = library.Get<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+            var summongreatair = library.Get<BlueprintAbility>("766ec978fa993034f86a372c8eb1fc10");
+            var dispelgreater = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
+            var righteousmight = library.Get<BlueprintAbility>("90810e5cf53bf854293cbd5ea1066252");
+            var constrictcoils = library.Get<BlueprintAbility>("3fce8e988a51a2a4ea366324d6153001");
+            var flamestrike = library.Get<BlueprintAbility>("f9910c76efc34af41b6e43d5d8752f0f");
+            var divinepower = library.Get<BlueprintAbility>("ef16771cb05d1344989519e87f25b3c5");
+            var prayer = library.Get<BlueprintAbility>("faabd2cc67efa4646ac58c7bb3e40fcc");
+            var superiorsummoning = library.Get<BlueprintFeature>("0477936c0f74841498b5c8753a8062a3");
+            var SummonMonsterV = library.Get<BlueprintAbility>("0964bf88b582bed41b74e79596c4f6d9");
+            var SummonMonsterVd3 = library.Get<BlueprintAbility>("715f208d545be2f4aa2d3693e6347a5a");
+            var selectivechannel = library.Get<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
+            var divinepowerai = library.Get<BlueprintAiCastSpell>("09de02db1b07d364795f412abb557de3");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var serenity = library.Get<BlueprintAbility>("d316d3d94d20c674db2c24d7de96f6a7");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var shieldoffaith = library.Get<BlueprintAbility>("183d5bb91dea3a1489a6db6c9cb64445");
+            var bless = library.Get<BlueprintAbility>("90e59f4a4ada87243b7b3535a06d0638");
+
+            CandlemerePriest.AddFacts = CandlemerePriest.AddFacts.RemoveFromArray(SummonMonsterV);
+            CandlemerePriest.AddFacts = CandlemerePriest.AddFacts.RemoveFromArray(SummonMonsterVd3);
+            CandlemerePriest.AddFacts = CandlemerePriest.AddFacts.RemoveFromArray(prayer);
+
+            CandlemerePriest.AddFacts = CandlemerePriest.AddFacts.AddToArray(quicken,combatcasting);
+
+            CandlemerePriest.Wisdom = 19;
+
+            var clericLevels = CandlemerePriest.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels = clericLevels.CreateCopy();
+            newAddClassLevels.Levels = 12;
+            var spell_list = newAddClassLevels.MemorizeSpells.AddToArray(summongreatair, serenity, dispelgreater, flamestrike, righteousmight, constrictcoils, constrictcoils, divinepower, prayer,shieldoffaith,bless);
+            newAddClassLevels.MemorizeSpells = spell_list;
+            CandlemerePriest.ReplaceComponent(clericLevels, newAddClassLevels);
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.divinepower);
+
+            var auto_metamgic2 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.prayer);
 
 
+            CandlemerePriest.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("e8aa3f5ca26027b4b846de538b01ee50"); //HeavyCrossbow +1
+
+            
+
+            var brain = CandlemerePriest.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(divinepowerai);
+            brain.Actions = brain.Actions.AddToArray(AiActions.summonelementalhugeair, AiActions.castserenity,
+                                                     AiActions.divine_power_first, AiActions.righteousmightgoblinshaman, 
+                                                     AiActions.prayergoblinshaman, AiActions.constrictingcoils, AiActions.flamestrikegoblinshaman, AiActions.greaterdispel,AiActions.castshieldoffaith,AiActions.blesscast);
+
+
+
+
+        }
+
+        //Beasts
+
+        static void updatehuntedhydra()
+        {
+
+            var huntedcryohydra = library.Get<BlueprintUnit>("96ee2234876249df872a4fae05cac478");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var PoisonousHydraBreathWeapon = library.Get<BlueprintAbility>("1f788b54e93751d43923596b8e09035d");
+            var PoisonousHydraBreathWeaponCloud = library.Get<BlueprintAbility>("cd8bff58dabcc2f48b049c89af3a3a8f");
+            var HasteBuff  = library.Get<BlueprintBuff>("03464790f40c3c24aa684b57155f3280");
+            var BlurBuff = library.Get<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var DRColdIronAndMagic10 = library.Get<BlueprintFeature>("b9a197673ec62dd49b15461d61bd2937");
+            var dragonsbreathsilver = library.Get<BlueprintAbility>("45e0813484581514fbfcf49939ee050d");
+            var freezefeaturelarge = library.Get<BlueprintFeature>("74218a69c8bed1c4c863361916637bcf");
+
+            
+
+
+
+            huntedcryohydra.AddFacts = huntedcryohydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeapon);
+            huntedcryohydra.AddFacts = huntedcryohydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeaponCloud);
+
+            huntedcryohydra.AddFacts = huntedcryohydra.AddFacts.AddToArray(HasteBuff,dodge,BlurBuff,DRColdIronAndMagic10,dragonsbreathsilver,freezefeaturelarge);
+
+            var dragonLevels = huntedcryohydra.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 18;
+            huntedcryohydra.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+            huntedcryohydra.GetComponent<Experience>().CR = 14;
+
+            var brain = huntedcryohydra.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.dragonsbreathsilverhydra);
+        }
+
+        static void updatecapitalhydra()
+        {
+
+            var capitalpyrohydra = library.Get<BlueprintUnit>("76706df8414046b59951e407666779f6");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var PoisonousHydraBreathWeapon = library.Get<BlueprintAbility>("1f788b54e93751d43923596b8e09035d");
+            var PoisonousHydraBreathWeaponCloud = library.Get<BlueprintAbility>("cd8bff58dabcc2f48b049c89af3a3a8f");
+            var HasteBuff = library.Get<BlueprintBuff>("03464790f40c3c24aa684b57155f3280");
+            var BlurBuff = library.Get<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var DRColdIronAndMagic10 = library.Get<BlueprintFeature>("b9a197673ec62dd49b15461d61bd2937");
+            var dragonsbreathgold = library.Get<BlueprintAbility>("e6f5453df86bd714fa33b14c994739f3");
+            var burnfeaturelarge = library.Get<BlueprintFeature>("3b423b497934aeb48a3676cca64b5b55");
+
+
+
+
+
+            capitalpyrohydra.AddFacts = capitalpyrohydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeapon);
+            capitalpyrohydra.AddFacts = capitalpyrohydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeaponCloud);
+
+            capitalpyrohydra.AddFacts = capitalpyrohydra.AddFacts.AddToArray(HasteBuff, dodge, BlurBuff, DRColdIronAndMagic10, dragonsbreathgold, burnfeaturelarge);
+
+            var dragonLevels = capitalpyrohydra.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 15;
+            capitalpyrohydra.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+            capitalpyrohydra.GetComponent<Experience>().CR = 12;
+
+            var brain = capitalpyrohydra.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.dragonsbreathgoldhydra);
+        }
+
+        static void updateCR12PoisonousHydra()
+        {
+
+            var CR12PoisonousHydra = library.Get<BlueprintUnit>("101c479b6cd567b4497ce4283c6d5b3b");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var PoisonousHydraBreathWeapon = library.Get<BlueprintAbility>("1f788b54e93751d43923596b8e09035d");
+            var PoisonousHydraBreathWeaponCloud = library.Get<BlueprintAbility>("cd8bff58dabcc2f48b049c89af3a3a8f");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var dragonsbreathgreen = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var poisonbite = library.Get<BlueprintFeature>("094714bb08f4e1943a8e9d2384ebe573");
+
+
+
+
+
+            CR12PoisonousHydra.AddFacts = CR12PoisonousHydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeapon);
+            CR12PoisonousHydra.AddFacts = CR12PoisonousHydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeaponCloud);
+
+            CR12PoisonousHydra.AddFacts = CR12PoisonousHydra.AddFacts.AddToArray(dodge, poisonbite, dragonsbreathgreen);
+
+            var dragonLevels = CR12PoisonousHydra.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 14;
+            CR12PoisonousHydra.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+
+
+            var brain = CR12PoisonousHydra.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.dragonsbreathgreenhydra);
+        }
+
+        static void updateCR14PoisonousHydra()
+        {
+
+            var CR14PoisonousHydra = library.Get<BlueprintUnit>("429b14ab29dd24548abf16506100fc83");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var PoisonousHydraBreathWeapon = library.Get<BlueprintAbility>("1f788b54e93751d43923596b8e09035d");
+            var PoisonousHydraBreathWeaponCloud = library.Get<BlueprintAbility>("cd8bff58dabcc2f48b049c89af3a3a8f");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var dragonsbreathgreen = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var poisonbite = library.Get<BlueprintFeature>("094714bb08f4e1943a8e9d2384ebe573");
+
+
+
+
+
+            CR14PoisonousHydra.AddFacts = CR14PoisonousHydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeapon);
+            CR14PoisonousHydra.AddFacts = CR14PoisonousHydra.AddFacts.RemoveFromArray(PoisonousHydraBreathWeaponCloud);
+
+            CR14PoisonousHydra.AddFacts = CR14PoisonousHydra.AddFacts.AddToArray(dodge, poisonbite, dragonsbreathgreen);
+
+            var dragonLevels = CR14PoisonousHydra.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 16;
+            CR14PoisonousHydra.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+
+
+            var brain = CR14PoisonousHydra.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.dragonsbreathgreenhydra);
+        }
+
+        static void updateHydrabloom()
+        {
+
+            var Hydrabloom = library.Get<BlueprintUnit>("ac214470685b0884dada8d845de08137");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("48647a4517e6512419e937f7a617ea5c");
+            var bite1d8 = library.Get<BlueprintItemWeapon>("ec35ef997ed5a984280e1a6d87ae80a8");
+
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydrabloom.Body.AdditionalLimbs = Hydrabloom.Body.AdditionalLimbs.AddToArray(bite2d6);
+
+
+
+            Hydrabloom.AddFacts = Hydrabloom.AddFacts.AddToArray(dodge);
+
+            var dragonLevels = Hydrabloom.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 12;
+            Hydrabloom.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+        }
+
+        static void updateHydraStandard()
+        {
+
+            var HydraStandard = library.Get<BlueprintUnit>("68e28734693629841a336655091c4de4");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+
+
+
+
+            HydraStandard.AddFacts = HydraStandard.AddFacts.AddToArray(dodge);
+
+            var dragonLevels = HydraStandard.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 8;
+            HydraStandard.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+        }
+
+        static void updateHydraAdvanced()
+        {
+
+            var HydraAdvanced = library.Get<BlueprintUnit>("00a10a2129fc7de45889a7f10e06ea92");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+
+
+
+
+            HydraAdvanced.AddFacts = HydraAdvanced.AddFacts.AddToArray(dodge);
+
+            var dragonLevels = HydraAdvanced.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 10;
+            HydraAdvanced.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+        }
+
+        static void updateHydraAdvancedCR7()
+        {
+
+            var HydraAdvanced = library.Get<BlueprintUnit>("e135463f804adb541b402bae3f657af4");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("48647a4517e6512419e937f7a617ea5c");
+            var bite1d8 = library.Get<BlueprintItemWeapon>("ec35ef997ed5a984280e1a6d87ae80a8");
+
+
+
+
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.AddToArray(bite2d6);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.AddToArray(bite2d6);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.AddToArray(bite2d6);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.AddToArray(bite2d6);
+            HydraAdvanced.Body.AdditionalLimbs = HydraAdvanced.Body.AdditionalLimbs.AddToArray(bite2d6);
+
+            HydraAdvanced.AddFacts = HydraAdvanced.AddFacts.AddToArray(dodge);
+
+            var dragonLevels = HydraAdvanced.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 12;
+            HydraAdvanced.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+
+            HydraAdvanced.GetComponent<Experience>().CR = 8;
+
+
+
+        }
+
+        static void updateHydraquickling()
+        {
+
+            var Hydraquickling = library.Get<BlueprintUnit>("5930c69867e498d45bdac0a51fa90094");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("48647a4517e6512419e937f7a617ea5c");
+            var bite1d8 = library.Get<BlueprintItemWeapon>("ec35ef997ed5a984280e1a6d87ae80a8");
+
+
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydraquickling.Body.AdditionalLimbs = Hydraquickling.Body.AdditionalLimbs.AddToArray(bite2d6);
+
+            Hydraquickling.Strength = 18;
+
+            Hydraquickling.AddFacts = Hydraquickling.AddFacts.AddToArray(dodge);
+
+            var dragonLevels = Hydraquickling.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 9;
+            Hydraquickling.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+            Hydraquickling.GetComponent<Experience>().CR = 7;
+        }
+
+        static void updateHydravenom()
+        {
+
+            var Hydravenom = library.Get<BlueprintUnit>("be58ef2cd41e73843a14895acf9eddcb");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("48647a4517e6512419e937f7a617ea5c");
+            var bite1d8 = library.Get<BlueprintItemWeapon>("ec35ef997ed5a984280e1a6d87ae80a8");
+
+
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.RemoveFromArray(bite1d8);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.AddToArray(bite2d6);
+            Hydravenom.Body.AdditionalLimbs = Hydravenom.Body.AdditionalLimbs.AddToArray(bite2d6);
+
+            Hydravenom.Strength = 18;
+
+            Hydravenom.AddFacts = Hydravenom.AddFacts.AddToArray(dodge);
+
+            var dragonLevels = Hydravenom.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == magicalbeastClass);
+            var newAddClassLevels = dragonLevels.CreateCopy();
+            newAddClassLevels.Levels = 9;
+            Hydravenom.ReplaceComponent(dragonLevels, newAddClassLevels);
+
+            Hydravenom.GetComponent<Experience>().CR = 7;
+        }
+
+        static void updateOwlbearnecro()
+        {
+
+            var Owlbearnecro = library.Get<BlueprintUnit>("7ae461f01f1b1684884e784341c0b36c");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var auraofdoom = library.Get<BlueprintAbility>("3244b350df4c474084de760c2aaf7974");
+
+            Owlbearnecro.AddFacts = Owlbearnecro.AddFacts.AddToArray(vampirictouch,combatcasting,auraofdoom);
+
+            var brain = Owlbearnecro.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.castvampirictouchowlbear,AiActions.castauraofdoom);
+
+
+        }
+
+        static void updateOwlbearillusion()
+        {
+
+            var Owlbearillusion = library.Get<BlueprintUnit>("5889e9c222127a44a88a12903b6e0256");
+            var magicalbeastClass = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+
+
+            Owlbearillusion.AddFacts = Owlbearillusion.AddFacts.AddToArray(mirrorimage, combatcasting);
+
+            var brain = Owlbearillusion.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimageowlbear);
+
+
+        }
+
+        static void updateStrongOwlbearevocation()
+        {
+
+            var strongowlbearevocation = library.Get<BlueprintUnit>("ba6dc1b987e06a1499e5ec68f38619ef");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var firesnake = library.Get<BlueprintAbility>("ebade19998e1f8542a1b55bd4da766b3");
+            var burningaiaction = library.Get<BlueprintAiCastSpell>("5dfe6689bf271874ab07a86e7946a61c");
+            
+
+            strongowlbearevocation.AddFacts = strongowlbearevocation.AddFacts.AddToArray(firesnake, combatcasting);
+
+            var brain = strongowlbearevocation.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(burningaiaction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.castfiresnakeowlbear);
+
+
+        }
+
+        static void updateStrongOwlbearnecro()
+        {
+
+            var strongowlbearnecro = library.Get<BlueprintUnit>("f9307a67be2d29c4a86edb03a9615463");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var auraofdoom = library.Get<BlueprintAbility>("3244b350df4c474084de760c2aaf7974");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var ThanadaemonEnergyDrainFeature = library.Get<BlueprintFeature>("f25bec0517daa9647998764862ddb3a4");
+            
+
+
+            strongowlbearnecro.AddFacts = strongowlbearnecro.AddFacts.AddToArray(vampirictouch, combatcasting, ThanadaemonEnergyDrainFeature,auraofdoom);
+
+            var brain = strongowlbearnecro.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.castvampirictouchowlbear,AiActions.castauraofdoom);
+
+
+
+
+        }
+
+        static void updateStrongOwlbeartreant()
+        {
+
+            var strongowlbeartreant = library.Get<BlueprintUnit>("466189c5dd11fa3459024da71d140143");
+            var stunningblowaiaction = library.Get<BlueprintAiCastSpell>("b2428bdc1e519104f8eb08e2fd06eb02");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var natarmor11 = library.Get<BlueprintUnitFact>("fe38367139432294e8c229edc066e4ac");
+            var RegenerationColdIronOrFire5 = library.Get<BlueprintBuff>("da6b266204fe2ac4d89786bf66dbe3a9");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("48647a4517e6512419e937f7a617ea5c");
+            var ClawHuge2d6 = library.Get<BlueprintItemWeapon>("75254f19ca6e1d048a88b7545bb65221");
+            var BiteLarge1d8 = library.Get<BlueprintItemWeapon>("ec35ef997ed5a984280e1a6d87ae80a8");
+            var ClawLarge1d6 = library.Get<BlueprintItemWeapon>("c76f72a862d168d44838206524366e1c");
+
+
+
+            strongowlbeartreant.Strength = 36;
+            strongowlbeartreant.Dexterity = 12;
+            strongowlbeartreant.Constitution = 36;
+            strongowlbeartreant.Intelligence = 6;
+            strongowlbeartreant.Wisdom = 16;
+            strongowlbeartreant.Charisma = 14;
+
+
+            strongowlbeartreant.Body.AdditionalLimbs = strongowlbeartreant.Body.AdditionalLimbs.RemoveFromArray(BiteLarge1d8);
+            strongowlbeartreant.Body.AdditionalLimbs = strongowlbeartreant.Body.AdditionalLimbs.RemoveFromArray(ClawLarge1d6);
+            strongowlbeartreant.Body.AdditionalLimbs = strongowlbeartreant.Body.AdditionalLimbs.RemoveFromArray(ClawLarge1d6);
+
+            strongowlbeartreant.Body.AdditionalLimbs = strongowlbeartreant.Body.AdditionalLimbs.AddToArray(bite2d6);
+            strongowlbeartreant.Body.AdditionalLimbs = strongowlbeartreant.Body.AdditionalLimbs.AddToArray(ClawHuge2d6);
+            strongowlbeartreant.Body.AdditionalLimbs = strongowlbeartreant.Body.AdditionalLimbs.AddToArray(ClawHuge2d6);
+
+
+            strongowlbeartreant.AddFacts = strongowlbeartreant.AddFacts.RemoveFromArray(natarmor11);
+            strongowlbeartreant.AddFacts = strongowlbeartreant.AddFacts.AddToArray(natarmor14,RegenerationColdIronOrFire5);
+
+
+            var brain = strongowlbeartreant.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(stunningblowaiaction);
+
+
+        }
+
+        static void updateSecretOwlbear()
+        {
+
+            var secretowlbear = library.Get<BlueprintUnit>("f7a107522d386a247ae5d7e2cdf88ef0");
+            var stunningblowaiaction = library.Get<BlueprintAiCastSpell>("b2428bdc1e519104f8eb08e2fd06eb02");
+
+
+
+
+            var brain = secretowlbear.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(stunningblowaiaction);
+
+
+        }
+
+        static void updateenragedowlbeartreant()
+        {
+
+            var enragedowlbeartreant = library.Get<BlueprintUnit>("502fa574f3c15f94ab5e03460870235f");
+            var stunningblowaiaction = library.Get<BlueprintAiCastSpell>("b2428bdc1e519104f8eb08e2fd06eb02");
+
+
+
+
+            var brain = enragedowlbeartreant.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(stunningblowaiaction);
+
+
+        }
+
+        static void updateBloominfusedspider()
+        {
+
+            var Bloominfusedspider = library.Get<BlueprintUnit>("a813d907bc55e734584d99a038c9211e");
+            var vermin = library.Get<BlueprintCharacterClass>("d1a15612d1a96334d94edf5f1d3b8d29");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var natarmor8 = library.Get<BlueprintUnitFact>("b9342e2a6dc5165489ba3412c50ca3d1");
+            var natarmor11 = library.Get<BlueprintUnitFact>("fe38367139432294e8c229edc066e4ac");
+
+            Bloominfusedspider.AddFacts = Bloominfusedspider.AddFacts.RemoveFromArray(natarmor8);
+            Bloominfusedspider.AddFacts = Bloominfusedspider.AddFacts.AddToArray(natarmor11);
+
+            var verminLevels = Bloominfusedspider.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == vermin);
+            var newverminLevels = verminLevels.CreateCopy();
+            newverminLevels.Levels = 12;
+            Bloominfusedspider.ReplaceComponent(verminLevels, newverminLevels);
+
+            Bloominfusedspider.Body.AdditionalLimbs = Bloominfusedspider.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            Bloominfusedspider.Body.AdditionalLimbs = Bloominfusedspider.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+
+        }
+
+        static void updatequicklingspider()
+        {
+
+            var quicklingspider = library.Get<BlueprintUnit>("07467e9a29a215346ab66fec7963eb62");
+            var magicalbeast = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var natarmor6 = library.Get<BlueprintUnitFact>("987ba44303e88054c9504cb3083ba0c9");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+
+            quicklingspider.AddFacts = quicklingspider.AddFacts.RemoveFromArray(natarmor6);
+            quicklingspider.AddFacts = quicklingspider.AddFacts.AddToArray(natarmor9);
+
+
+
+
+
+            var verminLevels = quicklingspider.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == magicalbeast);
+            var newverminLevels = verminLevels.CreateCopy();
+            newverminLevels.Levels = 10;
+            quicklingspider.ReplaceComponent(verminLevels, newverminLevels);
+
+            quicklingspider.Body.AdditionalLimbs = quicklingspider.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            quicklingspider.Body.AdditionalLimbs = quicklingspider.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+
+        }
+
+        static void updatedoomspider()
+        {
+
+            var doomspider = library.Get<BlueprintUnit>("51c66b0783a748c4b9538f0f0678c4d7");
+            var magicalbeast = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var web = library.Get<BlueprintAbility>("134cb6d492269aa4f8662700ef57449f");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var natarmor6 = library.Get<BlueprintUnitFact>("987ba44303e88054c9504cb3083ba0c9");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+
+
+
+
+            
+
+            doomspider.AddFacts = doomspider.AddFacts.RemoveFromArray(natarmor6);
+            doomspider.AddFacts = doomspider.AddFacts.AddToArray(natarmor9,web);
+
+
+
+
+
+            var verminLevels = doomspider.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == magicalbeast);
+            var newverminLevels = verminLevels.CreateCopy();
+            newverminLevels.Levels = 10;
+            doomspider.ReplaceComponent(verminLevels, newverminLevels);
+
+            doomspider.Body.AdditionalLimbs = doomspider.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            doomspider.Body.AdditionalLimbs = doomspider.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+            var brain = doomspider.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.useweb);
+
+        }
+
+        static void updatespidermatriarch()
+        {
+
+            var spidermatriarch = library.Get<BlueprintUnit>("63897b4df57da2f4396ca8a6f34723e7");
+            var magicalbeast = library.Get<BlueprintCharacterClass>("b9e97f47cb86f2d45a0784a096ff8037");
+            var web = library.Get<BlueprintAbility>("134cb6d492269aa4f8662700ef57449f");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var natarmor10 = library.Get<BlueprintUnitFact>("4179c5c08d606a6439a62bf178b738e1");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+
+
+
+
+
+
+            spidermatriarch.AddFacts = spidermatriarch.AddFacts.RemoveFromArray(natarmor10);
+            spidermatriarch.AddFacts = spidermatriarch.AddFacts.AddToArray(natarmor14, web);
+
+
+
+
+
+            var verminLevels = spidermatriarch.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == magicalbeast);
+            var newverminLevels = verminLevels.CreateCopy();
+            newverminLevels.Levels = 15;
+            spidermatriarch.ReplaceComponent(verminLevels, newverminLevels);
+
+            spidermatriarch.Body.AdditionalLimbs = spidermatriarch.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            spidermatriarch.Body.AdditionalLimbs = spidermatriarch.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+            var brain = spidermatriarch.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.useweb);
+
+        }
+
+        static void updatestandardwyvern()
+        {
+
+            var standardwyvern = library.Get<BlueprintUnit>("ada72e12e8cd3014b80eb2162fbc7802");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+
+
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+            var natarmor12 = library.Get<BlueprintUnitFact>("0b2d92c6aac8093489dfdadf1e448280");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+
+
+
+
+
+            standardwyvern.AddFacts = standardwyvern.AddFacts.RemoveFromArray(natarmor9);
+            standardwyvern.AddFacts = standardwyvern.AddFacts.AddToArray(natarmor12,toughness);
+
+
+
+            var dragonLevels = standardwyvern.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 9;
+            standardwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+
+
+
+        }
+
+        static void updateadvancedwyvern()
+        {
+
+            var advancedwyvern = library.Get<BlueprintUnit>("218d6bd8e05c9da4ea04599714ba088d");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var natarmor11 = library.Get<BlueprintUnitFact>("fe38367139432294e8c229edc066e4ac");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+
+
+            advancedwyvern.AddFacts = advancedwyvern.AddFacts.RemoveFromArray(natarmor11);
+            advancedwyvern.AddFacts = advancedwyvern.AddFacts.AddToArray(natarmor14, toughness);
+
+            advancedwyvern.Body.AdditionalLimbs = advancedwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            advancedwyvern.Body.AdditionalLimbs = advancedwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+
+
+            var dragonLevels = advancedwyvern.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 11;
+            advancedwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+            advancedwyvern.GetComponent<Experience>().CR = 8;
+
+
+        }
+
+        static void updateenchantmentwyvern()
+        {
+
+            var enchantmentwyvern = library.Get<BlueprintUnit>("b5191d52e3e8b4249be444acb4925ed2");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+
+
+            enchantmentwyvern.AddFacts = enchantmentwyvern.AddFacts.RemoveFromArray(natarmor9);
+            enchantmentwyvern.AddFacts = enchantmentwyvern.AddFacts.AddToArray(natarmor14, toughness,crushingdespair);
+
+            enchantmentwyvern.Body.AdditionalLimbs = enchantmentwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            enchantmentwyvern.Body.AdditionalLimbs = enchantmentwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+
+
+            var dragonLevels = enchantmentwyvern.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 11;
+            enchantmentwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+            enchantmentwyvern.GetComponent<Experience>().CR = 9;
+
+            var brain = enchantmentwyvern.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.castcrushingdespairwyvern);
+        }
+
+
+        static void updateevocationwyvern()
+        {
+
+            var evocationwyvern = library.Get<BlueprintUnit>("f0b8589972d12d448983aab972bcdcef");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var controlledfireball = library.Get<BlueprintAbility>("f72f8f03bf0136c4180cd1d70eb773a5");
+            var burningaiaction = library.Get<BlueprintAiCastSpell>("5dfe6689bf271874ab07a86e7946a61c");
+
+
+            evocationwyvern.AddFacts = evocationwyvern.AddFacts.AddToArray(controlledfireball, combatcasting);
+
+
+
+
+            evocationwyvern.AddFacts = evocationwyvern.AddFacts.RemoveFromArray(natarmor9);
+            evocationwyvern.AddFacts = evocationwyvern.AddFacts.AddToArray(natarmor14, toughness, controlledfireball);
+
+            evocationwyvern.Body.AdditionalLimbs = evocationwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            evocationwyvern.Body.AdditionalLimbs = evocationwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+
+
+            var dragonLevels = evocationwyvern.ComponentsArray
+             .OfType<AddClassLevels>()
+             .First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 11;
+            evocationwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+            evocationwyvern.GetComponent<Experience>().CR = 9;
+
+            var brain = evocationwyvern.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(burningaiaction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.castcontrolledfireballwyvern);
+        }
+
+        static void updatestrongenchantmentwyvern()
+        {
+
+            var strongenchantmentwyvern = library.Get<BlueprintUnit>("65b9f397b53ff0d48b9ea6f33e2f1d28");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            
+
+
+            strongenchantmentwyvern.AddFacts = strongenchantmentwyvern.AddFacts.RemoveFromArray(natarmor9);
+            strongenchantmentwyvern.AddFacts = strongenchantmentwyvern.AddFacts.AddToArray(natarmor14, toughness);
+
+            strongenchantmentwyvern.Body.AdditionalLimbs = strongenchantmentwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            strongenchantmentwyvern.Body.AdditionalLimbs = strongenchantmentwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+            var dragonLevels = strongenchantmentwyvern.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 21;
+            strongenchantmentwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+
+
+        }
+
+        static void updatetransmutationwyvern()
+        {
+
+            var strongtransmutationwyvern = library.Get<BlueprintUnit>("c311734cc87b0f045aca5c282e9d0cd4");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var confusion = library.Get<BlueprintAbility>("cf6c901fb7acc904e85c63b342e9c949");
+
+
+        var dragonLevels = strongtransmutationwyvern.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 21;
+            strongtransmutationwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+            strongtransmutationwyvern.AddFacts = strongtransmutationwyvern.AddFacts.RemoveFromArray(natarmor9);
+            strongtransmutationwyvern.AddFacts = strongtransmutationwyvern.AddFacts.AddToArray(natarmor14, toughness);
+
+            strongtransmutationwyvern.Body.AdditionalLimbs = strongtransmutationwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            strongtransmutationwyvern.Body.AdditionalLimbs = strongtransmutationwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+
+
+
+        }
+
+        static void updatetreantwyvern()
+        {
+
+            var treantwyvern = library.Get<BlueprintUnit>("04153cb656ce4844c8f71d5db1f87d4e");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var natarmor9 = library.Get<BlueprintUnitFact>("da6417809bdedfa468dd2fd0cc74be92");
+            var natarmor14 = library.Get<BlueprintUnitFact>("209a2920891b580418b4e5e80466e134");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var RegenerationColdIronOrFire5 = library.Get<BlueprintBuff>("da6b266204fe2ac4d89786bf66dbe3a9");
+            var stunningblowaiaction = library.Get<BlueprintAiCastSpell>("b2428bdc1e519104f8eb08e2fd06eb02");
+            var dragonsbreathgreen = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+
+            treantwyvern.Strength = 26;
+            treantwyvern.Dexterity = 12;
+            treantwyvern.Constitution = 30;
+            treantwyvern.Intelligence = 6;
+            treantwyvern.Wisdom = 16;
+            treantwyvern.Charisma = 14;
+
+            treantwyvern.AddFacts = treantwyvern.AddFacts.RemoveFromArray(natarmor9);
+            treantwyvern.AddFacts = treantwyvern.AddFacts.AddToArray(natarmor14, toughness, RegenerationColdIronOrFire5,dragonsbreathgreen);
+
+            treantwyvern.Body.AdditionalLimbs = treantwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            treantwyvern.Body.AdditionalLimbs = treantwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+            var dragonLevels = treantwyvern.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 21;
+            treantwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+            var brain = treantwyvern.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(stunningblowaiaction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.dragonsbreathgreenwyvern);
+
+           
+        }
+
+        static void updatewyvernforked()
+        {
+
+            var forkedwyvern = library.Get<BlueprintUnit>("18e4f92f356983240b99b938c9a6b7fc");
+            var dragonclass = library.Get<BlueprintCharacterClass>("01a754e7c1b7c5946ba895a5ff0faffc");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var bite2d6 = library.Get<BlueprintItemWeapon>("d2f99947db522e24293a7ec4eded453f");
+            var bite3d6 = library.Get<BlueprintItemWeapon>("a63315767e2bfe841959644dbe6383dc");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var dragonsbreathgold = library.Get<BlueprintAbility>("e6f5453df86bd714fa33b14c994739f3");
+
+
+            forkedwyvern.LocalizedName = Helpers.Create<SharedStringAsset>(c => c.String = Helpers.CreateString($"{forkedwyvern.name}.name", "Giant Fork-Tailed Wyvern"));
+
+
+            forkedwyvern.AddFacts = forkedwyvern.AddFacts.AddToArray(toughness, combatcasting,dragonsbreathgold);
+
+            forkedwyvern.Body.AdditionalLimbs = forkedwyvern.Body.AdditionalLimbs.RemoveFromArray(bite2d6);
+            forkedwyvern.Body.AdditionalLimbs = forkedwyvern.Body.AdditionalLimbs.AddToArray(bite3d6);
+
+            var dragonLevels = forkedwyvern.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == dragonclass);
+            var newverminLevels = dragonLevels.CreateCopy();
+            newverminLevels.Levels = 18;
+            forkedwyvern.ReplaceComponent(dragonLevels, newverminLevels);
+
+
+            var brain = forkedwyvern.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.castcontrolledfireballwyvern,AiActions.dragonsbreathgoldwyvern);
+        }
+
+        
+
+        //Goblins
 
         static void fixGoblinDogcutter()
         {
@@ -5530,7 +7324,6 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
         }
 
-
         static void fixGoblinGuardAlchemit()
         {
 
@@ -6013,8 +7806,6 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
         }
 
-
-
         static void fixGoblinKing()
         {
 
@@ -6086,6 +7877,9 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
             goblinking.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("1f546ab76bb0e77478ad08248795f7d7"); //whirlwind bow
             goblinking.Body.SecondaryHand = null;
+
+            goblinking.GetComponent<Experience>().CR = 12;
+
 
             var brain = goblinking.Brain;
             brain.Actions = brain.Actions.AddToArray(AiActions.entangle, AiActions.barkskingoblinking, AiActions.hurricanebowgoblinking);
@@ -7249,6 +9043,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
             var flamearrowbuff = library.Get<BlueprintBuff>("0db933ed440346388c9f4ed034e7e4a0");
             var boneshaker = library.Get<BlueprintAbility>("b7731c2b4fa1c9844a092329177be4c3");
             var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+
 
             DunswardSorcerer.AddFacts = DunswardSorcerer.AddFacts.AddToArray(flamearrowbuff,quicken);
 
@@ -8677,7 +10472,72 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 2);
 
         }
 
+        //Bald Hilltop
 
+        static void changebloodmoondryad()
+        {
+
+            var silky = library.Get<BlueprintUnit>("82a6be0ba1d061243848871ce2feda27");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var feyClass = library.Get<BlueprintCharacterClass>("f2e6e760ead99fb48ade27c7e9d4ac94");
+            var sorcererClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var lightningbolt = library.Get<BlueprintAbility>("d2cff9243a7ee804cb6d5be47af30c73");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var scorchingray = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+            var earpiercescream = library.Get<BlueprintAbility>("8e7cfa5f213a90549aadd18f8f6f4664");
+            var blur = library.Get<BlueprintAbility>("14ec7a4e52e90fa47a4c8d63c69fd5c1");
+            var blurbuff = library.Get<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
+            var colorspray = library.Get<BlueprintAbility>("91da41b9793a4624797921f221db653c");
+            var MageShieldAiAction = library.Get<BlueprintAiCastSpell>("8df9d8605fa49554691de7d02b8397ed");
+            var MagicMissileAiAction = library.Get<BlueprintAiCastSpell>("e689225185e99d3469052d9cce20316d");
+            var HoldPersonAiAction = library.Get<BlueprintAiCastSpell>("aee2f46dfa119d44b8bd415d2f5ad339");
+            var HideousLaughterAiAction = library.Get<BlueprintAiCastSpell>("8b944da00906b6f4f9b1d73c80e46b8c");
+            var SpiderWebImmunity = library.Get<BlueprintFeature>("3051e7002c803fc47a11bcfa381b9fbd");
+
+
+        silky.AddFacts = silky.AddFacts.AddToArray(blurbuff,toughness, SpiderWebImmunity);
+
+
+            var sorcererLevels = silky.ComponentsArray
+   .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == sorcererClass);
+            var newAddClassLevels = sorcererLevels.CreateCopy();
+            newAddClassLevels.Levels = 7;
+            var spell_list = newAddClassLevels.SelectSpells.AddToArray(scorchingray, blur, haste, earpiercescream, colorspray);
+            newAddClassLevels.SelectSpells = spell_list;
+            silky.ReplaceComponent(sorcererLevels, newAddClassLevels);
+
+
+
+
+            var humanoidLevels = silky.ComponentsArray
+            .OfType<AddClassLevels>()
+              .First(c => c.CharacterClass == feyClass);
+            var newhumanoidLevels = humanoidLevels.CreateCopy();
+            newhumanoidLevels.Levels = 5;
+            silky.ReplaceComponent(humanoidLevels, newhumanoidLevels);
+
+
+
+
+
+
+
+
+            var brain = silky.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(MageShieldAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(MagicMissileAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(HoldPersonAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(HideousLaughterAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.scorchingraydelaydryad,AiActions.casthaste,AiActions.castcolorspray,
+                                                   AiActions.castmagicmissletransmuter,AiActions.holdpersonzombiecleric,AiActions.earpiercedryad);
+
+        }
+
+        
 
 
         //Elementals

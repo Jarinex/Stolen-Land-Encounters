@@ -81,7 +81,7 @@ namespace TweakMod
 
 
 #if DEBUG
-                    string guid_file_name = @"C:\Users\Josiah\Desktop\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
+                    string guid_file_name = @"C:\Users\Josiah\Desktop\My Kingmaker Mods\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
                     CallOfTheWild.Helpers.GuidStorage.dump(guid_file_name);
 #endif
                     CallOfTheWild.Helpers.GuidStorage.dump(@"./Mods/TweakMod/loaded_blueprints.txt");
