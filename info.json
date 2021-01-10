@@ -1,8 +1,8 @@
 {
-  "Id": "TweakMod",
-  "DisplayName": "Tweak Mod	",
-  "Author": "Code by Holic75, Code and Help by Spacehamster, Editing by Jarinex",
-  "Version": "0.0.8",
+  "Id": "StolenLandsEncounters",
+  "DisplayName": "Stolen Land Encounters",
+  "Author": "Coding by Jarinex, Original Code by Holic75, Assitance from Spacehamster",
+  "Version": "0.2.0",
   "ManagerVersion": "0.13.0",
   "Requirements": ["CallOfTheWild"],
   "AssemblyName": "TweakMod.dll",
