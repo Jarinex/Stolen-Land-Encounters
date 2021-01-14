@@ -327,7 +327,7 @@ namespace TweakMod
                 actions);
 
             var summonghosts_resource2 = Helpers.CreateAbilityResource("summonghostsResource2", "", "", "", null);
-            summonghosts_resource2.SetFixedResource(2);
+            summonghosts_resource2.SetFixedResource(1);
 
         }
 
@@ -352,7 +352,7 @@ namespace TweakMod
                 actions);
 
             var summonghosts_resource3 = Helpers.CreateAbilityResource("summonghostsResource3", "", "", "", null);
-            summonghosts_resource3.SetFixedResource(2);
+            summonghosts_resource3.SetFixedResource(1);
 
         }
 
@@ -379,7 +379,7 @@ namespace TweakMod
                 actions);
 
             var summonundead_resource3 = Helpers.CreateAbilityResource("summonundeadResource", "", "", "", null);
-            summonundead_resource3.SetFixedResource(2);
+            summonundead_resource3.SetFixedResource(1);
 
         }
 

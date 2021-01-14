@@ -1,5 +1,5 @@
 {
-  "Id": "StolenLandsEncounters",
+  "Id": "AAAStolenLandsEncounters",
   "DisplayName": "Stolen Land Encounters",
   "Author": "Coding by Jarinex, Original Code by Holic75, Assitance from Spacehamster",
   "Version": "0.2.0",
@@ -7,5 +7,7 @@
   "Requirements": ["CallOfTheWild"],
   "AssemblyName": "TweakMod.dll",
   "HomePage": "",
+  "LoadAfter": ["CallOfTheWild", "JMMT"],
+  "HarmonyBefore": ["KingmakerAI", "ProperFlanking2"],
   "EntryMethod": "TweakMod.Main.Load"
 }

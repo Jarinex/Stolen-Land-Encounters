@@ -58,7 +58,10 @@ namespace TweakMod
         [Harmony.HarmonyPatch(typeof(LibraryScriptableObject), "LoadDictionary")]
         [Harmony.HarmonyPatch(typeof(LibraryScriptableObject), "LoadDictionary", new Type[0])]
         static class LibraryScriptableObject_LoadDictionary_Patch
+
         {
+            [Harmony.HarmonyBefore(new string[] { "KingmakerAI" })]
+
             static void Postfix(LibraryScriptableObject __instance)
             {
                 var self = __instance;
