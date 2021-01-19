@@ -1,20 +1,52 @@
-# Kingmaker-Tweak-Mod
-A Pathfinder: Kingmaker mod that makes enemies more interesting
+# Stolen-Land-Encounters
 
-Tweak Mod is a mod for Pathfinder: Kingmaker that is designed to give challenge to the game. Inspired by Holic75’s “Kingmaker AI” mod, the mod is designed to shake encounters up by giving enemies more levels while also giving them new feats, abilities and spells!
-I’ve always enjoyed challenge mods like SCS that people have made, and I feel that Kingmaker could definitely benefit from such a mod. Originally, Tweak Mod was designed for my own use, but I’ve really enjoyed messing with the game and improving it. Therefore, I would like others to try it as well and enjoy it.
 
-NOTE: This mod is a work in progress and very early stage! A lot of what is shown here is subject to change! I will try and get to as many encounters as I can, but I don’t know if I will get to everything. If you have any ideas, I am open! 
-I should also point out that I have only played with Turn-Based mod and haven’t tested this with the original RTwP.
+Stolen Land Encounters is a mod for Pathfinder: Kingmaker that changes enemies up to be more unique and slightly more challgneing. 
 
-THIS MOD REQUIRES CALL OF THE WILD BY HOLIC75!
+DISCLAIMER: This is a work in progress and I have covered areas up to chapter 3. Things can and are likely to change as I continue to work on it. However, I would like to point out that I want the mod to not feel like an ultra challenge, as that may turn off a lot of people. Instead, I want it to be more akin to Sword Coast Stratagems in terms of upping the challenge but not to the point of insanity. While I don't mind suggestions or ideas, please note that it is likely I won't take every single one. If you feel this mod isn't enough to quench your thirst feel free to look at the source and play around with it yourself. It's very easy to do!
 
-This mod also requires a file called JMMT (or Jarinex Monster Mash Test), which was made by Hambeard. This file allows the swapping of enemies to new guids which can be edited. It will be included with the releases of this mod, but the source code can be downloaded here: https://github.com/Jarinex/JMMTBeta
+This mod has been tested with Turn-based mode, but I do not believe there would be any issues with RTwP.
+
+
+Requirements: ***This mod requires COTW by Holic75***. It also requires a file that is within the download called JMMT (or Jarinex Monster Mash Test), which was made by Hambeard. This file allows the copying and swapping of enemies in specific maps to new guids which can be edited. It will be included with the releases of this mod, but the source code can be downloaded here: https://github.com/Jarinex/JMMTBeta
+
+Compatability: This mod should be compatable with most up to date mods. The mod will work with Holic75's "Kingmaker Ai" mod, as it will load before it. However, any changes that Kingmaker AI mod will overwrite what I have done. I also did not balance my mod with it in mind, so if you want to use it (and proper flanking) then you may find it too easy or too hard (not sure which).
+
+Special Thanks:
+Holic75 for his original KingmakerAI mod, which was the framework for this mod (and tries to do similar things). 
+Spacehamster for major assistance in this mod. Without his help, I think the mod would have fallen apart completely. He helped me through a lot of issues!
+Hambeard for his help with JMMT, which has opened all kinds of possibilities and changes with this mod!
+Testers: Chen, Rotani, Smooge and Endarire for their feedback!
+Kingmaker/WOTR Discord for being friendly and helpful!
+Owlcat for the game itself!
+
+
+Install
+-	Download and install Unity Mod Manager 0.13.0 or later
+-	Download the mod
+-	Build it using Visual Studio 2017 Community Edition and put files into a folder called TweakMod
+-	Download JMMT (which is included in releases and can also be found here: https://github.com/Jarinex/JMMTBeta)
+-	Run the game
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Changes
 
-Main Story Enemy Changes (SPOILERS):
+#Main Story Enemy Changes (SPOILERS):
 
 **Chapter 1**
 
@@ -238,18 +270,5 @@ Other Encounters (SPOILERS):
 
 
 
-
-Special Thanks:
-Holic75 for his original KingmakerAI mod, which was the basis for this mod (and tries to do similar things). Some of the AI changes from his mod are in Tweak.
-Spacehamster for major assistance in this mod. Without his help, I think the mod would have fallen apart completely. He helped me through a lot of issues!
-Kingmaker Discord for being friendly and helpful 
-Owlcat for the game itself!
-
-Install
--	Download and install Unity Mod Manager 0.13.0 or later
--	Download the mod
--	Build it using Visual Studio 2017 Community Edition and put files into a folder called TweakMod
--	Download JMMT (which is included in releases and can also be found here: https://github.com/Jarinex/JMMTBeta)
--	Run the game
 
 
