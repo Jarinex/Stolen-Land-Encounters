@@ -1,8 +1,7 @@
 # Stolen-Land-Encounters
 
 
-Stolen Land Encounters is a mod for Pathfinder: Kingmaker that changes enemies up to be more unique and slightly more challenging. You will also see some new enemies and old enemies with new classes and tricks! 
-
+Stolen Land Encounters is a mod for Pathfinder: Kingmaker that changes encounters to be more unique and slightly more challenging. The mod gives old enemies new tricks (including combat feats, new spells, new abilities, even some new classes here or there) and adds some new enemies!
 
 
 Requirements: ***This mod requires COTW by Holic75***. It also requires a file that is within the download called JMMT (or Jarinex Monster Mash Test), which was made by Hambeard. This file allows the copying and swapping of enemies in specific maps to new guids which can be edited. It will be included with the releases of this mod, but the source code can be downloaded here: https://github.com/Jarinex/JMMTBeta
