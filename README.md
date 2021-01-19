@@ -28,6 +28,7 @@ Install
 -	Build it using Visual Studio 2017 Community Edition and put files into a folder called TweakMod
 -	Download JMMT (which is included in releases and can also be found here: https://github.com/Jarinex/JMMTBeta)
 -	Run the game
+-	If downloading zip, just drag to the mods folder and extract
 
 
 
