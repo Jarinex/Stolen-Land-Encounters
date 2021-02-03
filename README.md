@@ -89,10 +89,52 @@ Install
   - Changed Fey Levels (1)
    - Added Spells
    	-Lead Blades
+	
+- Kobold Herald
+  - Changed to Bard (5)
+  - Gave Mirror Image
+  - Gave Lightcrossbow
+  - Gave Ear-Piercing Scream
+  - Changed Charisma (16)
+  
+- Kobold King
+  - Changed Fighter Level (5)
+  
+- Bandit Bard (CR1)
+  - Changed Bard Levels (4)
+  - Gave Mirror Image
+  
+
+- Bandit Cleric (CR2)
+  - Changed Cleric Levels (5)
+  - Gave Summon Monster II
+  - Gave Combat Casting
+  - Gave Shield of Faith (Already Cast)
+  
+
+- Staglord Loyalist
+  - Changed Fighter Levels (6)
+  - (Has a prebuilt list of feats)
+  
+ - Staglord Loyalist Mage (Actually a cleric)
+  - Changed Cleric Levels (6)
+  - Gave Combat Casting
+  - Gave Shield of Faith (Already Cast)
+  - Gave Owls Wisdom
+  - Will cast Divine Favor
+  - Will cast summon monster III
+  
+ - Dovan
+  - Changed Rogue Levels (5)
+  - Gave Combat Casting
+  - Gave Shield of Faith (Already Cast)
+  - Gave Owls Wisdom
+  - Will cast Divine Favor
+  - Will cast summon monster III
 
 
 - Stag Lord
-   - Increased Ranger levels (8 => 10)
+   - Changed Ranger Levels (10)
     - Gave the following spells
 	   - Entangle
 
