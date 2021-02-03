@@ -117,7 +117,7 @@ Install
   - (Has a prebuilt list of feats)
   
  - Staglord Loyalist Mage (Actually a cleric)
-  	- Changed Cleric Levels (6)
+ 	- Changed Cleric Levels (6)
  	 - Gave Combat Casting
  	 - Gave Shield of Faith (Already Cast)
 	  - Gave Owls Wisdom
@@ -126,17 +126,28 @@ Install
   
  - Dovan
 	  - Changed Rogue Levels (5)
- 	 - Gave Combat Casting
- 	 - Gave Shield of Faith (Already Cast)
- 	 - Gave Owls Wisdom
-	  - Will cast Divine Favor
-	  - Will cast summon monster III
-
+ 	 - Gave Pirahana Strike
+	 - Removed Inmproved Unarmed Strike
+	 
+	 
+ - Auch
+	 - Changed Fighter Levels (7)
+ 	 - Gave Cleave
+	 
+ - Nugrah
+	 - Changed Druid Levels (8)
+ 	 - Uses Wildshape (Bear)
+	 - Gave Natural Spell
+	 - Gave Stone Fist Buff
+	 - Gave Bull Strength
 
 - Stag Lord
    - Changed Ranger Levels (10)
     - Gave the following spells
 	   - Entangle
+	   
+	   
+	   
 
 Chapter 2 
 
