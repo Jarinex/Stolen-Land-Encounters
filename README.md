@@ -111,6 +111,10 @@ Install
   - Gave Combat Casting
   - Gave Shield of Faith (Already Cast)
   
+- Bandit Alchemist (CR3)
+	- Changed Alchemist Levels (7)
+	- Gave Blur (Already Cast)
+	- Gave Haste
 
 - Staglord Loyalist
   - Changed Fighter Levels (6)
@@ -130,6 +134,7 @@ Install
 	 - Removed Inmproved Unarmed Strike
 	 
 	 
+	 
  - Auch
 	 - Changed Fighter Levels (7)
  	 - Gave Cleave
@@ -145,11 +150,20 @@ Install
    - Changed Ranger Levels (10)
     - Gave the following spells
 	   - Entangle
-	   
-	   
-	   
+
 
 Chapter 2 
+
+- Bandit Transmuter (CR6)
+	- Changed Alchemist Levels (7)
+	- Changed Dexterity (16)
+	- Gave Blur (Already cast)
+	- Gave the following spells
+		- Mirror Image
+		- Hurricane Bow
+		- Magic Missle (x3)
+	-Will cast Enlargement Mass and Slow
+	
 
 - Kobold Teacher
    - Increased Sorcerer levels (2 => 6)
