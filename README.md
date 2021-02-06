@@ -10,13 +10,17 @@ Compatability: This mod should be compatable with most up to date mods. The mod 
 
 F.A.Q (Or at least questions I expect)
 
-***How far does thid mod go in terms of content?***
+***How far does this mod go in terms of content?***
 
 I have changed encounters and enemies from starting from chapter 1 to up to chapter 4 (after Armag) in terms of content. 
 
 ***Will you finish the rest of the game?***
 
 YES ABSOLUTELY! I plan on working through the main parts of the game and changing them around
+
+***What has changed?***
+
+Feel free to take a look at the readme on Github. There is a lot of changes. I have only added the changes I did for Chapter 1, but will continue to work on the readme over time.
 
 ***Will you edit other parts of the game?***
 
@@ -299,7 +303,7 @@ Chapter 6
 
 
 
-Magical Prison Encounter Changes (SPOILERS):
+
 
       
 - Thick Lizard Queen Encounter (Baneful Bog)
@@ -310,85 +314,6 @@ Magical Prison Encounter Changes (SPOILERS):
 	-Umbral Strike (X2)
 	-Hellfire Ray (X2)
 	-Divine Power
-	
-	
-
-- Insane Wizard (Little Sellen Source)I 
-   - Level increased to 20
-   - Now has displacement as a permabuff
-   - Removed the following spells 
-     - One instance of Summon Monster 8
-   - Gave the following spells
-     - Tsunami
-   
- - Evil Druid (Raspberry Gully)
-   - Level increased to 20
-   - AI changed to spellecaster instead of shifting to Smilodon (theres enough animal fights)
-   - Gave the following spells
-     - Firestorm
-     - Plague Storm
-     - Sunburst
-     - Tarpool
-     - Seamantle
-     - Greater Dispel
-     - StormBolt
-     
-- Watchful Omen (Wicked Field)
-   - Added 20 levels of Wizard
-   - Removed Enervation
-   - Increased Natural Armor to 18
-   - Gave the following spells
-     - Wail of the Banshee
-     - Waves of Exhaustion
-     - Fear
-   - Gave the following spells as quickened buffs
-     - Frightful Aspect
-     
- - Patient Shadow (Wicked Hill)
-   - Increased Stats 
-   - Increased Outsider Levels (28)
-   - Added 20 levels of Wizard
-   - Removed the following abilities
-   	- Vampiric Touch (was bugged to only hit the demon)
-	- Energy Dragin
-	- Enervation
-	- Moved Finger of death to spells
-   - Increased Natural Armor to 18
-   - Gave True Seeing
-   - Gave the following spells
-     - Finger of Death x2
-     - Banshee Blast
-   - Gave the following spells as quickened buffs
-     - Frightful Aspect
-
-Other Encounters (SPOILERS):
-
-- Queen Ravene 
-   - Changed Class To Cleric
-   - Buffed Stats Greatly
-   - Removed the following feats
-   	-Sneak Attacker
-	-Cornugon
-	-Dazzling Display
-	-Blinding Critical feature
-	-Shield Bash
-   - Gave the following feats
-   	-Augment Summon
-	-Combat Casting
-	-Superior Summoning
-	-Heavy Armor Proficiency
-	-Toughness
-	-Improved Initiative
-	-Bastard Sword Proficiency
-    -Gave Amulet of Natural Armor +3
-    -Gave the following Spells
-        -Overwhelming Presence
-	-Frightful Aspect
-	-Summon Monster IX
-	-Unholy Aura
-    Gave the following spells as quickened buffs
-      -Summon Monster IX (summons frost giants)
-      -Frightful Aspect
 	
 
 
