@@ -47,6 +47,30 @@ for my mod:https://github.com/Holic75/KingmakerAi/
 
 I have only played this mod in turnbased mode, but I have a good feeling it will work with RTwP.
 
+***Why do some enemies have quicken?***
+
+In order to get buffs more quickly on enemies (casters), I gave them quicken so they can buff themselves quickly. While I can put a buff on them manaully, it 
+doesnt scale to their caster level. As such, they can be easily dispelled. I didn't want that to happen, so I gave casters quicken to get those spells out
+more quickly. 
+
+***Will you make a version for Wrath of The Righteous?***
+
+Ideally, yes, but I can't make any promises. These mods take a lot of time, and I'm not sure how modding will work for Wrath.
+
+***Will you continue working on this mod after Wrath releases?***
+
+Yes, I will at least get a working version for the mod out. I don't know if it will be done before Wrath, but we will see.
+
+
+
+Install
+-	Download and install Unity Mod Manager 0.13.0 or later
+-	Download the mod
+-	Build it using Visual Studio 2017 Community Edition and put files into a folder called TweakMod
+-	Download JMMT (which is included in releases and can also be found here: https://github.com/Jarinex/JMMTBeta)
+-	Run the game
+-	If downloading zip, just drag to the mods folder and extract
+
 
 
 Special Thanks:
@@ -58,13 +82,7 @@ Kingmaker/WOTR Discord for being friendly and helpful!
 Owlcat for the game itself!
 
 
-Install
--	Download and install Unity Mod Manager 0.13.0 or later
--	Download the mod
--	Build it using Visual Studio 2017 Community Edition and put files into a folder called TweakMod
--	Download JMMT (which is included in releases and can also be found here: https://github.com/Jarinex/JMMTBeta)
--	Run the game
--	If downloading zip, just drag to the mods folder and extract
+
 
 
 
