@@ -10,12 +10,44 @@ Compatability: This mod should be compatable with most up to date mods. The mod 
 
 F.A.Q (Or at least questions I expect)
 
-#How far does this mod go in terms of content? 
+***How far does thid mod go in terms of content?***
+
+I have changed encounters and enemies from starting from chapter 1 to up to chapter 4 (after Armag) in terms of content. 
+
+***Will you finish the rest of the game?***
+
+YES ABSOLUTELY! I plan on working through the main parts of the game and changing them around
+
+***Will you edit other parts of the game?***
+
+I have plans to edit the magical prison encounters with some new unique enemies and fights. Perhaps there will even be new treasures to get :)
+However, this will likely happen after I complete the main storyline.
+
+***Will you edit companion quests?***
+
+I have yet to decide on what I want to do with companion quests. While I would be happy to, I feel some people might be annoyed to be forced
+to use companions they dont normally use. As such, I will not edit those for the time being
+
+***What difficulty is this meant to be played on?***
+
+Honestly, it can be played on any difficulty. My settings include unfair without the 2x damage, but you can play it however you want!
+
+***This mod is too easy! I thought you wanted a challenge mod?***
+
+While i wanted to increase the challenge of this mod, I tried to be somewhat fair. However, some may find it still too easy. I dont intend this to be
+the ultimate challenge, but rather just a way to make the game more interesting. I can suggest either increasing the difficult further or increasing 
+enemy health with bag of tricks (which is what I do).
+
+***Is the source code available? I would like to see it.***
+
+Certainly. Here is a github link: https://github.com/Jarinex/Stolen-Land-Encounters Also feel free to check out Holics kingmaker AI mod, as it was the base
+for my mod:https://github.com/Holic75/KingmakerAi/
+
+***Is this mod for RTwP or Turn-based mode***
+
+I have only played this mod in turnbased mode, but I have a good feeling it will work with RTwP.
 
 
-DISCLAIMER: This is a work in progress and I have covered areas up to chapter 3. Things are likely to change as I continue to work on it. However, while I desire to increase the challenge slightly, I dont want the mod to feel like an ultra challenge as that may turn off a lot of people. Instead, I want it to be more akin to Sword Coast Stratagems in terms of upping the challenge but not to the point of insanity. While I don't mind suggestions or ideas, please note that it is likely I won't take every single one. If you feel this mod isn't enough to quench your thirst, feel free to download the source and play around with it yourself. It's very easy to do!
-
-This mod has been tested with Turn-based mode, but I do not believe there would be any issues with RTwP.
 
 Special Thanks:
 Holic75 for his original KingmakerAI mod, which was the framework for this mod (and tries to do similar things). 
