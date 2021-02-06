@@ -1,12 +1,16 @@
 # Stolen-Land-Encounters
 
 
-Stolen Land Encounters is a mod for Pathfinder: Kingmaker that changes encounters to be more unique and slightly more challenging. The mod gives old enemies new tricks (including combat feats, new spells, new abilities, even some new classes here or there) and adds some new enemies!
+Stolen Land Encounters is a mod for Pathfinder: Kingmaker that changes encounters to be more unique and slightly more challenging. The mod gives old enemies new tricks (including combat feats, new spells, new abilities) and adds some new enemies!
 
 
 Requirements: ***This mod requires COTW by Holic75***. It also requires a file that is within the download called JMMT (or Jarinex Monster Mash Test), which was made by Hambeard. This file allows the copying and swapping of enemies in specific maps to new guids which can be edited. It will be included with the releases of this mod, but the source code can be downloaded here: https://github.com/Jarinex/JMMTBeta
 
 Compatability: This mod should be compatable with most up to date mods. The mod will work with Holic75's "Kingmaker Ai" mod, as it will load before it. However, any changes that Kingmaker AI mod will overwrite what I have done. I also did not balance my mod with it in mind, so if you want to use it (and proper flanking) then you may find it too easy or too hard (not sure which).
+
+F.A.Q (Or at least questions I expect)
+
+#How far does this mod go in terms of content? 
 
 
 DISCLAIMER: This is a work in progress and I have covered areas up to chapter 3. Things are likely to change as I continue to work on it. However, while I desire to increase the challenge slightly, I dont want the mod to feel like an ultra challenge as that may turn off a lot of people. Instead, I want it to be more akin to Sword Coast Stratagems in terms of upping the challenge but not to the point of insanity. While I don't mind suggestions or ideas, please note that it is likely I won't take every single one. If you feel this mod isn't enough to quench your thirst, feel free to download the source and play around with it yourself. It's very easy to do!
