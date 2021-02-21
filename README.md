@@ -211,7 +211,7 @@ Owlcat for the game itself!
 	   - Entangle
 
 
-**Chapter 2 (Trolls**
+**Chapter 2 (Trolls)**
 
 - Bandit Transmuter (CR6)
 	- Changed Dexterity (16)
