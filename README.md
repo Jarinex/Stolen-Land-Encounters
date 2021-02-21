@@ -362,7 +362,9 @@ Owlcat for the game itself!
    	- Changed Diplomacy (5)
    	- Gave Cornugon
 
-**Chapter 2 (Season of Bloom)**
+#####Chapter 2 (Season of Bloom)#####
+
+**Swamp**
 
 - Swamp Witch
    	- Changed Wizard Levels (10)
@@ -374,6 +376,43 @@ Owlcat for the game itself!
    	- Gave Snowball
    	- Gave Boneshaker
    	- Changed AI for Fear, Slow, Blindness
+
+- Lonely Ghoul
+   	- Gave Fighter Levels (10)
+   	- Summons Undead Friends
+   	- Gave Sunder
+   	- Gave Cornugon
+   	- Gave Greater Fortitude
+   	- Gave Handaxe +1
+   	- Gave Heavy Shield +1
+
+- Ghost Priest
+   	- Gave Cleric Levels (10)
+   	- Summons Ghostly Friends
+   	- Changed Dexterity (26)
+   	- Changed Strength (20)
+   	- Gave Weapon Finesse
+   	- Gave Bone Shaker (x2)
+   	- Gave Slay Living (x2)
+   	- Gave Bane
+   	- Gave Divine Power
+   	- Gave Dispel (x2)
+   	- Gave Dagger +1
+   	- Gave AI to use Negative Energy
+   	- Gvae Combat Casting
+
+- Swamp Werewolf
+   	- Changed Fighter Levels (9)
+   	- Gave Diplomacy (8)
+   	- Gave Cornugon
+   	- Gave Cleave
+
+- Narlmarsh Scythe Tree
+   	- Changed Strength (30)
+   	- Gave Toughness
+   	- Changed Cleave
+   	- Gave 80 HP
+
 
 
 Chapter 3
