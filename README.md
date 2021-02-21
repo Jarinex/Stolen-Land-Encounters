@@ -362,7 +362,7 @@ Owlcat for the game itself!
    	- Changed Diplomacy (5)
    	- Gave Cornugon
 
-**Chapter 2 (Season of Bloom)
+**Chapter 2 (Season of Bloom)**
 
 - Swamp Witch
    	- Changed Wizard Levels (10)
