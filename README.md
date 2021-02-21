@@ -173,6 +173,7 @@ Owlcat for the game itself!
 	- Changed Alchemist Levels (7)
 	- Gave Blur (Already Cast)
 	- Gave Haste
+	- Gave Explolsive Bomb Feature
 
 - Staglord Loyalist
   - Changed Fighter Levels (6)
@@ -213,7 +214,6 @@ Owlcat for the game itself!
 Chapter 2 
 
 - Bandit Transmuter (CR6)
-	- Changed Alchemist Levels (7)
 	- Changed Dexterity (16)
 	- Gave Blur (Already cast)
 	- Gave the following spells
@@ -222,6 +222,41 @@ Chapter 2
 		- Magic Missle (x3)
 	-Will cast Enlargement Mass and Slow
 	
+- Bandit Ambush Bandits (Ruined Watchtower)
+	- Changed Rogue Levels (5)
+	- Gave Invisibility (editing took away stealth, so I gave this to replace it)
+
+
+- Bandit Fighter (Ruined Watchtower)
+	- Changed Fighter Levels (6)
+	- Gave Disarm
+	- Gave Cleave
+
+- Bandit Fighter Ranged (Ruined Watchtower)
+	- Changed Fighter Levels (6)
+
+
+- Bandit Fighter Ranged (Lone House)
+	- Changed Fighter Levels (6)
+
+- Bandit Conjurer (Lone House)
+	- Changed Dexterity (16)
+	- Gave Blur (Already cast)
+	- Gave the following spells
+		- Mirror Image
+		- Hurricane Bow
+		- Magic Missle (x3)
+	-Will cast Enlargement Mass and Slow
+
+- Bandit Fighter (Lone House)
+	- Changed Fighter Levels (6)
+	- Gave Disarm
+	- Gave Cleave
+
+- Bandit Armored Leader (Lone House)
+	- Changed Fighter Levels (9)
+	- Gave Sunder
+
 
 - Kobold Teacher
    - Increased Sorcerer levels (2 => 6)
