@@ -211,7 +211,7 @@ Owlcat for the game itself!
 	   - Entangle
 
 
-Chapter 2 
+**Chapter 2 (Trolls**
 
 - Bandit Transmuter (CR6)
 	- Changed Dexterity (16)
@@ -257,12 +257,124 @@ Chapter 2
 	- Changed Fighter Levels (9)
 	- Gave Sunder
 
+- Kobold Key Keeper 
+	- Converted Feature to "Kobold Blade"
+	- Change Fighter Levels (6)
+	- Changed Nat Armor to 3
+	- Gave Trip
+	- Changed Dex to 18
+	- Gave Masterwork Shortsword
+	- Gave Light Shield
+	- Gave Standard Breastplate
+
+- Kobold Blade (First Floor)
+	- Change Fighter Levels (6)
+	- Changed Nat Armor to 3
+	- Gave Trip
+
+- Kobold Blade (Second Floor)
+	- Change Fighter Levels (6)
+	- Changed Nat Armor to 3
+	- Gave Trip
+	- Changed Dex to 18
+	- Gave Masterwork Shortsword
+	- Gave Light Shield
+	- Gave Standard Breastplate
+
+- Kobold Hunter
+	- Changed from level 2 feature list to level 5 feature list (stronger version)
+
+- Kobold Evoker
+	- Changed Sorcerer Levels (6)
+	- Gave Haste
+	- Gave Fireball
+	- Gave Mirror Image
+	- Gave Scorching Ray
+	- Gave Blur (Already Cast)
+	- Gave Combat Casting
+
+- Kobold Flame Shaman 
+	- Changed Sorcerer Levels (6)
+	- Changed Natural Armor to 3
+	- Gave Lightning Bolt
+	- Gave Mirror Image
+	- Gave Scorching Ray
+	- Gave Blur (Already Cast)
+	- Gave Combat Casting
+
+- Kobold Alchemist (CR4)
+	- Changed Alchemist Levels (7)
+	- Changed Natural Armor to 3
+	- Gave Precise Bomb
+
+- Kobold Boomsayer
+	- Changed Bard Levels (6)
+	- Gave Inspire Courage
+	- Gave Extra Performance
+
+- Kobold Bone Shaman 
+	- Changed Sorcerer Levels (7)
+	- Gave Blur (Already Cast)
+	- Gave Mage Armor (Already Cast)
+	- Gave Web
+	- Gave Haste
+	- Gave Slow
+	- Gave Magic Missle
 
 - Kobold Teacher
-   - Increased Sorcerer levels (2 => 6)
-    - Gave the following spells
-	   - Magic Missle
-  (NOTE: More to come, this is just a work in progress)
+   	- Increased Sorcerer levels (6)
+    	- Gave Displacement
+	- Gave Mage Armor (Already Cast)
+	- Gave Acid Arrow
+	- Gave Haste
+	- Gave Magic Missle
+
+- Rugga
+   	- Changed to Troll Fury (Basically a druid with inspire courage)
+   	- Druid Levels (7)
+   	- Bard Level (1)
+   	- Gave Combat Casting
+   	- Gave Inspire Courage
+   	- Gave Extra Performance
+   	- Changed Wisdom (18)
+   	- Gave Sumon Medium Elemental (Earth)
+   	- Gave Call lightning (x2)
+   	- Gave Stone Call
+   	- Gave Stone Fist
+
+- Nagrundi
+   	- Gave Ranger levels (8)
+   	- Gave Magic Fang
+   	- Gave Sense Vitals
+
+- Nagrundis Troll Hound
+   	- Changed to be more like Advanced Trollhound
+
+- Tartuk
+   	- Gave Displacement
+   	- Changed Hold Person AI
+   	- Gave back Fireball 
+   	- Gave Back Scorching Ray
+
+- Hargulka
+   	- Changed Strength (24)
+   	- Changed Constitution (26)
+   	- Changed Diplomacy (5)
+   	- Gave Cornugon
+
+**Chapter 2 (Season of Bloom)
+
+- Swamp Witch
+   	- Changed Wizard Levels (10)
+   	- Gave Haste
+   	- Gave Displacement
+   	- Gave Phantasmal Web
+   	- Gave Mirror Image
+   	- Gave Baleful Polymorph
+   	- Gave Snowball
+   	- Gave Boneshaker
+   	- Changed AI for Fear, Slow, Blindness
+
 
 Chapter 3
 
