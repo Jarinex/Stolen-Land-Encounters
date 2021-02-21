@@ -106,9 +106,9 @@ Owlcat for the game itself!
 
 ## Changes
 
-#Main Story Enemy Changes (SPOILERS):
+### Main Story Enemy Changes (SPOILERS):
 
-##### Chapter 1
+#### Chapter 1
 
 - Kalannah
    - Changed Wizard levels (5)
@@ -211,7 +211,7 @@ Owlcat for the game itself!
 	   - Entangle
 
 
-##### Chapter 2 (Trolls)
+#### Chapter 2 (Trolls)
 
 - Bandit Transmuter (CR6)
 	- Changed Dexterity (16)
@@ -362,7 +362,7 @@ Owlcat for the game itself!
    	- Changed Diplomacy (5)
    	- Gave Cornugon
 
-##### Chapter 2 (Season of Bloom)
+#### Chapter 2 (Season of Bloom)
 
 **Swamp**
 
