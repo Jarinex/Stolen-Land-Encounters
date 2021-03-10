@@ -480,15 +480,29 @@ namespace TweakMod
             new Consideration[] { attacktargetspriority },
             base_score: 10.0f, cooldown_rounds: 3);
 
-            static public BlueprintAiCastSpell mirrorimage_precast = createCastSpellAction("Castmirrorimage", Spells.mirrorimage,
-                new Consideration[] { },
-                new Consideration[] {NoBuffMirrorImage },
-                base_score: 20.0f, combat_count: 1, pre_cast: true);
+
+            static public BlueprintAiCastSpell MakePreCast(BlueprintAiCastSpell from)
+            {
+                BlueprintAiCastSpell action = CallOfTheWild.Helpers.Create<BlueprintAiPrecastSpell>();
+                action.Ability = from.Ability;
+                action.Variant = from.Variant;
+                action.ActorConsiderations = from.ActorConsiderations.Select(c => c.CreateCopy()).ToArray();
+                action.TargetConsiderations = from.TargetConsiderations.Select(c => c.CreateCopy()).ToArray();
+                action.name = from.name + "_precast";
+                action.BaseScore = from.BaseScore;
+                action.CombatCount = from.CombatCount;
+                action.CooldownRounds = from.CooldownRounds;
+                action.StartCooldownRounds = from.StartCooldownRounds;
+
+                return action;
+            }
 
             static public BlueprintAiCastSpell mirrorimage = createCastSpellAction("Castmirrorimage", Spells.mirrorimage,
                 new Consideration[] { },
                 new Consideration[] {NoBuffMirrorImage },
                 base_score: 20.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell mirrorimage_precast = MakePreCast(mirrorimage);
 
             static public BlueprintAiCastSpell entangle = createCastSpellAction("Castentangle", Spells.entangle,
                 new Consideration[] { },
