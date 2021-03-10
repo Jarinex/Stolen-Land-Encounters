@@ -480,6 +480,11 @@ namespace TweakMod
             new Consideration[] { attacktargetspriority },
             base_score: 10.0f, cooldown_rounds: 3);
 
+            static public BlueprintAiCastSpell mirrorimage_precast = createCastSpellAction("Castmirrorimage", Spells.mirrorimage,
+                new Consideration[] { },
+                new Consideration[] {NoBuffMirrorImage },
+                base_score: 20.0f, combat_count: 1, pre_cast: true);
+
             static public BlueprintAiCastSpell mirrorimage = createCastSpellAction("Castmirrorimage", Spells.mirrorimage,
                 new Consideration[] { },
                 new Consideration[] {NoBuffMirrorImage },
@@ -1500,15 +1505,18 @@ base_score: 20.0f);
 
 
         static BlueprintAiCastSpell createCastSpellAction(string name, BlueprintAbility spell, Consideration[] actor_consideration, Consideration[] target_consideration,
-                                                       float base_score = 1f, BlueprintAbility variant = null, int combat_count = 0, int cooldown_rounds = 0, int start_cooldown_rounds = 0, string guid = "")
+                                                       float base_score = 1f, BlueprintAbility variant = null, int combat_count = 0, int cooldown_rounds = 0, int start_cooldown_rounds = 0, string guid = "", bool pre_cast = false)
         {
-
-            var action = CallOfTheWild.Helpers.Create<BlueprintAiCastSpell>();
+            BlueprintAiCastSpell action;
+            if (pre_cast)
+                action = CallOfTheWild.Helpers.Create<BlueprintAiPrecastSpell>();
+            else
+                action = CallOfTheWild.Helpers.Create<BlueprintAiCastSpell>();
             action.Ability = spell;
             action.Variant = variant;
             action.ActorConsiderations = actor_consideration;
             action.TargetConsiderations = target_consideration;
-            action.name = name;
+            action.name = name + (pre_cast ? "_precast" : "");
             action.BaseScore = base_score;
             action.CombatCount = combat_count;
             action.CooldownRounds = cooldown_rounds;
@@ -2383,7 +2391,7 @@ base_score: 20.0f);
 
 
             var brain = CR1_BanditBard.Brain;
-            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage,AiActions.hideouslaughterbanditbard);
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage_precast, AiActions.hideouslaughterbanditbard);
 
 
         }

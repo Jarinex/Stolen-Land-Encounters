@@ -3,20 +3,40 @@ using System;
 using System.Reflection;
 using System.Linq;
 using Kingmaker.Blueprints;
-using Kingmaker;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.Designers.Mechanics.Buffs;
 using System.Collections.Generic;
-using Kingmaker.Blueprints.Items;
-using Newtonsoft.Json;
-using System.IO;
-using Newtonsoft.Json.Linq;
+using Kingmaker.PubSubSystem;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.Controllers.Brain.Blueprints;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.Controllers;
 
 namespace TweakMod
 {
+    class BlueprintAiPrecastSpell : BlueprintAiCastSpell
+    {
+
+    }
+    class ForceSelfBuffs : IUnitCombatHandler
+    {
+        public void HandleUnitJoinCombat(UnitEntityData unit)
+        {
+            var autoCastAbilities = unit.Brain.AvailableActions.Where(action => action.Blueprint is BlueprintAiPrecastSpell);
+
+            foreach (var autoCast in autoCastAbilities)
+            {
+                var spellCast = autoCast.Blueprint as BlueprintAiPrecastSpell;
+                Main.logger.Log($"auto casting buff '{spellCast.Ability.name}' on combat join");
+                var abilityData = new AbilityData(spellCast.Ability, unit.Descriptor);
+                var proc = new AbilityExecutionContext(abilityData, abilityData.CalculateParams(), new Kingmaker.Utility.TargetWrapper(unit));
+                AbilityExecutionProcess.ApplyEffectImmediate(proc, unit);
+                abilityData.SpendFromSpellbook();
+            }
+        }
+
+        public void HandleUnitLeaveCombat(UnitEntityData unit)
+        {
+        }
+    }
     internal class Main
     {
     
@@ -38,6 +58,7 @@ namespace TweakMod
             if (logger != null) logger.Log(ex.ToString() + "\n" + ex.StackTrace);
         }
         internal static bool enabled;
+        internal static ForceSelfBuffs forceSelfBuffs;
 
         static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -46,7 +67,9 @@ namespace TweakMod
                 logger = modEntry.Logger;
                 harmony = Harmony.HarmonyInstance.Create(modEntry.Info.Id);
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
+                forceSelfBuffs = new ForceSelfBuffs();
 
+                EventBus.Subscribe(forceSelfBuffs);
             }
             catch (Exception ex)
             {
