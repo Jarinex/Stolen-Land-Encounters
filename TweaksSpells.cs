@@ -236,6 +236,39 @@ namespace Kingmaker.UnitLogic.Mechanics.Actions
 
 }
 
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster7 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(1, 0, -1);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
 
 
 namespace TweakMod
@@ -252,6 +285,8 @@ namespace TweakMod
             callghosts();
             callghostsstandard();
             callundeadfriends();
+            summondweomercat();
+            callghostsdevourer();
         }
 
 
@@ -331,6 +366,35 @@ namespace TweakMod
 
         }
 
+
+        static void callghostsdevourer()
+        {
+            var VengefulSpectre = library.Get<BlueprintUnit>("b08095a9ede34f23aa6d829254fe14c5");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = VengefulSpectre),
+               Helpers.Create<CustomContextActionSpawnMonster6>(c => c.Blueprint = VengefulSpectre));
+
+            var ability = Helpers.CreateAbility("Summon Spectres",
+                "Summon Spectres",
+               "Summon spectres to your side.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonSpectresresource = Helpers.CreateAbilityResource("SummonSpectresresource", "", "", "", null);
+            SummonSpectresresource.SetFixedResource(1);
+
+        }
+
+
+
+
         static void callghostsstandard()
         {
             var ghosts = library.Get<BlueprintUnit>("655ac57b330918c4aadc78a00fb2ccaf");
@@ -382,6 +446,34 @@ namespace TweakMod
             summonundead_resource3.SetFixedResource(1);
 
         }
+
+
+        static void summondweomercat()
+        {
+
+            var dweomeradvanced = library.Get<BlueprintUnit>("729464361d706f8429e4f4ea9b4f952c");
+
+            var actions = Helpers.CreateRunActions(
+                Helpers.Create<CustomContextActionSpawnMonster7>(c => c.Blueprint = dweomeradvanced));
+
+            var ability = Helpers.CreateAbility("Summon Advanced Dweomercat",
+                "Summon Advanced Dweomercat",
+               "Summon Advanced Dweomercat.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var summonAdvancedDweomercat_resource3 = Helpers.CreateAbilityResource("summonadvanceddweomercatResource", "", "", "", null);
+            summonAdvancedDweomercat_resource3.SetFixedResource(1);
+
+        }
+
+
 
         // static void callcyclops()
         // {

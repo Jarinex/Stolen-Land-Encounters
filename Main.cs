@@ -39,7 +39,7 @@ namespace TweakMod
     }
     internal class Main
     {
-    
+
         internal static UnityModManagerNet.UnityModManager.ModEntry.ModLogger logger;
         internal static Harmony.HarmonyInstance harmony;
         internal static LibraryScriptableObject library;
@@ -101,7 +101,7 @@ namespace TweakMod
 #endif
                     CallOfTheWild.Helpers.GuidStorage.load(Properties.Resources.blueprints, allow_guid_generation);
 
-                   
+
                     SpellsTweaks.load();
                     StoryTweaks.load();
 
@@ -126,4 +126,3 @@ namespace TweakMod
         }
     }
 }
-
