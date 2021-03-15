@@ -12,24 +12,24 @@ using Kingmaker.Controllers;
 
 namespace TweakMod
 {
-    class BlueprintAiPrecastSpell : BlueprintAiCastSpell
-    {
-
-    }
     class ForceSelfBuffs : IUnitCombatHandler
     {
         public void HandleUnitJoinCombat(UnitEntityData unit)
         {
-            var autoCastAbilities = unit.Brain.AvailableActions.Where(action => action.Blueprint is BlueprintAiPrecastSpell);
+            //Main.logger.Log($"Unit joining combat: {unit.CharacterName}");
+            var autoCastAbilities = unit.Brain.Actions.Where(action => action.Blueprint.name.StartsWith("SLE_PRECAST"));
 
             foreach (var autoCast in autoCastAbilities)
             {
-                var spellCast = autoCast.Blueprint as BlueprintAiPrecastSpell;
-                Main.logger.Log($"auto casting buff '{spellCast.Ability.name}' on combat join");
-                var abilityData = new AbilityData(spellCast.Ability, unit.Descriptor);
+                var spellCast = autoCast.Blueprint as BlueprintAiCastSpell;
+                var spellbook = unit.Descriptor.Spellbooks.First();
+                var abilityData = new AbilityData(spellCast.Ability, unit.Descriptor, unit.Descriptor.Spellbooks.First().Blueprint);
+                //Main.logger.Log($"auto casting buff '{spellCast.Ability.name} at level {abilityData.CalculateParams().SpellLevel}' on combat join");
+                //Main.logger.Log($"spellbook pre-cast: {spellbook.GetAvailableForCastSpellCount(abilityData)}");
                 var proc = new AbilityExecutionContext(abilityData, abilityData.CalculateParams(), new Kingmaker.Utility.TargetWrapper(unit));
                 AbilityExecutionProcess.ApplyEffectImmediate(proc, unit);
                 abilityData.SpendFromSpellbook();
+                //Main.logger.Log($"spellbook post-cast: {spellbook.GetAvailableForCastSpellCount(abilityData)}");
             }
         }
 
@@ -107,7 +107,7 @@ namespace TweakMod
 
 
 #if DEBUG
-                    string guid_file_name = @"C:\Users\Josiah\Desktop\My Kingmaker Mods\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
+                    string guid_file_name = @"./Mods/StolenLands_blueprints_dump.txt"; // @"C:\Users\Josiah\Desktop\My Kingmaker Mods\Tweak Mod\Tweak Mod for Kingmaker\Tweak Mod\blueprints.txt";
                     CallOfTheWild.Helpers.GuidStorage.dump(guid_file_name);
 #endif
                     CallOfTheWild.Helpers.GuidStorage.dump(@"./Mods/TweakMod/loaded_blueprints.txt");
