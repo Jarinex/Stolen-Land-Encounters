@@ -287,6 +287,8 @@ namespace TweakMod
             callundeadfriends();
             summondweomercat();
             callghostsdevourer();
+            summonrangedfriends();
+
         }
 
 
@@ -394,7 +396,6 @@ namespace TweakMod
 
 
 
-
         static void callghostsstandard()
         {
             var ghosts = library.Get<BlueprintUnit>("655ac57b330918c4aadc78a00fb2ccaf");
@@ -470,6 +471,33 @@ namespace TweakMod
 
             var summonAdvancedDweomercat_resource3 = Helpers.CreateAbilityResource("summonadvanceddweomercatResource", "", "", "", null);
             summonAdvancedDweomercat_resource3.SetFixedResource(1);
+
+        }
+
+
+        static void summonrangedfriends()
+        {
+            var riverbladeranged = library.Get<BlueprintUnit>("7bc81dc0338f4ff0a3096387c346857a");
+            var riverblademelee = library.Get<BlueprintUnit>("1d3635f4e5ede9043a8fee43163cb490");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = riverbladeranged),//Spawns on his left (my right), move it down two units on the y axis
+               Helpers.Create<CustomContextActionSpawnMonster6>(c => c.Blueprint = riverblademelee)); //Spawns on his right (my left), move it down on the y axis
+
+            var ability = Helpers.CreateAbility("Summon River Blade Archers",
+                "Call for Aid",
+               "Summon two River Blade Archers to your side.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var summonrangedfriends_resource2 = Helpers.CreateAbilityResource("summonrangedfriendsResource2", "", "", "", null);
+            summonrangedfriends_resource2.SetFixedResource(2);
 
         }
 
