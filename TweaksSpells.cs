@@ -269,7 +269,38 @@ namespace Kingmaker.UnitLogic.Mechanics.Actions
 
 }
 
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster8 : ContextAction
+    {
 
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(2, 0, 2);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
 
 namespace TweakMod
 {
@@ -481,8 +512,8 @@ namespace TweakMod
             var riverblademelee = library.Get<BlueprintUnit>("1d3635f4e5ede9043a8fee43163cb490");
 
             var actions = Helpers.CreateRunActions(
-               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = riverbladeranged),//Spawns on his left (my right), move it down two units on the y axis
-               Helpers.Create<CustomContextActionSpawnMonster6>(c => c.Blueprint = riverblademelee)); //Spawns on his right (my left), move it down on the y axis
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = riverbladeranged),//Spawns on his left (my right), move it down two units on the y axis
+               Helpers.Create<CustomContextActionSpawnMonster6>(c => c.Blueprint = riverbladeranged)); //Spawns on his right (my left), move it down on the y axis
 
             var ability = Helpers.CreateAbility("Summon River Blade Archers",
                 "Call for Aid",

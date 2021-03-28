@@ -61,7 +61,11 @@ namespace TweakMod.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CastQuickenSheetLightningAiAction	c038f6f3f3fa4b499bf3b05561f11385	Kingmaker.Controllers.Brain.Blueprints.BlueprintAiCastSpell.
+        ///   Looks up a localized string similar to CastCapeOfWaspsBuff	0b7073c6970a48ffa6dd4c84eb0b1a0c	Kingmaker.Controllers.Brain.Blueprints.BlueprintAiCastSpell
+        ///CastDivinePowerFirst	15110917f4494f36acd90ef299fc1026	Kingmaker.Controllers.Brain.Blueprints.BlueprintAiCastSpell
+        ///CastSummonWorm	5d73d10132a24ac4b239db3772f5a991	Kingmaker.Controllers.Brain.Blueprints.BlueprintAiCastSpell
+        ///CastDisplacementBuff	9dfe17f5a22a44b4aea88e3d95ef272b	Kingmaker.Controllers.Brain.Blueprints.BlueprintAiCastSpell
+        ///CastPrayerSecond	0bd35a8100c947db923708f41ec93f01	Kingmaker [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string blueprints {
             get {
