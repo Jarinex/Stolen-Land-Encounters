@@ -116,6 +116,8 @@ namespace TweakMod
         static Consideration IloraNuski_InstantEnemyTypeConsideration = library.Get<FactConsideration>("08b151ac3be7f5c4c8f9ef0807cfedd0");
         static Consideration Trebricent_NoResonatingWordConsideration = library.Get<BuffConsideration>("b5038c62b4d7d174fb03967845393a0a");
         static Consideration Trebricent_NoConfusionConsideration = library.Get<BuffConsideration>("568055173ac2ed94a940b09fc538bba1");
+        static Consideration NoBuffDominate = library.Get<BuffConsideration>("774ecd999d24e03459d85d515001df7a");
+
 
         static class Spells
         {
@@ -248,6 +250,7 @@ namespace TweakMod
             public static BlueprintAbility summonghosts = library.Get<BlueprintAbility>("a8ba7017d97345969db2567eb7c249b7");
             public static BlueprintAbility summonghosts2 = library.Get<BlueprintAbility>("2cbda65cde8f462baf8994af02854d4e");
             public static BlueprintAbility summonundeadfriends = library.Get<BlueprintAbility>("119a6fc4756c45a7a329859f030836c2");
+            public static BlueprintAbility summonvengefulspectres = library.Get<BlueprintAbility>("b820d077b4ea4c22b79b24c221b8ffe1");
             public static BlueprintAbility wavesoffatigue = library.Get<BlueprintAbility>("8878d0c46dfbd564e9d5756349d5e439");
             public static BlueprintAbility blindness = library.Get<BlueprintAbility>("46fd02ad56c35224c9c91c88cd457791");
             public static BlueprintAbility crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
@@ -341,7 +344,17 @@ namespace TweakMod
             public static BlueprintAbility legendaryproportions = library.Get<BlueprintAbility>("7cfbefe0931257344b2cb7ddc4cdff6f");
             public static BlueprintAbility DragonkindIIBlue = library.Get<BlueprintAbility>("22ac82f7c2287ec4594f25653da384f7");
             public static BlueprintAbility DragonkindIIBlueBreath = library.Get<BlueprintAbility>("a78415f2be26edb40912499a643d4a0c");
+            public static BlueprintAbility featherstepmass = library.Get<BlueprintAbility>("d219494150ac1f24f9ce14a3d4f66d26");
+            public static BlueprintAbility blessingofthesalamander = library.Get<BlueprintAbility>("9256a86aec14ad14e9497f6b60e26f3f");
+            public static BlueprintAbility sensevitals = library.Get<BlueprintAbility>("82962a820ebc0e7408b8582fdc3f4c0c");
+            public static BlueprintAbility kiattackextra = library.Get<BlueprintAbility>("7f6ea312f5dad364fa4a896d7db39fdd");
+            public static BlueprintAbility deathclutch = library.Get<BlueprintAbility>("c3d2294a6740bc147870fff652f3ced5");
+            public static BlueprintAbility razorcone = library.Get<BlueprintAbility>("9e57bbe2a8d9cc84086b15f6355346e2");
+            public static BlueprintAbility shoutgreater = library.Get<BlueprintAbility>("fd0d3840c48cafb44bb29e8eb74df204");
+            public static BlueprintAbility DominatePerson = library.Get<BlueprintAbility>("d7cbd2004ce66a042aeab2e95a3c5c61");
+            public static BlueprintAbility stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
             
+
 
         }
 
@@ -428,6 +441,9 @@ namespace TweakMod
                                                                                      new Consideration[] { },
                                                                                      new Consideration[] { NoBuffDisplacement, TargetSelf },
                                                                                      base_score: 10.0f, combat_count: 4, pre_cast: true);
+
+
+
             static public BlueprintAiCastSpell prayer_second = createCastSpellAction("CastPrayerSecond", Spells.prayer,
                                                                          new Consideration[] { },
                                                                          new Consideration[] { },
@@ -465,7 +481,7 @@ namespace TweakMod
             static public BlueprintAiCastSpell seamantle = createCastSpellAction("CastSeamantle", Spells.seamantle,
              new Consideration[] { },
              new Consideration[] { },
-             base_score: 10.0f, combat_count: 1, pre_cast: true);
+             base_score: 50.0f, combat_count: 1, pre_cast: true);
 
             static public BlueprintAiCastSpell greaterdispel = createCastSpellAction("CastGreaterDispelQuick", Spells.greaterdispel,
                 new Consideration[] { },
@@ -481,6 +497,11 @@ namespace TweakMod
                new Consideration[] { },
                new Consideration[] { AOE_ChooseMoreEnemies },
                base_score: 10.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell wavesofexhaustghost = createCastSpellAction("CastWavesOfExhaustionghost", Spells.wavesofexhaust,
+             new Consideration[] { },
+             new Consideration[] { AOE_ChooseMoreEnemies },
+             base_score: 60.0f, combat_count: 1);
 
 
             static public BlueprintAiCastSpell fear = createCastSpellAction("CastFear", Spells.fear,
@@ -551,6 +572,13 @@ namespace TweakMod
     new Consideration[] { },
     new Consideration[] { NoBuffMirrorImage },
     base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell displacementrecast = createCastSpellAction("Castdisplacementrecast", Spells.displacement,
+new Consideration[] { },
+new Consideration[] { NoBuffDisplacement },
+base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 8);
+
+
 
             static public BlueprintAiCastSpell entangle = createCastSpellAction("Castentangle", Spells.entangle,
                 new Consideration[] { },
@@ -706,6 +734,11 @@ base_score: 20.0f, combat_count: 1, cooldown_rounds: 3);
     new Consideration[] { attacktargetspriority, NoBuffSlow },
 base_score: 20.0f, combat_count: 1, cooldown_rounds: 3);
 
+            static public BlueprintAiCastSpell castslowogre = createCastSpellAction("castslowogre", Spells.slow,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, NoBuffSlow },
+base_score: 50.0f, combat_count: 2, cooldown_rounds: 3);
+
             static public BlueprintAiCastSpell caststinkycloud = createCastSpellAction("caststinkycloud", Spells.stinkycloud,
              new Consideration[] { },
              new Consideration[] { attacktargetspriority },
@@ -756,10 +789,22 @@ base_score: 20.0f, cooldown_rounds: 1, start_cooldown_rounds: 5);
          new Consideration[] { attacktargetspriority },
     base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 4);
 
+
+
             static public BlueprintAiCastSpell stoneskincommunal = createCastSpellAction("caststoneskincommunal", Spells.stoneskincommunal,
                  new Consideration[] { },
                  new Consideration[] { AlliesNoBuff_Stoneskin, TargetSelf },
                 base_score: 20.0f, combat_count: 1, start_cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell stoneskin = createCastSpellAction("caststoneskin", Spells.stoneskin,
+     new Consideration[] { },
+     new Consideration[] { AlliesNoBuff_Stoneskin, TargetSelf },
+    base_score: 20.0f, combat_count: 1, pre_cast: true);
+
+            static public BlueprintAiCastSpell stoneskincommunalengel = createCastSpellAction("caststoneskincommunalengel", Spells.stoneskincommunal,
+     new Consideration[] { },
+     new Consideration[] { AlliesNoBuff_Stoneskin, TargetSelf },
+    base_score: 20.0f, combat_count: 1, pre_cast: true);
 
             static public BlueprintAiCastSpell stoneskincommunalmagus = createCastSpellAction("caststoneskincommunalmagus", Spells.stoneskincommunal,
      new Consideration[] { },
@@ -900,6 +945,11 @@ base_score: 20.0f, combat_count: 1);
         new Consideration[] { attacktargetspriority },
         base_score: 3.0f, combat_count: 2, cooldown_rounds: 1);
 
+            static public BlueprintAiCastSpell holdpersonhellknight = createCastSpellAction("Castholdpersonhellknight", Spells.holdperson,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 40.0f, combat_count: 3, cooldown_rounds: 2);
+
             static public BlueprintAiCastSpell holdpersondelaybanditcleric = createCastSpellAction("Castholdpersonbanditdelay", Spells.holdperson,
 new Consideration[] { },
 new Consideration[] { attacktargetspriority },
@@ -1027,10 +1077,21 @@ base_score: 20.0f, variant: Spells.summonmonsterIIId3, combat_count: 1);
             new Consideration[] { AlliesNoBuff_ResistFire },
             base_score: 20.0f, variant: Spells.ResistFirecommunal);
 
+
+            static public BlueprintAiCastSpell castresistfirecommunalgaetane = createCastSpellAction("Castresistfirecommunalgaetane", Spells.Resistenergycommunal,
+            new Consideration[] { },
+            new Consideration[] { AlliesNoBuff_ResistFire },
+            base_score: 50.0f, variant: Spells.ResistFirecommunal, combat_count: 1, start_cooldown_rounds: 3 );
+
             static public BlueprintAiCastSpell castboneshaker = createCastSpellAction("Castboneshaker", Spells.boneshaker,
                                                                          new Consideration[] { },
                                                                          new Consideration[] { LongRange },
                                                                          base_score: 10.0f, start_cooldown_rounds: 3, cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell castboneshakerghostmage = createCastSpellAction("Castboneshakerghostmage", Spells.boneshaker,
+                                                                         new Consideration[] { },
+                                                                         new Consideration[] { LongRange },
+                                                                         base_score: 8.0f, start_cooldown_rounds: 7);
 
             static public BlueprintAiCastSpell castbullsmass = createCastSpellAction("Castbullsmass", Spells.bullsmass,
                                                              new Consideration[] { },
@@ -1072,6 +1133,11 @@ base_score: 20.0f, variant: Spells.summonmonsterIIId3, combat_count: 1);
     new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
     base_score: 20.0f, combat_count: 1);
 
+            static public BlueprintAiCastSpell castfiresnakeogre = createCastSpellAction("Castfiresnakeogre", Spells.firesnake,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 30.0f, combat_count: 3, cooldown_rounds: 2, start_cooldown_rounds: 1);
+
             static public BlueprintAiCastSpell stoneskincommunalsprig = createCastSpellAction("caststoneskincommunalsprig", Spells.stoneskincommunal,
      new Consideration[] { },
      new Consideration[] { AlliesNoBuff_Stoneskin },
@@ -1095,7 +1161,7 @@ base_score: 30.0f, cooldown_rounds: 4);
             static public BlueprintAiCastSpell castmagearmorsprig = createCastSpellAction("castmagearmorsprig", Spells.magearmor,
     new Consideration[] { },
     new Consideration[] { NoBuffMageArmor, TargetSelf },
-    base_score: 20.0f, combat_count: 1, start_cooldown_rounds: 4, pre_cast: true);
+    base_score: 20.0f, combat_count: 1, pre_cast: true);
 
             static public BlueprintAiCastSpell castshieldsprig = createCastSpellAction("castshieldsprig", Spells.shield,
     new Consideration[] { },
@@ -1153,6 +1219,11 @@ new Consideration[] { },
 new Consideration[] { attacktargetspriority, NoBuffStaggered },
 base_score: 40.0f, cooldown_rounds: 2, combat_count: 4, start_cooldown_rounds: 4);
 
+            static public BlueprintAiCastSpell castfrigidtouchogre = createCastSpellAction("castfrigidtouchogre", Spells.frigidtouch,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, NoBuffStaggered },
+base_score: 40.0f, cooldown_rounds: 2, combat_count: 4, start_cooldown_rounds: 11);
+
             static public BlueprintAiCastSpell castfrigidtouchlostsister = createCastSpellAction("castfrigidtouchlostsister", Spells.frigidtouch,
 new Consideration[] { },
 new Consideration[] { attacktargetspriority, NoBuffStaggered },
@@ -1162,6 +1233,12 @@ base_score: 40.0f, cooldown_rounds: 1, start_cooldown_rounds: 10);
 new Consideration[] { NoBuffVampiricTouch },
 new Consideration[] { attacktargetspriority, NotUndead },
 base_score: 40.0f, cooldown_rounds: 3, combat_count: 2, start_cooldown_rounds: 5);
+
+
+            static public BlueprintAiCastSpell castvampirictouchogre = createCastSpellAction("castvampirictouchogre", Spells.vampirictouch,
+new Consideration[] { NoBuffVampiricTouch },
+new Consideration[] { attacktargetspriority, NotUndead },
+base_score: 40.0f, cooldown_rounds: 3, combat_count: 2, start_cooldown_rounds: 12);
 
             static public BlueprintAiCastSpell castvampirictouchowlbear = createCastSpellAction("castvampirictouchowlbear", Spells.vampirictouch,
 new Consideration[] { NoBuffVampiricTouch },
@@ -1202,6 +1279,11 @@ base_score: 40.0f, cooldown_rounds: 3, combat_count: 2, start_cooldown_rounds: 2
             new Consideration[] { },
             new Consideration[] { attacktargetspriority },
             base_score: 40.0f, cooldown_rounds: 3, combat_count: 4, start_cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell castshockgraspogre = createCastSpellAction("castshockgraspogre", Spells.shockinggrasp,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 40.0f, cooldown_rounds: 3, combat_count: 4, start_cooldown_rounds: 13);
 
             static public BlueprintAiCastSpell usedimensionstrike = createCastSpellAction("usedimensionstrike", Spells.dimensionstrike,
         new Consideration[] { StandardActionOffCooldown },
@@ -1496,6 +1578,11 @@ new Consideration[] { },
 new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
 base_score: 20.0f, combat_count: 2, cooldown_rounds: 4);
 
+            static public BlueprintAiCastSpell coneofcoldghostmage = createCastSpellAction("coneofcoldghost", Spells.coneofcold,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 20.0f, combat_count: 2, cooldown_rounds: 3);
+
             static public BlueprintAiCastSpell lightningboltairelemental = createCastSpellAction("castlightningboltairelemental", Spells.lightningbolt,
      new Consideration[] { },
      new Consideration[] { attacktargetspriority, AoE_AvoidFriends },
@@ -1645,6 +1732,11 @@ new Consideration[] { },
  new Consideration[] { attacktargetspriority },
 base_score: 20.0f, combat_count: 4, start_cooldown_rounds: 8, cooldown_rounds: 2);
 
+            static public BlueprintAiCastSpell earpierceirovetti = createCastSpellAction("castearpierceirovetti", Spells.earpiercescream,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 10.0f, start_cooldown_rounds: 8, cooldown_rounds: 1);
+
             static public BlueprintAiCastSpell dragonsbreathgreenhydra = createCastSpellAction("Castdragonsbreathgreenhydra", Spells.dragonsbreath,
 new Consideration[] { },
 new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies, AoE_AvoidFriends },
@@ -1711,10 +1803,20 @@ base_score: 3.0f, cooldown_rounds: 1);
                          new Consideration[] { },
                          base_score: 10.0f, combat_count: 1, pre_cast: true);
 
+            static public BlueprintAiCastSpell castblessingsalamander = createCastSpellAction("castblessingsalamander", Spells.blessingofthesalamander,
+             new Consideration[] { },
+             new Consideration[] {TargetSelf},
+             base_score: 20.0f, combat_count: 1, pre_cast: true);
+
             static public BlueprintAiCastSpell castboneshatterghostmage = createCastSpellAction("castboneshatterghostmage", Spells.boneshatter,
                                     new Consideration[] { },
                                     new Consideration[] { LongRange },
                                     base_score: 20.0f, start_cooldown_rounds: 2, cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell castboneshatterghostmageiro = createCastSpellAction("castboneshatterghostmageiro", Spells.boneshatter,
+                        new Consideration[] { },
+                        new Consideration[] { LongRange },
+                        base_score: 10.0f, start_cooldown_rounds: 4);
 
             static public BlueprintAiCastSpell castburstofglory = createCastSpellAction("castburstofglory", Spells.burstofglory,
 new Consideration[] { },
@@ -1786,6 +1888,11 @@ new Consideration[] { },
 new Consideration[] { AlliesNoBuff_Haste },
 base_score: 30.0f, combat_count: 2, cooldown_rounds: 4);
 
+            static public BlueprintAiCastSpell casthasteghostmageiro = createCastSpellAction("casthasteghostmageiro", Spells.haste,
+new Consideration[] { },
+new Consideration[] { AlliesNoBuff_Haste },
+base_score: 70.0f, combat_count: 2, cooldown_rounds: 4);
+
             static public BlueprintAiCastSpell casticyprisonghostmage = createCastSpellAction("casticyprisonghostmage", Spells.icyprison,
 new Consideration[] { },
 new Consideration[] { attacktargetspriority, SupporCasterFocusConsideration },
@@ -1805,6 +1912,11 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds: 1);
               new Consideration[] { },
               new Consideration[] { attacktargetspriority },
               base_score: 20.0f, combat_count: 2, start_cooldown_rounds: 6, cooldown_rounds: 3);
+
+            static public BlueprintAiCastSpell castsearinglighthellknight = createCastSpellAction("castsearinglighthellknight", Spells.searing_light,
+  new Consideration[] { },
+  new Consideration[] { attacktargetspriority },
+  base_score: 40.0f, combat_count: 2, cooldown_rounds:1);
 
             static public BlueprintAiCastSpell castshieldoffaithzorek = createCastSpellAction("Castshieldoffaithzorek", Spells.shieldoffaith,
 new Consideration[] { },
@@ -1876,10 +1988,15 @@ new Consideration[] { },
 new Consideration[] { },
 base_score: 20.0f, combat_count: 2, cooldown_rounds: 3, start_cooldown_rounds: 2);
 
+            static public BlueprintAiCastSpell coldicestrikeghostmageiro = createCastSpellAction("Castcoldicestrikeghostmageiro", Spells.coldicestrike,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 80.0f, combat_count: 2, cooldown_rounds: 3, start_cooldown_rounds: 2);
+
             static public BlueprintAiCastSpell displacementghostmage = createCastSpellAction("Castdisplacementghostmage", Spells.displacement,
                                                                          new Consideration[] { },
                                                                          new Consideration[] { NoBuffDisplacement, TargetSelf },
-                                                                         base_score: 30.0f, combat_count: 2, cooldown_rounds: 4);
+                                                                         base_score: 30.0f, combat_count: 1, cooldown_rounds: 4,pre_cast:true);
 
             static public BlueprintAiCastSpell flamestrikebandit = createCastSpellAction("Castflamestrikebandit", Spells.flamestrike,
 new Consideration[] { },
@@ -1911,6 +2028,11 @@ new Consideration[] { },
 new Consideration[] { AlliesNoBuff_Stoneskin, TargetSelf },
 base_score: 40.0f, combat_count: 2, cooldown_rounds: 5);
 
+            static public BlueprintAiCastSpell stoneskincommunalghostmageiro = createCastSpellAction("caststoneskincommunalghostmageiro", Spells.stoneskincommunal,
+new Consideration[] { },
+new Consideration[] { AlliesNoBuff_Stoneskin, TargetSelf },
+base_score: 60.0f, combat_count: 2, cooldown_rounds: 5);
+
             static public BlueprintAiCastSpell summondweomercat = createCastSpellAction("Castsummondweomercat", Spells.summondweomercat,
 new Consideration[] { },
 new Consideration[] { },
@@ -1936,10 +2058,22 @@ new Consideration[] { },
 new Consideration[] { },
 base_score: 20.0f, combat_count: 1);
 
+            static public BlueprintAiCastSpell usesummonspectreghost = createCastSpellAction("usesummonspectreghost", Spells.summonvengefulspectres,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 150.0f, combat_count: 1);
+
             static public BlueprintAiCastSpell castkishout = createCastSpellAction("castkishout", Spells.kishout,
 new Consideration[] { },
  new Consideration[] { attacktargetspriority },
 base_score: 20.0f, combat_count: 2, start_cooldown_rounds: 1, cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castkishoutirovetti = createCastSpellAction("castkishoutirovetti", Spells.kishout,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 40.0f, combat_count: 3, start_cooldown_rounds: 1, cooldown_rounds: 2);
+
+
 
             static public BlueprintAiCastSpell castholdmonster = createCastSpellAction("castholdmonster", Spells.holdmonster,
 new Consideration[] { },
@@ -1970,6 +2104,11 @@ base_score: 20.0f, combat_count: 1, pre_cast: true);
     new Consideration[] { },
     new Consideration[] { AOE_ChooseMoreEnemies },
     base_score: 30.0f, variant: Spells.greaterdispelarea, combat_count: 2, cooldown_rounds: 3);
+
+            static public BlueprintAiCastSpell greaterdispelghostmageiro = createCastSpellAction("CastGreaterDispelQuickghostmageiro", Spells.greaterdispel,
+new Consideration[] { },
+new Consideration[] { AOE_ChooseMoreEnemies },
+base_score: 70.0f, variant: Spells.greaterdispelarea, combat_count: 2, cooldown_rounds: 3);
 
             static public BlueprintAiCastSpell casthastenird = createCastSpellAction("casthastenird", Spells.haste,
 new Consideration[] { },
@@ -2005,6 +2144,7 @@ base_score: 100.0f, combat_count: 2, cooldown_rounds: 5);
 new Consideration[] { },
 new Consideration[] { AlliesNoBuff_GoodHope, TargetSelf },
 base_score: 90.0f, combat_count: 2, cooldown_rounds: 5, start_cooldown_rounds: 6);
+
 
             static public BlueprintAiCastSpell castcontrolledfireballtransmuter = createCastSpellAction("castcontrolledfireballtransmuter", Spells.controlledfireball,
 new Consideration[] { },
@@ -2057,6 +2197,11 @@ new Consideration[] { },
 new Consideration[] { attacktargetspriority },
 base_score: 30.0f, combat_count: 3, cooldown_rounds: 2, start_cooldown_rounds: 4);
 
+            static public BlueprintAiCastSpell castresonatingwordirovetti = createCastSpellAction("castresonatingwordirovetti", Spells.resonatingword,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 40.0f, combat_count: 2, cooldown_rounds: 2, start_cooldown_rounds: 4);
+
 
             static public BlueprintAiCastSpell castsongofdiscordtreb = createCastSpellAction("castsongofdiscordtreb", Spells.songofdiscord,
 new Consideration[] { },
@@ -2094,6 +2239,62 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
                 new Consideration[] { },
                 new Consideration[] { AOE_ChooseMoreEnemies, AoE_AvoidFriends },
                 base_score: 30.0f,  start_cooldown_rounds: 3);
+
+            static public BlueprintAiCastSpell featherstepmass = createCastSpellAction("castfeathermass", Spells.featherstepmass,
+    new Consideration[] { },
+    new Consideration[] { },
+    base_score: 30.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell sensevitalsgaetane = createCastSpellAction("sensevitalsgaetane", Spells.sensevitals,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 30.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell castentanglegaetane = createCastSpellAction("astentanglegaetane", Spells.entangle,
+    new Consideration[] { },
+     new Consideration[] { AOE_ChooseMoreEnemies },
+    base_score: 20.0f, combat_count: 1, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell usekipool = createCastSpellAction("usekipool", Spells.kiattackextra,
+new Consideration[] { },
+new Consideration[] {  },
+base_score: 50.0f, cooldown_rounds: 1, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castdeathclutchghost = createCastSpellAction("castdeathclutchghost", Spells.deathclutch,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority},
+base_score: 20.0f, combat_count: 2, cooldown_rounds: 4, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castrazoecone = createCastSpellAction("castrazoecone", Spells.razorcone,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 60.0f, combat_count: 5, cooldown_rounds: 2, start_cooldown_rounds: 1);
+
+
+            static public BlueprintAiCastSpell overwhelmingpresenceirovetii = createCastSpellAction("CastOverwhelmingpresenceirovetti", Spells.overwhelmingpresence,
+            new Consideration[] { },
+            new Consideration[] { AOE_ChooseMoreEnemies },
+            base_score: 60.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell castshoutgreater = createCastSpellAction("castshoutgreater", Spells.shoutgreater,
+new Consideration[] { },
+new Consideration[] { AOE_ChooseMoreEnemies },
+base_score: 40.0f, combat_count: 3, cooldown_rounds: 2, start_cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell castdominateirovetti = createCastSpellAction("castdominateirovetti", Spells.DominatePerson,
+new Consideration[] { },
+new Consideration[] { NoBuffDominate},
+base_score: 50.0f, combat_count: 4, cooldown_rounds: 2, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castgoodhopeirovetti = createCastSpellAction("castgoodhopeirovetti", Spells.goodhope,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
+
+            static public BlueprintAiCastSpell casthasteirovetti = createCastSpellAction("casthasteirovetti", Spells.haste,
+new Consideration[] { },
+new Consideration[] { TargetSelf },
+base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
 
 
 
@@ -2491,6 +2692,15 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
 
             //Chapter 5
 
+            //Hellknight Quest
+            changeLinxia();
+            changeHellknightA();
+            changeHellknightB();
+            changeHellCasterA();
+            changeHellCasterB();
+            changeHellClericA();
+            changeHellClericB();
+
             //River Pirates Camp
 
             changeriverbladepositivecleric();
@@ -2563,6 +2773,13 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             updateGoldGolemPalace();
             updateYellowGolemPalace();
             updateNirdCottenroplePitax();
+            //updateLuarCottenrople();
+            changeGaetane();
+            updateOgreMagus();
+            changeAlasen();
+            changeIrovettiGhostMage();
+            changeIrovetti();
+            changeEngelidis();
 
             //Chapter 6
 
@@ -5815,6 +6032,8 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
             brain.Actions = brain.Actions.AddToArray(AiActions.cleave);
 
+            CR3_SkeletalChampion.GetComponent<AddTags>().UseInRandomEncounter = false;
+
 
 
         }
@@ -5851,6 +6070,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             brain.Actions = brain.Actions.AddToArray(AiActions.cleave);
 
 
+            CR2_SkeletalChampion.GetComponent<AddTags>().UseInRandomEncounter = false;
 
         }
 
@@ -12069,7 +12289,8 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             var natarmor10 = library.Get<BlueprintUnitFact>("4179c5c08d606a6439a62bf178b738e1");
             var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
             var shieldbuff = library.Get<BlueprintBuff>("f01f31b601e38034fa0460d16778a306");
-            
+            var bansheeblast = library.Get<BlueprintAbility>("d42c6d3f29e07b6409d670792d72bc82");
+
 
             {
 
@@ -12078,7 +12299,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
                 vordakai.AddFacts = vordakai.AddFacts.AddToArray(quicken,summoncyclops,dr5,natarmor10,displacementbuff,shieldbuff);
 
 
-                vordakai.Intelligence = 19;
+                vordakai.Intelligence = 21;
 
           
 
@@ -12101,6 +12322,14 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
                 newwizardLevels2.Spells = spell_list2;
                 vordakai_spells.ReplaceComponent(wizardLevels2, newwizardLevels2);
 
+                var magusLevels10 = vordakai_feature.ComponentsArray
+    .OfType<AddClassLevels>()
+    .First(c => c.CharacterClass == wizardClass);
+                var newAddClassLevels10 = magusLevels10.CreateCopy();
+                var spell_list10 = newAddClassLevels10.SelectSpells.AddToArray(greaterdispel);
+                newAddClassLevels10.SelectSpells = spell_list10;
+                vordakai_feature.ReplaceComponent(magusLevels10, newAddClassLevels10);
+
                 var wizardLevels3 = vordakai_feature.ComponentsArray
     .OfType<AddClassLevels>()
     .First(c => c.CharacterClass == wizardClass);
@@ -12116,6 +12345,14 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
                 var spell_list4 = newwizardLevels4.MemorizeSpells.RemoveFromArray(VampiricTouchCast);
                 newwizardLevels4.MemorizeSpells = spell_list4;
                 vordakai_feature.ReplaceComponent(wizardLevels4, newwizardLevels4);
+
+                var wizardLevels8 = vordakai_feature.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == wizardClass);
+                var newwizardLevels8 = wizardLevels8.CreateCopy();
+                var spell_list8 = newwizardLevels8.MemorizeSpells.RemoveFromArray(bansheeblast);
+                newwizardLevels8.MemorizeSpells = spell_list8;
+                vordakai_feature.ReplaceComponent(wizardLevels8, newwizardLevels8);
 
                 var undeadLevels = vordakai_feature.ComponentsArray
 .OfType<AddClassLevels>()
@@ -14284,6 +14521,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             var mageshieldbuff = library.Get<BlueprintBuff>("9c0fa9b438ada3f43864be8dd8b3e741");
             var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
             var magearmor = library.Get<BlueprintAbility>("9e1ad5d6f87d19e4d8883d63a6e35568");
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
 
             var GhostFX = library.Get<BlueprintBuff>("20f79fea035330b479fc899fa201d232");
             var UndeadType = library.Get<BlueprintFeature>("734a29b693e9ec346ba2951b27987e33");
@@ -14362,7 +14600,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
                 .First(c => c.CharacterClass == sorcererClass);
             var newAddClassLevels2 = sorcererLevels2.CreateCopy();
             var spell_list5 = newAddClassLevels2.SelectSpells.AddToArray(displacement,coldicestrike,bansheeblast,haste,slow,phantasmalputrification,
-                                                                         summongreatair,stoneskincommunal,mirrorimage,icyprison,coneofcold,boneshatter,snowball,boneshaker,shield,magearmor);
+                                                                         summongreatair,stoneskincommunal,mirrorimage,icyprison,coneofcold,boneshatter,snowball,boneshaker,shield,magearmor,greaterdispel);
             newAddClassLevels2.SelectSpells = spell_list5;
             ghostmageA.ReplaceComponent(sorcererLevels2, newAddClassLevels2);
 
@@ -15027,6 +15265,484 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
 
 
         //CHAPTER 5
+
+        //Hellknight Quest
+
+        static void changeLinxia()
+        {
+
+
+
+            var Linxia = library.Get<BlueprintUnit>("cbc913321c4233e41b85c3d251abb0bb");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var inquisitorClass = library.Get<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var BanditPositiveClericFeatureListLevel7 = library.Get<BlueprintFeature>("7e05ee6b9875c354aa88985490e64baf");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var fester = library.Get<BlueprintAbility>("2dbe271c979d9104c8e2e6b42e208e32");
+            var dispel = library.Get<BlueprintAbility>("92681f181b507b34ea87018e8f7a528a");
+            var aid = library.Get<BlueprintAbility>("03a9630394d10164a9410882d31572f0");
+            var shieldoffaith = library.Get<BlueprintAbility>("183d5bb91dea3a1489a6db6c9cb64445");
+            var ProtectionJudgementBuff = library.Get<BlueprintBuff>("99345ce7c0f8001438fee23db660d039");
+            var PurityBuff = library.Get<BlueprintBuff>("fbc7fe386bceb354494b05736381c238");
+            var JusticeJudgementBuff = library.Get<BlueprintBuff>("fc246eb29c8f95c449fd156759f421e9");
+            var Natarmor2 = library.Get<BlueprintUnitFact>("45a52ce762f637f4c80cc741c91f58b7");
+            var ShakeItOff = library.Get<BlueprintFeature>("6337b37f2a7c11b4ab0831d6780bce2a");
+            var toughness = library.Get<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
+            var WeaponFocusLongsword = library.Get<BlueprintFeature>("de132895bff199d4f98ceeea6c88c04e");
+            var dodge = library.Get<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var banefeature = library.Get<BlueprintFeature>("a0571cc93916dcf498bcea611e9d5573");
+            var coordinatedshot = library.Get<BlueprintFeature>("6c53965320604cfeb13d283afd147e09");
+            var stoneskincommunal = library.Get<BlueprintAbility>("7c5d556b9a5883048bf030e20daebe31");
+            var divinepower = library.Get<BlueprintAbility>("ef16771cb05d1344989519e87f25b3c5");
+            var castigatemass = library.Get<BlueprintAbility>("41236cf0e476d7043bc16a33a9f449bd");
+            var siezethemoment = library.Get<BlueprintFeature>("1191ef3065e6f8e4f9fbe1b7e3c0f760");
+            var IronWill = library.Get<BlueprintFeature>("175d1577bb6c9a04baf88eec99c66334");
+            var HammerTheGap = library.Get<BlueprintFeature>("7b64641c76ff4a744a2bce7f91a20f9a");
+            var CombatReflexes = library.Get<BlueprintFeature>("7b64641c76ff4a744a2bce7f91a20f9a");
+            var BlindFight = library.Get<BlueprintFeature>("4e219f5894ad0ea4daa0699e28c37b1d");
+            var festermass = library.Get<BlueprintAbility>("52b8b14360a87104482b2735c7fc8606");
+            var ShieldWall = library.Get<BlueprintFeature>("8976de442862f82488a4b138a0a89907");
+            var righteousmight = library.Get<BlueprintAbility>("90810e5cf53bf854293cbd5ea1066252");
+            var prayer = library.Get<BlueprintAbility>("faabd2cc67efa4646ac58c7bb3e40fcc");
+            var BarkskinFixedBuff4 = library.Get<BlueprintBuff>("64926aaee36f7534aaa34ae70ba8328c");
+
+
+            Linxia.AddFacts = Linxia.AddFacts.AddToArray(quicken, WeaponFocusLongsword,
+                                                                             ProtectionJudgementBuff, PurityBuff, Natarmor2,
+                                                                             ShakeItOff, combatcasting, dodge, banefeature, siezethemoment, ShieldWall);
+
+            Linxia.AddFacts = Linxia.AddFacts.RemoveFromArray(BarkskinFixedBuff4);
+
+
+            Linxia.Wisdom = 21;
+
+
+            Linxia.Visual.Barks = library.Get<BlueprintUnitAsksList>("c19c6b9c2772526409b7cdb5f3364efe");
+
+
+
+
+            var roguelevels = Linxia.ComponentsArray
+    .OfType<AddClassLevels>()
+    .First(c => c.CharacterClass == inquisitorClass);
+            var newAddClassLevels3 = roguelevels.CreateCopy();
+            newAddClassLevels3.CharacterClass = library.Get<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            newAddClassLevels3.Levels = 0;
+            Linxia.ReplaceComponent(roguelevels, newAddClassLevels3);
+
+
+            var inquisitorLevels = Linxia.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = inquisitorLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            newAddClassLevels.Levels = 15;
+            var spell_list2 = newAddClassLevels.SelectSpells.AddToArray(heroism, fester, dispel, aid, shieldoffaith, divinepower, castigatemass, stoneskincommunal, prayer);
+            newAddClassLevels.SelectSpells = spell_list2;
+            Linxia.ReplaceComponent(inquisitorLevels, newAddClassLevels);
+
+
+
+
+
+
+
+
+
+
+            var auto_metamgic2 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.shieldoffaith);
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.heroism);
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.divinepower);
+
+            var brain = Linxia.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.stoneskincommunalinquisitor, AiActions.castheroism, AiActions.castshieldoffaith,
+                                                      AiActions.castcastigatemass,  AiActions.prayerbandit, AiActions.castdivinepowerdelay,AiActions.castfester,AiActions.dispel);
+
+
+
+            Linxia.GetComponent<Experience>().CR = 15;
+
+
+
+        }
+
+        static void changeHellknightA()
+
+        {
+
+
+            var hellknight = library.Get<BlueprintUnit>("28bf148747e268241888b801df484562");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var lightningreflexes = library.Get<BlueprintFeature>("15e7da6645a7f3d41bdad7c8c4b9de1e");
+            var disarm = library.Get<BlueprintAbility>("45d94c6db453cfc4a9b99b72d6afe6f6");
+            var disarmfeat = library.Get<BlueprintFeature>("63d8e3a9ab4d72e4081a7862d7246a79");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var cleavefeat = library.Get<BlueprintFeature>("d809b6c4ff2aaff4fa70d712a70f7d7b");
+            var greatcleavefeat = library.Get<BlueprintFeature>("cc9c862ef2e03af4f89be5088851ea35");
+
+            hellknight.AddFacts = hellknight.AddFacts.AddToArray(disarmfeat, greatfortitude, lightningreflexes, disarm);
+            hellknight.AddFacts = hellknight.AddFacts.RemoveFromArray(greatcleavefeat);
+            hellknight.AddFacts = hellknight.AddFacts.RemoveFromArray(cleavefeat);
+
+
+
+
+            hellknight.Body.SecondaryHand = library.Get<BlueprintItemShield>("5c7b898a1bfb6cb4f8c14a0ebc143abe"); //heavy shield +1            
+
+
+            var fighterLevels = hellknight.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 14;
+            hellknight.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+
+
+
+
+            var brain = hellknight.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.usedisarmspectre);
+
+
+
+
+            hellknight.GetComponent<Experience>().CR = 10;
+
+        }
+
+        static void changeHellknightB()
+
+        {
+
+
+            var hellknight = library.Get<BlueprintUnit>("827a6a80ec090554d93dd841b045c973");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var lightningreflexes = library.Get<BlueprintFeature>("15e7da6645a7f3d41bdad7c8c4b9de1e");
+            var disarm = library.Get<BlueprintAbility>("45d94c6db453cfc4a9b99b72d6afe6f6");
+            var disarmfeat = library.Get<BlueprintFeature>("63d8e3a9ab4d72e4081a7862d7246a79");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var cleavefeat = library.Get<BlueprintFeature>("d809b6c4ff2aaff4fa70d712a70f7d7b");
+            var greatcleavefeat = library.Get<BlueprintFeature>("cc9c862ef2e03af4f89be5088851ea35");
+
+            hellknight.AddFacts = hellknight.AddFacts.AddToArray(disarmfeat, greatfortitude, lightningreflexes, disarm);
+            hellknight.AddFacts = hellknight.AddFacts.RemoveFromArray(greatcleavefeat);
+            hellknight.AddFacts = hellknight.AddFacts.RemoveFromArray(cleavefeat);
+
+
+
+
+
+            hellknight.Body.SecondaryHand = library.Get<BlueprintItemShield>("5c7b898a1bfb6cb4f8c14a0ebc143abe"); //heavy shield +1            
+
+
+            var fighterLevels = hellknight.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 14;
+            hellknight.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+
+
+
+
+            var brain = hellknight.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GreatCleaveAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.usedisarmspectre);
+
+
+
+
+            hellknight.GetComponent<Experience>().CR = 10;
+
+        }
+
+        static void changeHellCasterA()
+
+        {
+
+
+            var hellknightcasterA = library.Get<BlueprintUnit>("3f75363e5c321bb40bfb14f25f1375e0");
+            var eldritchClass = library.Get<BlueprintCharacterClass>("de52b73972f0ed74c87f8f6a8e20b542");
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var lightningreflexes = library.Get<BlueprintFeature>("15e7da6645a7f3d41bdad7c8c4b9de1e");
+            var disarm = library.Get<BlueprintAbility>("45d94c6db453cfc4a9b99b72d6afe6f6");
+            var disarmfeat = library.Get<BlueprintFeature>("63d8e3a9ab4d72e4081a7862d7246a79");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var cleavefeat = library.Get<BlueprintFeature>("d809b6c4ff2aaff4fa70d712a70f7d7b");
+            var greatcleavefeat = library.Get<BlueprintFeature>("cc9c862ef2e03af4f89be5088851ea35");
+            var wizardClass = library.Get<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var enervation = library.Get<BlueprintAbility>("f34fb78eaaec141469079af124bcfa0f");
+            var ScorchingRay = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+
+
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.AddToArray(lightningreflexes);
+
+
+
+
+            var fighterLevels = hellknightcasterA.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == eldritchClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 5;
+            hellknightcasterA.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+
+            var clericLevels3 = hellknightcasterA.ComponentsArray
+              .OfType<AddClassLevels>()
+              .First(c => c.CharacterClass == wizardClass);
+            var newclericLevels3 = clericLevels3.CreateCopy();
+            newclericLevels3.Levels = 8;
+            var spell_list3 = newclericLevels3.MemorizeSpells.AddToArray(mirrorimage,displacement);
+            newclericLevels3.MemorizeSpells = spell_list3;
+            hellknightcasterA.ReplaceComponent(clericLevels3, newclericLevels3);
+
+            var clericLevels6 = hellknightcasterA.ComponentsArray
+  .OfType<AddClassLevels>()
+  .First(c => c.CharacterClass == eldritchClass);
+            var newclericLevels6 = clericLevels6.CreateCopy();
+            var spell_list6 = newclericLevels6.SelectSpells.AddToArray(mirrorimage, displacement);
+            newclericLevels6.MemorizeSpells = spell_list6;
+            hellknightcasterA.ReplaceComponent(clericLevels6, newclericLevels6);
+
+            var clericLevels2 = hellknightcasterA.ComponentsArray
+               .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == wizardClass);
+            var newclericLevels2 = clericLevels2.CreateCopy();
+            var spell_list2 = newclericLevels2.MemorizeSpells.RemoveFromArray(enervation);
+            newclericLevels2.MemorizeSpells = spell_list2;
+            hellknightcasterA.ReplaceComponent(clericLevels2, newclericLevels2);
+
+
+            var clericLevels4 = hellknightcasterA.ComponentsArray
+   .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == wizardClass);
+            var newclericLevels4 = clericLevels4.CreateCopy();
+            var spell_list4 = newclericLevels4.MemorizeSpells.RemoveFromArray(enervation);
+            newclericLevels4.MemorizeSpells = spell_list4;
+            hellknightcasterA.ReplaceComponent(clericLevels4, newclericLevels4);
+
+
+            var hasteai = library.Get<BlueprintAiAction>("c52c9c1d503180e44aebf198445d1845");
+
+
+
+
+            var brain = hellknightcasterA.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(hasteai);
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage,AiActions.displacementvordakai,AiActions.castshieldgoblin,AiActions.casthastebanditnecro);
+
+
+
+
+            hellknightcasterA.GetComponent<Experience>().CR = 10;
+
+        }
+
+        static void changeHellCasterB()
+
+        {
+
+
+            var hellknightcasterA = library.Get<BlueprintUnit>("8c6b6209c0693c645b680e15a24889e4");
+            var eldritchClass = library.Get<BlueprintCharacterClass>("de52b73972f0ed74c87f8f6a8e20b542");
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var lightningreflexes = library.Get<BlueprintFeature>("15e7da6645a7f3d41bdad7c8c4b9de1e");
+            var disarm = library.Get<BlueprintAbility>("45d94c6db453cfc4a9b99b72d6afe6f6");
+            var disarmfeat = library.Get<BlueprintFeature>("63d8e3a9ab4d72e4081a7862d7246a79");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var cleavefeat = library.Get<BlueprintFeature>("d809b6c4ff2aaff4fa70d712a70f7d7b");
+            var greatcleavefeat = library.Get<BlueprintFeature>("cc9c862ef2e03af4f89be5088851ea35");
+            var wizardClass = library.Get<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var enervation = library.Get<BlueprintAbility>("f34fb78eaaec141469079af124bcfa0f");
+            var ScorchingRay = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+
+
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.AddToArray(lightningreflexes);
+
+
+
+
+            var fighterLevels = hellknightcasterA.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == eldritchClass);
+            var newAddClassLevels = fighterLevels.CreateCopy();
+            newAddClassLevels.Levels = 5;
+            hellknightcasterA.ReplaceComponent(fighterLevels, newAddClassLevels);
+
+
+            var clericLevels3 = hellknightcasterA.ComponentsArray
+              .OfType<AddClassLevels>()
+              .First(c => c.CharacterClass == wizardClass);
+            var newclericLevels3 = clericLevels3.CreateCopy();
+            newclericLevels3.Levels = 8;
+            var spell_list3 = newclericLevels3.MemorizeSpells.AddToArray(mirrorimage, displacement);
+            newclericLevels3.MemorizeSpells = spell_list3;
+            hellknightcasterA.ReplaceComponent(clericLevels3, newclericLevels3);
+
+            var clericLevels6 = hellknightcasterA.ComponentsArray
+  .OfType<AddClassLevels>()
+  .First(c => c.CharacterClass == eldritchClass);
+            var newclericLevels6 = clericLevels6.CreateCopy();
+            var spell_list6 = newclericLevels6.SelectSpells.AddToArray(mirrorimage, displacement);
+            newclericLevels6.MemorizeSpells = spell_list6;
+            hellknightcasterA.ReplaceComponent(clericLevels6, newclericLevels6);
+
+            var clericLevels2 = hellknightcasterA.ComponentsArray
+               .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == wizardClass);
+            var newclericLevels2 = clericLevels2.CreateCopy();
+            var spell_list2 = newclericLevels2.MemorizeSpells.RemoveFromArray(enervation);
+            newclericLevels2.MemorizeSpells = spell_list2;
+            hellknightcasterA.ReplaceComponent(clericLevels2, newclericLevels2);
+
+
+            var clericLevels4 = hellknightcasterA.ComponentsArray
+   .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == wizardClass);
+            var newclericLevels4 = clericLevels4.CreateCopy();
+            var spell_list4 = newclericLevels4.MemorizeSpells.RemoveFromArray(enervation);
+            newclericLevels4.MemorizeSpells = spell_list4;
+            hellknightcasterA.ReplaceComponent(clericLevels4, newclericLevels4);
+
+
+            var slowai = library.Get<BlueprintAiAction>("d67858e438dd8834f9e61a1cb1c592a6");
+
+            
+
+
+            var brain = hellknightcasterA.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(slowai);
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage, AiActions.displacementvordakai, AiActions.castshieldgoblin, AiActions.castslownird);
+
+
+
+
+            hellknightcasterA.GetComponent<Experience>().CR = 10;
+
+        }
+
+        static void changeHellClericA()
+
+        {
+
+
+            var hellknightcasterA = library.Get<BlueprintUnit>("ccfc9b4cf166516489fbd514c2e93b93");
+            
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var lightningreflexes = library.Get<BlueprintFeature>("15e7da6645a7f3d41bdad7c8c4b9de1e");
+            var searinglight = library.Get<BlueprintAbility>("bf0accce250381a44b857d4af6c8e10d");
+            
+            var clericClass = library.Get<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var mirrorimagebuff = library.Get<BlueprintBuff>("98dc7e7cc6ef59f4abe20c65708ac623");
+            var barkskinbuff = library.Get<BlueprintBuff>("533592a86adecda4e9fd5ed37a028432");
+            var stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
+            var heroismbuff = library.Get<BlueprintBuff>("87ab2fed7feaaff47b62a3320a57ad8d");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.AddToArray(lightningreflexes,heroismbuff,quicken);
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.RemoveFromArray(displacementbuff);
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.RemoveFromArray(mirrorimagebuff);
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.RemoveFromArray(barkskinbuff);
+
+
+            var clericLevels3 = hellknightcasterA.ComponentsArray
+              .OfType<AddClassLevels>()
+              .First(c => c.CharacterClass == clericClass);
+            var newclericLevels3 = clericLevels3.CreateCopy();
+            newclericLevels3.Levels = 13;
+            var spell_list3 = newclericLevels3.MemorizeSpells.AddToArray(searinglight, searinglight, stoneskin);
+            newclericLevels3.MemorizeSpells = spell_list3;
+            hellknightcasterA.ReplaceComponent(clericLevels3, newclericLevels3);
+
+
+
+            var HoldPersonAiAction = library.Get<BlueprintAiAction>("aee2f46dfa119d44b8bd415d2f5ad339");
+
+
+
+            var brain = hellknightcasterA.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(HoldPersonAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.castsearinglighthellknight, AiActions.holdpersonhellknight,
+                                                    AiActions.castshieldoffaithgorum, AiActions.castdivinepowerdelaypitax,AiActions.stoneskin);
+
+
+
+
+            hellknightcasterA.GetComponent<Experience>().CR = 10;
+
+
+
+
+        }
+
+        static void changeHellClericB()
+
+        {
+
+
+            var hellknightcasterA = library.Get<BlueprintUnit>("4059c85ec18acec498a7af2986f33162");
+
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var lightningreflexes = library.Get<BlueprintFeature>("15e7da6645a7f3d41bdad7c8c4b9de1e");
+            var searinglight = library.Get<BlueprintAbility>("bf0accce250381a44b857d4af6c8e10d");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var clericClass = library.Get<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var mirrorimagebuff = library.Get<BlueprintBuff>("98dc7e7cc6ef59f4abe20c65708ac623");
+            var barkskinbuff = library.Get<BlueprintBuff>("533592a86adecda4e9fd5ed37a028432");
+            var stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
+            var heroismbuff = library.Get<BlueprintBuff>("87ab2fed7feaaff47b62a3320a57ad8d");
+
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.AddToArray(lightningreflexes, heroismbuff,quicken);
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.RemoveFromArray(displacementbuff);
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.RemoveFromArray(mirrorimagebuff);
+            hellknightcasterA.AddFacts = hellknightcasterA.AddFacts.RemoveFromArray(barkskinbuff);
+
+
+            var clericLevels3 = hellknightcasterA.ComponentsArray
+              .OfType<AddClassLevels>()
+              .First(c => c.CharacterClass == clericClass);
+            var newclericLevels3 = clericLevels3.CreateCopy();
+            newclericLevels3.Levels = 13;
+            var spell_list3 = newclericLevels3.MemorizeSpells.AddToArray(searinglight, searinglight, stoneskin);
+            newclericLevels3.MemorizeSpells = spell_list3;
+            hellknightcasterA.ReplaceComponent(clericLevels3, newclericLevels3);
+
+
+
+            var HoldPersonAiAction = library.Get<BlueprintAiAction>("aee2f46dfa119d44b8bd415d2f5ad339");
+
+
+
+            var brain = hellknightcasterA.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(HoldPersonAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.castsearinglighthellknight, AiActions.holdpersonhellknight,
+                                                    AiActions.castshieldoffaithgorum, AiActions.castdivinepowerdelaypitax, AiActions.stoneskin);
+
+
+
+
+            hellknightcasterA.GetComponent<Experience>().CR = 10;
+
+
+
+
+        }
 
         //River Pirates Camp
 
@@ -16094,11 +16810,11 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
             var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
             var hellfireray = library.Get<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
-            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
             var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
             var dragonsbreath = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
 
-        NirdCottenrople.AddFacts = NirdCottenrople.AddFacts.AddToArray(quicken);
+            NirdCottenrople.AddFacts = NirdCottenrople.AddFacts.AddToArray(quicken);
 
 
 
@@ -16122,7 +16838,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
     .OfType<AddClassLevels>()
     .First(c => c.CharacterClass == WizardClass);
             var newAddClassLevels3 = magusLevels3.CreateCopy();
-            var spell_list2 = newAddClassLevels3.SelectSpells.AddToArray(displacement, mirrorimage, haste, shield, hellfireray, stoneskincommunal, greaterdispel,slow,dragonsbreath);
+            var spell_list2 = newAddClassLevels3.SelectSpells.AddToArray(displacement, mirrorimage, haste, shield, hellfireray,greaterdispel, stoneskincommunal,slow,dragonsbreath);
             newAddClassLevels3.SelectSpells = spell_list2;
             NirdCottenrople.ReplaceComponent(magusLevels3, newAddClassLevels3);
 
@@ -16130,7 +16846,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
                 .OfType<AddClassLevels>()
                 .First(c => c.CharacterClass == WizardClass);
             var newAddClassLevels2 = magusLevels2.CreateCopy();
-            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(displacement, mirrorimage, haste,  shield, hellfireray, hellfireray, greaterdispel, greaterdispel, stoneskincommunal,slow,dragonsbreath);
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(displacement, mirrorimage, haste,  shield, hellfireray, hellfireray,greaterdispel,greaterdispel, stoneskincommunal,slow,dragonsbreath);
             newAddClassLevels2.MemorizeSpells = spell_list;
             NirdCottenrople.ReplaceComponent(magusLevels2, newAddClassLevels2);
 
@@ -17799,7 +18515,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             var bless = library.Get<BlueprintAbility>("90e59f4a4ada87243b7b3535a06d0638");
             var channelenergy = library.Get<BlueprintFeature>("a79013ff4bcd4864cb669622a29ddafb");
             var bardClass = library.Get<BlueprintCharacterClass>("772c83a25e2268e448e841dcd548235f");
-
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
 
             var channelpositive = library.Get<BlueprintAbility>("507ba29b9238431baf0ff39c215b5899");
             var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
@@ -17831,7 +18547,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             var newclericLevels3 = clericLevels3.CreateCopy();
             var spell_list3 = newclericLevels3.MemorizeSpells.AddToArray(summonelementalgreat, umbralstrike, chainsoflight, chainsoflight,
                                                                          righteousmight, bullsmass, heal, flamestrike, flamestrike, burstofglory, heroism,
-                                                                         searing_light, searing_light, prayer, divinepower, divinepower, shieldoffaith, bless);
+                                                                         searing_light, searing_light, prayer, divinepower, divinepower, shieldoffaith, bless,greaterdispel);
             newclericLevels3.MemorizeSpells = spell_list3;
             PitaxPriest.ReplaceComponent(clericLevels3, newclericLevels3);
 
@@ -18540,7 +19256,6 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
 
         }
 
-
         static void updateNirdCottenroplePitax()
         {
 
@@ -18622,6 +19337,551 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
 
         }
 
+        static void updateLuarCottenrople()
+        {
+
+
+            var WizardClass = library.Get<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
+            var LuarCottenrople = library.Get<BlueprintUnit>("9c6f8fbcbfcfa594c872200406dd8139");
+            var stoneskincommunal = library.Get<BlueprintAbility>("7c5d556b9a5883048bf030e20daebe31");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var DominatePerson = library.Get<BlueprintAbility>("d7cbd2004ce66a042aeab2e95a3c5c61");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+
+
+            LuarCottenrople.AddFacts = LuarCottenrople.AddFacts.AddToArray(quicken);
+
+
+
+
+
+
+
+            var wizardLevels = LuarCottenrople.ComponentsArray
+                .OfType<AddClassLevels>()
+                 .First(c => c.CharacterClass == WizardClass);
+            var newwizardLevels = wizardLevels.CreateCopy();
+            newwizardLevels.Levels = 17;
+            LuarCottenrople.ReplaceComponent(wizardLevels, newwizardLevels);
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.displacement);
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+
+            var magusLevels3 = LuarCottenrople.ComponentsArray
+    .OfType<AddClassLevels>()
+    .First(c => c.CharacterClass == WizardClass);
+            var newAddClassLevels3 = magusLevels3.CreateCopy();
+            var spell_list2 = newAddClassLevels3.SelectSpells.AddToArray(displacement, mirrorimage, shield, stoneskincommunal, greaterdispel, greaterdispel, slow,slow);
+            newAddClassLevels3.SelectSpells = spell_list2;
+            LuarCottenrople.ReplaceComponent(magusLevels3, newAddClassLevels3);
+
+            var magusLevels2 = LuarCottenrople.ComponentsArray
+                .OfType<AddClassLevels>()
+                .First(c => c.CharacterClass == WizardClass);
+            var newAddClassLevels2 = magusLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(displacement, mirrorimage,  shield, greaterdispel, greaterdispel, stoneskincommunal, slow);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            LuarCottenrople.ReplaceComponent(magusLevels2, newAddClassLevels2);
+
+
+
+
+
+            var LuarCottenrople_DisplacementAiAction = library.Get<BlueprintAiAction>("266729cda9620ed439ddec335f59d4f9");
+            var LuarCottenrople_MirrorImageAiAction = library.Get<BlueprintAiAction>("5a12ce22a49994742a9f26ac060c1f1e");
+
+
+
+            var brain = LuarCottenrople.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(LuarCottenrople_DisplacementAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(LuarCottenrople_MirrorImageAiAction);
+            brain.Actions = brain.Actions.AddToArray(
+                                                    AiActions.mirrorimagecyclop, AiActions.mirrorimagerecast, AiActions.displacementvordakai,
+                                                     AiActions.castshieldsprig,
+                                                    AiActions.stoneskincommunalnird, AiActions.castslownird);
+
+
+        }
+
+        static void changeGaetane()
+        {
+
+
+
+            var Gaetane = library.Get<BlueprintUnit>("f78287a861a488e4cb5f27f38b2cc9e8");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var rangerClass = library.Get<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
+            var barkskin = library.Get<BlueprintAbility>("5b77d7cc65b8ab74688e74a37fc2f553");
+            var featherstepmass = library.Get<BlueprintAbility>("d219494150ac1f24f9ce14a3d4f66d26");
+            var entangle = library.Get<BlueprintAbility>("0fd00984a2c0e0a429cf1a911b4ec5ca");
+
+            var blessingofthesalamander = library.Get<BlueprintAbility>("9256a86aec14ad14e9497f6b60e26f3f");
+
+           Gaetane.AddFacts = Gaetane.AddFacts.AddToArray(quicken);
+
+
+
+            var alchemistLevels2 = Gaetane.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == rangerClass);
+            var newAddClassLevels2 = alchemistLevels2.CreateCopy();
+            newAddClassLevels2.Levels = 15;
+            var spell_list2 = newAddClassLevels2.SelectSpells.AddToArray(featherstepmass,entangle);
+            newAddClassLevels2.SelectSpells = spell_list2;
+            Gaetane.ReplaceComponent(alchemistLevels2, newAddClassLevels2);
+
+
+            var alchemistLevels = Gaetane.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == rangerClass);
+            var newAddClassLevels = alchemistLevels.CreateCopy();
+            var spell_list = newAddClassLevels.MemorizeSpells.AddToArray(featherstepmass,entangle);
+            newAddClassLevels.MemorizeSpells = spell_list;
+            Gaetane.ReplaceComponent(alchemistLevels, newAddClassLevels);
+
+            var alchemistLevels3 = Gaetane.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == rangerClass);
+            var newAddClassLevels3 = alchemistLevels3.CreateCopy();
+            var spell_list3 = newAddClassLevels3.MemorizeSpells.RemoveFromArray(blessingofthesalamander);
+            newAddClassLevels3.MemorizeSpells = spell_list3;
+            Gaetane.ReplaceComponent(alchemistLevels3, newAddClassLevels3);
+
+
+
+            var auto_metamgic3 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic3.GetComponent<AutoMetamagic>().Abilities.Add(Spells.haste);
+
+            var GaetaneLeafBladesAiAction = library.Get<BlueprintAiCastSpell>("08f8076cfb0df624b8e8f64d614842c7");
+            var GaetaneCatsGraceAiAction = library.Get<BlueprintAiCastSpell>("2c39b7a19e8777440b14cb76eb7333f4");
+            var GaetaneBlessingOfSalamanderAiAction = library.Get<BlueprintAiCastSpell>("9914e16cdcb9dd841bbef41e0d0ee17a");
+            var GaetaneSenseVitalsAiAction = library.Get<BlueprintAiCastSpell>("d08cef5eda23b804dafc42b417eca858");
+           
+
+
+
+            var brain = Gaetane.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(GaetaneLeafBladesAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(GaetaneCatsGraceAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(GaetaneBlessingOfSalamanderAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(GaetaneSenseVitalsAiAction);
+            brain.Actions = brain.Actions.AddToArray(AiActions.featherstepmass,AiActions.castentanglegaetane,AiActions.leadblades,AiActions.castcatsgrace,AiActions.castblessingsalamander);
+
+
+
+
+
+
+        }
+
+        static void updateOgreMagus()
+        {
+
+
+            var MagusClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var OgreMagus = library.Get<BlueprintUnit>("bb4941a61b515fd48b5631d0e56fd378");
+            var stoneskincommunal = library.Get<BlueprintAbility>("7c5d556b9a5883048bf030e20daebe31");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var frigidtouch = library.Get<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
+            var shockinggrasp = library.Get<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
+            var GreatCleaveAiAction = library.Get<BlueprintAiCastSpell>("4f9cd89dbe6ee6f41b7db1320efe032c");
+            var phantasmalkiller = library.Get<BlueprintAbility>("6717dbaef00c0eb4897a1c908a75dfe5");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var StoneskinBuffCL11 = library.Get<BlueprintBuff>("6215b25fbc1a36748b5606ebc0092074");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var catsgrace = library.Get<BlueprintAbility>("de7a025d48ad5da4991e7d3c682cf69d");
+            var dimensionstrikefeat = library.Get<BlueprintFeature>("cb6916027e3c25e4185de068249254dc");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var greatcleavefeat = library.Get<BlueprintFeature>("cc9c862ef2e03af4f89be5088851ea35");
+            var cleavefeat = library.Get<BlueprintFeature>("d809b6c4ff2aaff4fa70d712a70f7d7b");
+            var ImprovedCleavingFinish = library.Get<BlueprintFeature>("ffa1b373190af4f4db7a5501904a1983");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var catsgracebuff = library.Get<BlueprintBuff>("f011d0ab4a405e54aa0e83cd10e54430");
+            var shieldbuff = library.Get<BlueprintBuff>("9c0fa9b438ada3f43864be8dd8b3e741");
+            var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var electricalfeat = library.Get<BlueprintFeature>("05ed8b77c652483b9ecda069592a29ae");
+            var chainlightning = library.Get<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+            var firebrandbuff = library.Get<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
+            var firesnake = library.Get<BlueprintAbility>("ebade19998e1f8542a1b55bd4da766b3");
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var trueseeing = library.Get<BlueprintAbility>("4cf3d0fae3239ec478f51e86f49161cb");
+            var hellfireray = library.Get<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
+
+            OgreMagus.AddFacts = OgreMagus.AddFacts.AddToArray(dimensionstrikefeat, quicken, StoneskinBuffCL11,catsgracebuff, electricalfeat, firebrandbuff);
+
+
+           
+
+
+
+
+
+            var magusLevels = OgreMagus.ComponentsArray
+                .OfType<AddClassLevels>()
+                 .First(c => c.CharacterClass == MagusClass);
+            var newmagusLevels = magusLevels.CreateCopy();
+            newmagusLevels.Levels = 19;
+            OgreMagus.ReplaceComponent(magusLevels, newmagusLevels);
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.displacement);
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.haste);
+
+            var magusLevels2 = OgreMagus.ComponentsArray
+                .OfType<AddClassLevels>()
+                .First(c => c.CharacterClass == MagusClass);
+            var newAddClassLevels2 = magusLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(frigidtouch, frigidtouch, frigidtouch, displacement,
+                                                                             mirrorimage, shockinggrasp, shockinggrasp, shockinggrasp,
+                                                                             haste, phantasmalkiller, vampirictouch, catsgrace, shield, chainlightning, firesnake, firesnake,trueseeing,slow,slow,greaterdispel,greaterdispel);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            OgreMagus.ReplaceComponent(magusLevels2, newAddClassLevels2);
+
+
+
+            var magusLevels4 = OgreMagus.ComponentsArray
+     .OfType<AddClassLevels>()
+     .First(c => c.CharacterClass == MagusClass);
+            var newAddClassLevels4 = magusLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.SelectSpells.AddToArray(frigidtouch, displacement, shockinggrasp, phantasmalkiller, haste, vampirictouch, mirrorimage, firesnake, firesnake, catsgrace, shield, chainlightning,trueseeing,slow,slow,greaterdispel);
+            newAddClassLevels4.SelectSpells = spell_list4;
+            OgreMagus.ReplaceComponent(magusLevels4, newAddClassLevels4);
+
+            var magusLevels5 = OgreMagus.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == MagusClass);
+            var newAddClassLevels5 = magusLevels5.CreateCopy();
+            var spell_list5 = newAddClassLevels5.SelectSpells.RemoveFromArray(hellfireray);
+            newAddClassLevels5.SelectSpells = spell_list5;
+            OgreMagus.ReplaceComponent(magusLevels5, newAddClassLevels5);
+
+            var magusLevels6 = OgreMagus.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == MagusClass);
+            var newAddClassLevels6 = magusLevels6.CreateCopy();
+            var spell_list6 = newAddClassLevels6.SelectSpells.RemoveFromArray(hellfireray);
+            newAddClassLevels6.SelectSpells = spell_list6;
+            OgreMagus.ReplaceComponent(magusLevels6, newAddClassLevels6);
+
+
+
+            var dumbmonsterbrain = library.Get<BlueprintBrain>("5abc8884c6f15204c8604cb01a2efbab");
+
+            var new_actions = dumbmonsterbrain.Actions;
+
+            OgreMagus.Brain.Actions = new_actions;
+
+
+            var brain = OgreMagus.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.castfrigidtouchogre, AiActions.castphantasmalkillermagus, AiActions.castvampirictouchogre,
+                                                    AiActions.mirrorimagecyclop, AiActions.displacementvordakai, AiActions.mirrorimagerecast,
+                                                    AiActions.castshockgraspogre, AiActions.casthasteherald, AiActions.castshieldsprig, AiActions.greaterdispelnird,
+                                                    AiActions.castchainlightningbloodmoon, AiActions.castfiresnakeogre, AiActions.castvampiricshadowshield,AiActions.castslowogre,AiActions.trueseeing);
+
+
+
+            OgreMagus.GetComponent<Experience>().CR = 18;
+
+        }
+
+        static void changeAlasen()
+        {
+
+
+
+            var Alasen = library.Get<BlueprintUnit>("4503364964491664ab4307c3dd32b88e");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var monkClass = library.Get<BlueprintCharacterClass>("e8f21e5b58e0569468e420ebea456124");
+            var rogueClass = library.Get<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
+            var ClawLarge1d8 = library.Get<BlueprintItemWeapon>("bef6f133e728bd74ab871e1f2072e726");
+            var DebilitatingInjuryBewilderedActiveBuff = library.Get<BlueprintBuff>("116ee72b2149f4d44a330296a7e42d13");
+            var DebilitatingInjuryDisorientedActiveBuff = library.Get<BlueprintBuff>("6339eac5bdcef1747ac46885d2cf4e25");
+            var ThugBrutalBeatingBuff = library.Get<BlueprintBuff>("a6849b8d135a47e49a94a62e428155c7");
+
+            
+            var defensivebuff = library.Get<BlueprintBuff>("3e0146b786c064441834fc025d09a67c");
+            var dragonstylebuff = library.Get<BlueprintBuff>("cc03b87fd3a797f4e953773db424cee7");
+
+            Alasen.AddFacts = Alasen.AddFacts.AddToArray(defensivebuff,dragonstylebuff);
+
+
+            Alasen.AddFacts = Alasen.AddFacts.RemoveFromArray(DebilitatingInjuryBewilderedActiveBuff);
+            Alasen.AddFacts = Alasen.AddFacts.RemoveFromArray(DebilitatingInjuryDisorientedActiveBuff);
+            Alasen.AddFacts = Alasen.AddFacts.RemoveFromArray(ThugBrutalBeatingBuff);
+
+            Alasen.Strength = 24;
+            Alasen.Dexterity = 17;
+            Alasen.Constitution = 21;
+
+            Alasen.Body.Armor = library.Get<BlueprintItemArmor>("c18a1d22dca8b684195633d685855d0c"); //Enforcer's Robe
+            Alasen.Body.Neck = library.Get<BlueprintItemEquipmentNeck>("75ebf721bdece6342b0078a765b1f65a"); //Amulet of Mighty Fists +4
+            
+            Alasen.Body.PrimaryHand = null;
+            Alasen.Body.AdditionalLimbs = Alasen.Body.AdditionalLimbs.RemoveFromArray(ClawLarge1d8);
+            Alasen.Body.AdditionalLimbs = Alasen.Body.AdditionalLimbs.RemoveFromArray(ClawLarge1d8);
+
+
+            var monkLevels = Alasen.ComponentsArray
+.OfType<AddClassLevels>()
+ .First(c => c.CharacterClass == rogueClass);
+            var newAddClassLevels = monkLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("e8f21e5b58e0569468e420ebea456124");
+            newAddClassLevels.Levels = 18;
+            Alasen.ReplaceComponent(monkLevels, newAddClassLevels);
+
+
+
+
+
+
+
+
+
+            var dumbmonsterbrain = library.Get<BlueprintBrain>("5abc8884c6f15204c8604cb01a2efbab");
+
+            var new_actions = dumbmonsterbrain.Actions;
+
+            Alasen.Brain.Actions = new_actions;
+
+            var brain = Alasen.Brain;
+            brain.Actions = brain.Actions.AddToArray();
+
+
+
+
+            Alasen.GetComponent<Experience>().CR = 18;
+
+
+        }
+
+        static void changeIrovettiGhostMage()
+        {
+            var IrovettiGhostMage = library.Get<BlueprintUnit>("ed076452e6743d94193eed2f1fde4d72");
+            var sorcererClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var coldicestrike = library.Get<BlueprintAbility>("5ef85d426783a5347b420546f91a677b");
+            var bansheeblast = library.Get<BlueprintAbility>("d42c6d3f29e07b6409d670792d72bc82");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var phantasmalputrification = library.Get<BlueprintAbility>("1f2e6019ece86d64baa5effa15e81ecc");
+            var summongreatair = library.Get<BlueprintAbility>("8eb769e3b583f594faabe1cfdb0bb696");
+            var stoneskincommunal = library.Get<BlueprintAbility>("7c5d556b9a5883048bf030e20daebe31");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var icyprison = library.Get<BlueprintAbility>("65e8d23aef5e7784dbeb27b1fca40931");
+            var coneofcold = library.Get<BlueprintAbility>("e7c530f8137630f4d9d7ee1aa7b1edc0");
+            var boneshatter = library.Get<BlueprintAbility>("f2f1efac32ea2884e84ecaf14657298b");
+            var snowball = library.Get<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
+            var boneshaker = library.Get<BlueprintAbility>("b7731c2b4fa1c9844a092329177be4c3");
+            var magearmorbuff = library.Get<BlueprintBuff>("a92acdf18049d784eaa8f2004f5d2304");
+            var mageshieldbuff = library.Get<BlueprintBuff>("9c0fa9b438ada3f43864be8dd8b3e741");
+            var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
+            var magearmor = library.Get<BlueprintAbility>("9e1ad5d6f87d19e4d8883d63a6e35568");
+            var WarriorClass = library.Get<BlueprintCharacterClass>("b2d9af52cf680744eb0cdc3f3034395f");
+            var undeadClass = library.Get<BlueprintCharacterClass>("19a2d9e58d916d04db4cd7ad2c7a3ee2");
+            var wavesofexhaust = library.Get<BlueprintAbility>("3e4d3b9a5bd03734d9b053b9067c2f38");
+            var summonvengefulspectres = library.Get<BlueprintAbility>("b820d077b4ea4c22b79b24c221b8ffe1");
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
+            var BestowCurse = library.Get<BlueprintAbility>("989ab5c44240907489aba0a8568d0603");
+            var Undeadprog = library.Get<BlueprintProgression>("a1a8bf61cadaa4143b2d4966f2d1142e");
+            
+
+            var wavesoffatigue = library.Get<BlueprintAbility>("8878d0c46dfbd564e9d5756349d5e439");
+
+        IrovettiGhostMage.Charisma = 27;
+
+
+            IrovettiGhostMage.AddFacts = IrovettiGhostMage.AddFacts.AddToArray(quicken,summonvengefulspectres);
+
+
+
+            var sorcererLevels = IrovettiGhostMage.ComponentsArray
+            .OfType<AddClassLevels>()
+              .First(c => c.CharacterClass == WarriorClass);
+            var newAddClassLevels = sorcererLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("19a2d9e58d916d04db4cd7ad2c7a3ee2");
+            newAddClassLevels.Levels = 3;
+            IrovettiGhostMage.ReplaceComponent(sorcererLevels, newAddClassLevels);
+
+            var sorcererLevels2 = IrovettiGhostMage.ComponentsArray
+                .OfType<AddClassLevels>()
+                .First(c => c.CharacterClass == sorcererClass);
+            var newAddClassLevels2 = sorcererLevels2.CreateCopy();
+            newAddClassLevels2.Levels = 19;
+            var spell_list5 = newAddClassLevels2.SelectSpells.AddToArray(displacement, haste, slow, coldicestrike,
+                                                                          stoneskincommunal, mirrorimage, icyprison, boneshatter, snowball, boneshaker, shield, wavesofexhaust,boneshaker,greaterdispel);
+            newAddClassLevels2.SelectSpells = spell_list5;
+            IrovettiGhostMage.ReplaceComponent(sorcererLevels2, newAddClassLevels2);
+
+            var sorcererLevels3 = IrovettiGhostMage.ComponentsArray
+    .OfType<AddClassLevels>()
+    .First(c => c.CharacterClass == sorcererClass);
+            var newAddClassLevels3 = sorcererLevels3.CreateCopy();
+            foreach (var selection in newAddClassLevels3.Selections)
+            {
+                selection.Features = selection.Features.RemoveFromArray(Undeadprog);
+
+            }
+            var spell_list3 = newAddClassLevels2.SelectSpells.RemoveFromArray(coldicestrike);
+            newAddClassLevels3.SelectSpells = spell_list3;
+            IrovettiGhostMage.ReplaceComponent(sorcererLevels3, newAddClassLevels3);
+
+
+            var auto_metamgic2 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.displacement);
+
+
+            var dumbmonsterbrain = library.Get<BlueprintBrain>("5abc8884c6f15204c8604cb01a2efbab");
+
+            var new_actions = dumbmonsterbrain.Actions;
+
+            IrovettiGhostMage.Brain.Actions = new_actions;
+
+
+
+
+            var brain = IrovettiGhostMage.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.displacementghostmage, AiActions.coldicestrikeghostmageiro,
+                                                     AiActions.bansheeblastghostmage, AiActions.casthasteghostmageiro, AiActions.castslowghostmage,
+                                                     AiActions.stoneskincommunalghostmageiro,  AiActions.casticyprisonghostmage, AiActions.castdeathclutchghost, AiActions.wavesofexhaustghost, AiActions.castshieldsprig,
+                                                     AiActions.coneofcoldghostmage, AiActions.castboneshatterghostmageiro,AiActions.castmagearmorsprig,AiActions.mirrorimage,AiActions.mirrorimagerecast,
+                                                     AiActions.usesummonspectreghost,AiActions.castboneshatterghostmageiro,AiActions.greaterdispelghostmageiro,AiActions.castvampiricshadowshield,AiActions.displacementrecast);
+
+        }
+
+        static void changeIrovetti()
+        {
+
+            var Irovetti = library.Get<BlueprintUnit>("8b2cbf4590ed9e84591cd9a1f55bbdb8");
+            var bardClass = library.Get<BlueprintCharacterClass>("772c83a25e2268e448e841dcd548235f");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var shout = library.Get<BlueprintAbility>("f09453607e683784c8fca646eec49162");
+            var cacophonouscallmass = library.Get<BlueprintAbility>("1262284b6fa45b9458b8c3693edbd676");
+            var kishout = library.Get<BlueprintAbility>("5c8cde7f0dcec4e49bfa2632dfe2ecc0");
+            var freedomofmovement = library.Get<BlueprintAbility>("0087fc2d64b6095478bc7b8d7d512caf");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var holdmonster = library.Get<BlueprintAbility>("41e8a952da7a5c247b3ec1c2dbb73018");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+            var unbreakableheart = library.Get<BlueprintAbility>("dd38f33c56ad00a4da386c1afaa49967");
+            var earpiercescream = library.Get<BlueprintAbility>("8e7cfa5f213a90549aadd18f8f6f4664");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var inspirecourage = library.Get<BlueprintFeature>("65c2b39752cf54841b36c4dff47643e6");
+           var shoutgreater = library.Get<BlueprintAbility>("fd0d3840c48cafb44bb29e8eb74df204");
+            var dirgebuff = library.Get<BlueprintBuff>("83eab9b139717ad478d84bbf48ab457f");
+             var resonatingword = library.Get<BlueprintAbility>("df7d13c967bce6a40bec3ba7c9f0e64c");
+
+
+        Irovetti.Charisma = 20;
+
+
+            var bardLevels = Irovetti.ComponentsArray
+            .OfType<AddClassLevels>()
+            .First(c => c.CharacterClass == bardClass);
+            var newAddClassLevels = bardLevels.CreateCopy();
+            newAddClassLevels.Levels = 20;
+            var spell_list = newAddClassLevels.SelectSpells.AddToArray(mirrorimage, shout, displacement, kishout, freedomofmovement,
+                                                                    cacophonouscallmass, heroism, slow, crushingdespair, unbreakableheart, earpiercescream, haste, shoutgreater,resonatingword);
+            newAddClassLevels.SelectSpells = spell_list;
+            Irovetti.ReplaceComponent(bardLevels, newAddClassLevels);
+
+            Irovetti.AddFacts = Irovetti.AddFacts.AddToArray(quicken,inspirecourage,dirgebuff);
+
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+
+
+            var dumbmonsterbrain = library.Get<BlueprintBrain>("5abc8884c6f15204c8604cb01a2efbab");
+
+            var new_actions = dumbmonsterbrain.Actions;
+
+            Irovetti.Brain.Actions = new_actions;
+
+
+            var brain = Irovetti.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage, AiActions.displacement_first, AiActions.castshout, AiActions.castgoodhopeirovetti,
+                                                     AiActions.casthasteirovetti, AiActions.hideouslaughternixie, AiActions.castheroism, AiActions.castslowherald, AiActions.castfreedomofmovement,
+                                                      AiActions.cacophonouscallmass, AiActions.overwhelmingpresenceirovetii, AiActions.castresonatingwordirovetti,AiActions.castkishoutirovetti,
+                                                     AiActions.castholdmonster, AiActions.castcrushingdespair, AiActions.earpierceirovetti, AiActions.castdominateirovetti,AiActions.castshoutgreater,AiActions.castrazoecone);
+
+
+
+
+
+        }
+
+        static void changeEngelidis()
+        {
+            var Engelidis = library.Get<BlueprintUnit>("02a8da02271a8e44788c4cd736d7294d");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var coldicestrike = library.Get<BlueprintAbility>("5ef85d426783a5347b420546f91a677b");
+            var stoneskincommunal = library.Get<BlueprintAbility>("7c5d556b9a5883048bf030e20daebe31");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
+            var AberrationClass = library.Get<BlueprintCharacterClass>("e40e01860956b8b4d80059d4437996f5");
+            
+            var wavesoffatigue = library.Get<BlueprintAbility>("8878d0c46dfbd564e9d5756349d5e439");
+
+            Engelidis.Charisma = 25;
+            Engelidis.Dexterity = 20;
+            Engelidis.Constitution = 24;
+
+            Engelidis.AddFacts = Engelidis.AddFacts.AddToArray(quicken);
+
+
+
+
+            var sorcererLevels2 = Engelidis.ComponentsArray
+                .OfType<AddClassLevels>()
+                .First(c => c.CharacterClass == AberrationClass);
+            var newAddClassLevels2 = sorcererLevels2.CreateCopy();
+            var spell_list5 = newAddClassLevels2.SelectSpells.AddToArray(stoneskincommunal, mirrorimage, shield);
+            newAddClassLevels2.SelectSpells = spell_list5;
+            Engelidis.ReplaceComponent(sorcererLevels2, newAddClassLevels2);
+
+      
+
+
+
+            var auto_metamgic2 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.displacement);
+
+
+
+
+
+            var EngelidisSeamantleAiAction = library.Get<BlueprintAiAction>("6022dfe291a28eb41804b8c3a60e402d");
+            var EngelidisShieldAiAction = library.Get<BlueprintAiAction>("7600b76713e0c9348a90693ad2440d60");
+            var EngelidisVampiricShadowShieldAiAction = library.Get<BlueprintAiAction>("59337a38a4564a7408092bf637b6496b");
+
+
+            var brain = Engelidis.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(EngelidisSeamantleAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(EngelidisShieldAiAction);
+            brain.Actions = brain.Actions.RemoveFromArray(EngelidisVampiricShadowShieldAiAction);
+            brain.Actions = brain.Actions.AddToArray( 
+                                                     AiActions.stoneskincommunalengel, AiActions.castshieldsprig,
+                                                     AiActions.mirrorimage, AiActions.mirrorimagerecast,
+                                                     AiActions.seamantle, AiActions.castvampiricshadowshield);
+
+        }
+
+
         //CHAPTER 6
 
         static void updateWrigglingMan()
@@ -18637,9 +19897,9 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
             var fireresist15 = library.Get<BlueprintFeature>("24700a71dd3dc844ea585345f6dd18f6");
             var greatfortitude  = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
             var dr15 = library.Get<BlueprintFeature>("a1477ed71c2329d4088192cac8d4e3bd");
-            
+            var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
 
-       
+
             wrigglingman.AddFacts = wrigglingman.AddFacts.AddToArray(fireresist15,dr15);
             
 
@@ -18663,7 +19923,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
               .OfType<AddClassLevels>()
               .First(c => c.CharacterClass == wizardclass);
             var newAddClassLevels = wizardLevels.CreateCopy();
-            var spell_list = newAddClassLevels.SelectSpells.AddToArray(displacement);
+            var spell_list = newAddClassLevels.SelectSpells.AddToArray(displacement,greaterdispel);
             newAddClassLevels.SelectSpells = spell_list;
             wrigglingman.ReplaceComponent(wizardLevels, newAddClassLevels);
 
@@ -18671,7 +19931,7 @@ base_score: 40.0f, combat_count: 1, start_cooldown_rounds:3 );
              .OfType<AddClassLevels>()
              .First(c => c.CharacterClass == wizardclass);
             var newAddClassLevels2 = wizardLevels2.CreateCopy();
-            var spell_list2 = newAddClassLevels2.MemorizeSpells.AddToArray(displacement);
+            var spell_list2 = newAddClassLevels2.MemorizeSpells.AddToArray(displacement,greaterdispel);
             newAddClassLevels2.MemorizeSpells = spell_list2;
             wrigglingman.ReplaceComponent(wizardLevels2, newAddClassLevels2);
 

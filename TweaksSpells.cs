@@ -319,6 +319,7 @@ namespace TweakMod
             summondweomercat();
             callghostsdevourer();
             summonrangedfriends();
+            callVenegefulghosts();
 
         }
 
@@ -422,6 +423,31 @@ namespace TweakMod
 
             var SummonSpectresresource = Helpers.CreateAbilityResource("SummonSpectresresource", "", "", "", null);
             SummonSpectresresource.SetFixedResource(1);
+
+        }
+
+        static void callVenegefulghosts()
+        {
+            var VengefulSpectre = library.Get<BlueprintUnit>("b08095a9ede34f23aa6d829254fe14c5");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = VengefulSpectre),
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = VengefulSpectre));
+
+            var ability = Helpers.CreateAbility("Summon Vengeful Spectres",
+                "Summon Vengeful Spectres",
+               "Summon spectres to your side.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonSpectresresource4 = Helpers.CreateAbilityResource("SummonSpectresresource4", "", "", "", null);
+            SummonSpectresresource4.SetFixedResource(1);
 
         }
 
