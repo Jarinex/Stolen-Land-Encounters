@@ -72,5 +72,14 @@ namespace TweakMod.Properties {
                 return ResourceManager.GetString("blueprints", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string BrainCloneWhitelist {
+            get {
+                return ResourceManager.GetString("BrainCloneWhitelist", resourceCulture);
+            }
+        }
     }
 }
