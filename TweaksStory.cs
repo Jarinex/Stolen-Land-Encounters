@@ -36,6 +36,7 @@ using TinyJson;
 using CallOfTheWild.FavoredEnemyMechanics;
 using CallOfTheWild.SizeMechanics;
 using UnityEngine.UI;
+using System.Resources;
 
 namespace TweakMod
 {
@@ -2334,6 +2335,34 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
             return action;
         }
 
+        static internal HashSet<string> LoadBrainsToClone()
+        {
+            var list = new HashSet<string>();
+
+
+            foreach (var brain in Properties.Resources.BrainCloneWhitelist.Split('\n'))
+            {
+                list.Add(brain.Trim());
+            }
+
+            return list;
+        }
+
+        static internal HashSet<string> brainsToClone = LoadBrainsToClone();
+
+        static internal bool ShouldCloneBrain(BlueprintUnit unit)
+        {
+            if (unit == null)
+                return false;
+            if (unit.Brain == null)
+                return false;
+
+            return brainsToClone.Contains(unit.AssetGuid);
+
+            //brainsToClone.Add(unit.AssetGuid);
+
+        }
+
 
         static internal void load()
         {
@@ -2353,7 +2382,7 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
             {
                 //We only care about units that have brains
                 var unit = allBlueprints[i] as BlueprintUnit;
-                if (unit != null && unit.Brain != null)
+                if (ShouldCloneBrain(unit))
                 {
                     //If we have already seen this brain before, we copy it to a unique version
                     if (brainsSeen.TryGetValue(unit.Brain.AssetGuid, out var duplicateCount))
@@ -2381,6 +2410,8 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
                 }
             }
             Main.logger.Log($"Brain unique-ifying done (took: {DateTime.Now.Subtract(now).Seconds}s)");
+
+            //System.IO.File.WriteAllText("brain_whitelist.txt", string.Join("\n", brainsToClone.ToArray()));
 
             //Chapter 1
 
