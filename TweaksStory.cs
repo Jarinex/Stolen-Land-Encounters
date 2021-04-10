@@ -2930,7 +2930,9 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
 
             updatespawnofrovagug();
 
+            //Lantern King Debuff Reduction
 
+            //updateLanternKingDebuff4();
 
         }
 
@@ -19915,6 +19917,10 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
 
         //CHAPTER 6
 
+        //Castle of Knives
+
+        //House at the Edge of Time
+
         static void updateWrigglingMan()
         {
 
@@ -19926,13 +19932,13 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
             var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
             var fireball = library.Get<BlueprintAbility>("2d81362af43aeac4387a3d4fced489c3");
             var fireresist15 = library.Get<BlueprintFeature>("24700a71dd3dc844ea585345f6dd18f6");
-            var greatfortitude  = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
+            var greatfortitude = library.Get<BlueprintFeature>("79042cb55f030614ea29956177977c52");
             var dr15 = library.Get<BlueprintFeature>("a1477ed71c2329d4088192cac8d4e3bd");
             var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
 
 
-            wrigglingman.AddFacts = wrigglingman.AddFacts.AddToArray(fireresist15,dr15);
-            
+            wrigglingman.AddFacts = wrigglingman.AddFacts.AddToArray(fireresist15, dr15);
+
 
             wrigglingman.Constitution = 14;
             wrigglingman.Intelligence = 24;
@@ -19954,7 +19960,7 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
               .OfType<AddClassLevels>()
               .First(c => c.CharacterClass == wizardclass);
             var newAddClassLevels = wizardLevels.CreateCopy();
-            var spell_list = newAddClassLevels.SelectSpells.AddToArray(displacement,greaterdispel);
+            var spell_list = newAddClassLevels.SelectSpells.AddToArray(displacement, greaterdispel);
             newAddClassLevels.SelectSpells = spell_list;
             wrigglingman.ReplaceComponent(wizardLevels, newAddClassLevels);
 
@@ -19962,7 +19968,7 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
              .OfType<AddClassLevels>()
              .First(c => c.CharacterClass == wizardclass);
             var newAddClassLevels2 = wizardLevels2.CreateCopy();
-            var spell_list2 = newAddClassLevels2.MemorizeSpells.AddToArray(displacement,greaterdispel);
+            var spell_list2 = newAddClassLevels2.MemorizeSpells.AddToArray(displacement, greaterdispel);
             newAddClassLevels2.MemorizeSpells = spell_list2;
             wrigglingman.ReplaceComponent(wizardLevels2, newAddClassLevels2);
 
@@ -19992,6 +19998,245 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
             brain.Actions = brain.Actions.AddToArray(AiActions.displacement_first);
 
         }
+
+        //CHAPTER 7
+
+        //Final Dungeon (Ruined Capital)
+
+        //Wild Hunt Enemies
+
+
+        static void RemoveGaze_BloodmoonWildHuntMonarch()
+        {
+
+
+            var BloodmoonWildHuntMonarch = library.Get<BlueprintUnit>("5a855ed523725fb4baa71c92caa3bb5a");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            BloodmoonWildHuntMonarch.AddFacts = BloodmoonWildHuntMonarch.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+
+        static void RemoveGaze_CR13_WildHunt_ArcherHaste()
+        {
+
+
+            var CR13_WildHunt_ArcherHaste = library.Get<BlueprintUnit>("7bd0996e15059fc4aaef9b1fddcc0760");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            CR13_WildHunt_ArcherHaste.AddFacts = CR13_WildHunt_ArcherHaste.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_CR13_WildHunt_ArcherStandart()
+        {
+
+
+            var CR13_WildHunt_ArcherStandart = library.Get<BlueprintUnit>("e21b6536b40aaad4e9c9cd6c216778a3");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            CR13_WildHunt_ArcherStandart.AddFacts = CR13_WildHunt_ArcherStandart.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_CR15_WildHunt_ScoutStandart()
+        {
+
+
+            var CR15_WildHunt_ScoutStandart = library.Get<BlueprintUnit>("6f5ff0f1e359ee042ba49a746a507190");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            CR15_WildHunt_ScoutStandart.AddFacts = CR15_WildHunt_ScoutStandart.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_CR19_WildHunt_MonarchStandart()
+        {
+
+
+            var CR19_WildHunt_MonarchStandart = library.Get<BlueprintUnit>("573009c2f6493514188a2844ba53bdf8");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            CR19_WildHunt_MonarchStandart.AddFacts = CR19_WildHunt_MonarchStandart.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_WildHunt_ArcherSummon()
+        {
+
+
+            var WildHunt_ArcherSummon = library.Get<BlueprintUnit>("5333ac43535e27b4bb4cd13ebff95faf");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            WildHunt_ArcherSummon.AddFacts = WildHunt_ArcherSummon.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_WildHunt_ScoutSummon()
+        {
+
+
+            var WildHunt_ScoutSummon = library.Get<BlueprintUnit>("9ce94d8b91d08114f9f9db68c2e8b537");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            WildHunt_ScoutSummon.AddFacts = WildHunt_ScoutSummon.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_HATEOT_WildArcher()
+        {
+
+
+            var HATEOT_WildArcher = library.Get<BlueprintUnit>("e1d82bca92b0efc4db4432fba7e846b6");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            HATEOT_WildArcher.AddFacts = HATEOT_WildArcher.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_HATEOT_WildHunt_Monarch()
+        {
+
+
+            var HATEOT_WildHunt_Monarch = library.Get<BlueprintUnit>("51f074c44a38785428d62f7f59149886");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            HATEOT_WildHunt_Monarch.AddFacts = HATEOT_WildHunt_Monarch.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_HATEOT_WildHunt_Scout()
+        {
+
+
+            var HATEOT_WildHunt_Scout = library.Get<BlueprintUnit>("2bf602a36f490b54b840a6177786e91f");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            HATEOT_WildHunt_Scout.AddFacts = HATEOT_WildHunt_Scout.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_FinalDungeon_WildHunt_Archer()
+        {
+
+
+            var FinalDungeon_WildHunt_Archer = library.Get<BlueprintUnit>("c24521b5b98c2bb40853743737bc0c65");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            FinalDungeon_WildHunt_Archer.AddFacts = FinalDungeon_WildHunt_Archer.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_FinalDungeon_WildHunt_Monarch()
+        {
+
+
+            var FinalDungeon_WildHunt_Monarch = library.Get<BlueprintUnit>("9617071804e42824cbe240a0c5c77b79");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            FinalDungeon_WildHunt_Monarch.AddFacts = FinalDungeon_WildHunt_Monarch.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_FinalDungeon_WildHunt_Scout()
+        {
+
+
+            var FinalDungeon_WildHunt_Scout = library.Get<BlueprintUnit>("67ccc1f6aabee4e4cb7cc2de70702ab5");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            FinalDungeon_WildHunt_Scout.AddFacts = FinalDungeon_WildHunt_Scout.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+
+        static void RemoveGaze_HATEOT_WildHunt_Archer_1()
+        {
+
+
+            var HATEOT_WildHunt_Archer_1 = library.Get<BlueprintUnit>("68f8d8090ed88194782bce7a1d32348d");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            HATEOT_WildHunt_Archer_1.AddFacts = HATEOT_WildHunt_Archer_1.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_HATEOT_WildHunt_Monarch_1()
+        {
+
+
+            var HATEOT_WildHunt_Monarch_1 = library.Get<BlueprintUnit>("80449c72e68c7bb40a80a46111b847be");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            HATEOT_WildHunt_Monarch_1.AddFacts = HATEOT_WildHunt_Monarch_1.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+        static void RemoveGaze_HATEOT_WildHunt_Scout_1()
+        {
+
+
+            var HATEOT_WildHunt_Scout_1 = library.Get<BlueprintUnit>("d78af2d7e8a78f347a29419432cc9640");
+            var WildGazeFeature = library.Get<BlueprintFeature>("330624ea5dafe804f9c976b4781b4e15");
+
+
+
+            HATEOT_WildHunt_Scout_1.AddFacts = HATEOT_WildHunt_Scout_1.AddFacts.RemoveFromArray(WildGazeFeature);
+
+
+        }
+
+
+        //Vilderavn
+
+
+
 
         //Bald Hilltop
 
@@ -20296,6 +20541,8 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
 
 
         }
+
+   
 
 
         //Elementals
@@ -22621,6 +22868,31 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
             
         }
 
+        //Lantern King Debuff Reduction
+
+        static void updateLanternKingDebuff4()
+        {
+
+            var LanternkingBuff4 = library.Get<BlueprintBuff>("67258454b7602b240b820f6af9df8e99");
+
+
+
+
+
+            var HitPointReduction = LanternkingBuff4.ComponentsArray
+               .OfType<AddStatModifier>()
+               .First(c => c.Stat == StatType.HitPoints);
+            var valuechange = HitPointReduction.CreateCopy();
+            valuechange.ModifierPercents.Value = 80;
+            LanternkingBuff4.ReplaceComponent(HitPointReduction, valuechange);
+
+
+
+
+
+
+
+        }
 
 
 
@@ -22629,8 +22901,7 @@ base_score: 50.0f, combat_count: 1, cooldown_rounds: 5);
 
 
 
-
-public override string ToString()
+        public override string ToString()
         {
             return base.ToString();
         }
