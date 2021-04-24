@@ -118,6 +118,7 @@ namespace TweakMod
         static Consideration Trebricent_NoResonatingWordConsideration = library.Get<BuffConsideration>("b5038c62b4d7d174fb03967845393a0a");
         static Consideration Trebricent_NoConfusionConsideration = library.Get<BuffConsideration>("568055173ac2ed94a940b09fc538bba1");
         static Consideration NoBuffDominate = library.Get<BuffConsideration>("774ecd999d24e03459d85d515001df7a");
+        static Consideration NoBuffMedusaPetrifying = library.Get<BuffConsideration>("7ba20e100fbfc814582ad370d37e57ff");
 
 
         static class Spells
@@ -357,8 +358,11 @@ namespace TweakMod
             public static BlueprintAbility plaguestorm = library.Get<BlueprintAbility>("82a5b848c05e3f342b893dedb1f9b446");
             public static BlueprintAbility plaguestormblindingsickness = library.Get<BlueprintAbility>("2dc03fae8128c84479f5c4bebae97001");
             public static BlueprintAbility firestorm = library.Get<BlueprintAbility>("e3d0dfe1c8527934294f241e0ae96a8d");
+            public static BlueprintAbility summonelderelemental = library.Get<BlueprintAbility>("8a7f8c1223bda1541b42fd0320cdbe2b");
+            public static BlueprintAbility summonelderelementalearth = library.Get<BlueprintAbility>("65254c7a2cf18944287207e1de3e44e8");
+            public static BlueprintAbility calllightningability = library.Get<BlueprintAbility>("cad052ef098f9f247ab73ae4c37ac687");
+            public static BlueprintAbility disintegrate = library.Get<BlueprintAbility>("4aa7942c3e62a164387a73184bca3fc1");
             
-
         }
 
 
@@ -555,7 +559,7 @@ namespace TweakMod
             static public BlueprintAiCastSpell unholyaura = createCastSpellAction("Castunholyaura", Spells.unholyaura,
             new Consideration[] { },
             new Consideration[] { },
-            base_score: 20.0f, combat_count: 2);
+            base_score: 20.0f, combat_count: 2,pre_cast: true);
 
 
             static public BlueprintAiCastSpell cleave = createCastSpellAction("UseCleave", Spells.cleaveaction,
@@ -1854,7 +1858,7 @@ base_score: 20.0f, combat_count: 2, cooldown_rounds: 6, start_cooldown_rounds: 1
             static public BlueprintAiCastSpell castdisplacementbloodmoon = createCastSpellAction("castdisplacementbloodmoon", Spells.displacement,
                                                           new Consideration[] { },
                                                           new Consideration[] { NoBuffDisplacement, TargetSelf },
-                                                          base_score: 30.0f, combat_count: 1);
+                                                          base_score: 30.0f, combat_count: 1,pre_cast: true);
 
             static public BlueprintAiCastSpell coneofcoldbloodmoon = createCastSpellAction("coneofcoldbloodmoon", Spells.coneofcold,
 new Consideration[] { },
@@ -2368,6 +2372,102 @@ base_score: 30.0f, cooldown_rounds: 6, start_cooldown_rounds: 1);
 new Consideration[] { },
 new Consideration[] { NoBuffDisplacement },
 base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
+
+            static public BlueprintAiCastSpell summonelderearthelemental = createCastSpellAction("summonelderearthelemental", Spells.summonelderelemental,
+new Consideration[] { },
+new Consideration[] { },
+base_score: 60.0f, variant: Spells.summonelderelementalearth, combat_count: 1);
+
+            static public BlueprintAiCastSpell lightningboltsisterhateot = createCastSpellAction("lightningboltsisterhateot", Spells.lightningbolt,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AoE_AvoidFriends },
+base_score: 5.0f, combat_count: 4, start_cooldown_rounds: 4);
+
+            static public BlueprintAiCastSpell umbral_strikehateot = createCastSpellAction("CastUmbralStrikehateot", Spells.umbralstrike,
+                                                 new Consideration[] { },
+                                                 new Consideration[] { },
+                                                  base_score: 40.0f, combat_count: 2,cooldown_rounds:2,  start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell tarpoolnymph = createCastSpellAction("CastTarpoolnymph", Spells.tarpool,
+             new Consideration[] { },
+             new Consideration[] { ArcaneCasterPriorityConsiderationVordakai },
+             base_score: 50.0f, combat_count: 1, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell calllightningstormnymph = createCastSpellAction("calllightningstormnymph", Spells.calllightningstorm,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 20.0f, cooldown_rounds: 1, start_cooldown_rounds: 4);
+
+            static public BlueprintAiCastSpell calllightningnymph = createCastSpellAction("calllightningnymph", Spells.calllightningability,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 2.0f);
+
+            static public BlueprintAiCastSpell castdisintegratearcane = createCastSpellAction("castdisintegratearcane", Spells.disintegrate,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority,ArcaneCasterFocusConsiderationVordakai,NoBuffMedusaPetrifying },
+base_score: 100.0f, cooldown_rounds: 2, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castcontrolledfireballmedusa = createCastSpellAction("castcontrolledfireballmedusa", Spells.controlledfireball,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 50.0f, combat_count: 2, cooldown_rounds: 3, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castlightningboltmedusa = createCastSpellAction("castlightningboltmedusa", Spells.lightningbolt,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 60.0f, combat_count: 2, cooldown_rounds: 3, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castbalefulpolymorphmedusa = createCastSpellAction("castbalefulpolymorphmedusa", Spells.balefulpolymorph,
+             new Consideration[] { },
+             new Consideration[] { NoBuffBalefulPolymorph, ArcaneCasterFocusConsiderationVordakai, attacktargetspriority },
+             base_score: 100.0f, combat_count: 1, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castsnowballmedusa = createCastSpellAction("castsnowballmedusa", Spells.snowball,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 50.0f,  cooldown_rounds: 1, start_cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell castscorchingraymedusa = createCastSpellAction("castscorchingraymedusa", Spells.scorchingray,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 60.0f, cooldown_rounds: 1, start_cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell casthellfireraymedusa = createCastSpellAction("casthellfireraygmedusa", Spells.hellfireray,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 70.0f, cooldown_rounds: 3, start_cooldown_rounds: 3);
+
+            static public BlueprintAiCastSpell casthastemedusa = createCastSpellAction("casthastegmedusa", Spells.haste,
+new Consideration[] { },
+new Consideration[] { AlliesNoBuff_Haste },
+base_score: 80.0f, combat_count: 1 );
+
+            static public BlueprintAiCastSpell castslowmedusa = createCastSpellAction("castslowmedusa", Spells.slow,
+    new Consideration[] { },
+    new Consideration[] { attacktargetspriority, NoBuffSlow },
+base_score: 80.0f, combat_count: 1);
+
+            static public BlueprintAiCastSpell castboneshattermedusa = createCastSpellAction("castboneshattermedusa", Spells.boneshatter,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority },
+base_score: 80.0f, cooldown_rounds: 2, start_cooldown_rounds: 1);
+
+            static public BlueprintAiCastSpell castfiresnakemedusa = createCastSpellAction("castfiresnakemedusa", Spells.controlledfireball,
+new Consideration[] { },
+new Consideration[] { attacktargetspriority, AOE_ChooseMoreEnemies },
+base_score: 50.0f, combat_count: 3, cooldown_rounds: 2, start_cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell castconstrictingmisbegotten = createCastSpellAction("castconstrictingmisbegotten", Spells.chainsoflight,
+new Consideration[] { },
+new Consideration[] { SupporCasterFocusConsideration },
+base_score: 80.0f, combat_count: 2, cooldown_rounds: 2);
+
+            static public BlueprintAiCastSpell Casthealspellmisbegotten = createCastSpellAction("Casthealspellmisbegotten", Spells.heal,
+new Consideration[] { },
+new Consideration[] { TargetSelf, HealSpellConsideration },
+base_score: 80.0f, cooldown_rounds: 3);
+
 
 
         }
@@ -2911,6 +3011,11 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
             changeGhostlyMageHATEOT();
             updateHATEOTNymph();
             updateHATEOTElderWaterElemental();
+            changeMedusaSorcererArcane();
+            changeMedusaSorcererDivine();
+            changeHATEOTMedusa();
+            changeMedusaPhomandala();
+            updateMisbegottenTroll();
             updateWrigglingMan();
             updateNyrissaBoss();
 
@@ -2923,6 +3028,7 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
             WerenDegarEnemy();
             WerenDegarEnemy2();
             updatePrimalOwlbear();
+            changeAncientWarWisp();
 
             //Wild Hunt Enemies
 
@@ -20930,7 +21036,7 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
 
             var fire_storm = library.Get<BlueprintAbility>("e3d0dfe1c8527934294f241e0ae96a8d");
             var nymphclass = library.Get<BlueprintCharacterClass>("9a20b40b57f4e684fa20d17c0edfd5ba");
-            var defaced_sister = library.Get<BlueprintUnit>("19e471c925c1b204f90c003d19b8cfb0");
+            var hateotnymph = library.Get<BlueprintUnit>("19e471c925c1b204f90c003d19b8cfb0");
             var stormbolt = library.Get<BlueprintAbility>("7cfbefe0931257344b2cb7ddc4cdff6f");
             var creepingdoom = library.Get<BlueprintAbility>("b974af13e45639a41a04843ce1c9aa12");
             var greaterdispel = library.Get<BlueprintAbility>("f0f761b808dc4b149b08eaf44b99f633");
@@ -20951,28 +21057,89 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
             var flurryofsnowballs = library.Get<BlueprintAbility>("390e16e9595f4e4696ca90d18b803092");
             var snowball = library.Get<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
             var shockinggrasp = library.Get<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
+            var summonelderelemental = library.Get<BlueprintAbility>("8a7f8c1223bda1541b42fd0320cdbe2b");
+            var coneofcold = library.Get<BlueprintAbility>("e7c530f8137630f4d9d7ee1aa7b1edc0");
+            var stoneskincommunal = library.Get<BlueprintAbility>("7c5d556b9a5883048bf030e20daebe31");
+            var umbralstrike = library.Get<BlueprintAbility>("474ed0aa656cc38499cc9a073d113716");
+            var SpitVenom = library.Get<BlueprintAbility>("9779c8578acd919419f563c33d7b2af5");
+            var Sirocco = library.Get<BlueprintAbility>("093ed1d67a539ad4c939d9d05cfe192c");
+            var SummonNaturesAllyVII = library.Get<BlueprintAbility>("051b979e7d7f8ec41b9fa35d04746b33");
+            var SummonNaturesAllyVIII = library.Get<BlueprintAbility>("ea78c04f0bd13d049a1cce5daf8d83e0");
 
 
+            hateotnymph.Wisdom = 24;
 
 
-
-            defaced_sister.AddFacts = defaced_sister.AddFacts.RemoveFromArray(NaturalArmor6);
-            defaced_sister.AddFacts = defaced_sister.AddFacts.AddToArray(quicken, lightningbolt, freedomofmovementbuff);
+            hateotnymph.AddFacts = hateotnymph.AddFacts.AddToArray(quicken, freedomofmovementbuff,lightningbolt,calllightningability);
 
             {
 
 
-                var nymphLevels = defaced_sister.ComponentsArray
+                var nymphLevels = hateotnymph.ComponentsArray
                       .OfType<AddClassLevels>()
                       .First(c => c.CharacterClass == nymphclass);
                 var newnymphLevels = nymphLevels.CreateCopy();
                 newnymphLevels.Levels = 18;
-                var spell_list = newnymphLevels.MemorizeSpells.AddToArray(fire_storm, greaterdispel, greaterdispel, heal, tarpool, seamantle, freedomofmovement,
-                                                                          firesnake, firesnake, vinetrap, barkskin, flurryofsnowballs, flurryofsnowballs, snowball, snowball, snowball, shockinggrasp, shockinggrasp);
+                var spell_list = newnymphLevels.MemorizeSpells.AddToArray(summonelderelemental, greaterdispel, heal, stoneskincommunal, seamantle, freedomofmovement, umbralstrike, umbralstrike, calllightningstorm,
+                                                                          firesnake, firesnake, coneofcold, vinetrap, barkskin, flurryofsnowballs, flurryofsnowballs, snowball, snowball, snowball, snowball);
                 newnymphLevels.MemorizeSpells = spell_list;
-                defaced_sister.ReplaceComponent(nymphLevels, newnymphLevels);
+                hateotnymph.ReplaceComponent(nymphLevels, newnymphLevels);
 
+                var nymphLevels3 = hateotnymph.ComponentsArray
+                .OfType<AddClassLevels>()
+                .First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels3 = nymphLevels3.CreateCopy();
+                var spell_list3 = newAddClassLevels3.MemorizeSpells.RemoveFromArray(SpitVenom);
+                newAddClassLevels3.MemorizeSpells = spell_list3;
+                hateotnymph.ReplaceComponent(nymphLevels3, newAddClassLevels3);
 
+                var nymphLevels4 = hateotnymph.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels4 = nymphLevels4.CreateCopy();
+                var spell_list4 = newAddClassLevels4.MemorizeSpells.RemoveFromArray(Sirocco);
+                newAddClassLevels4.MemorizeSpells = spell_list4;
+                hateotnymph.ReplaceComponent(nymphLevels4, newAddClassLevels4);
+
+                var nymphLevels5 = hateotnymph.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels5 = nymphLevels5.CreateCopy();
+                var spell_list5 = newAddClassLevels5.MemorizeSpells.RemoveFromArray(Sirocco);
+                newAddClassLevels5.MemorizeSpells = spell_list5;
+                hateotnymph.ReplaceComponent(nymphLevels5, newAddClassLevels5);
+
+                var nymphLevels6 = hateotnymph.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels6 = nymphLevels6.CreateCopy();
+                var spell_list6 = newAddClassLevels6.MemorizeSpells.RemoveFromArray(SummonNaturesAllyVII);
+                newAddClassLevels6.MemorizeSpells = spell_list6;
+                hateotnymph.ReplaceComponent(nymphLevels6, newAddClassLevels6);
+
+                var nymphLevels7 = hateotnymph.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels7 = nymphLevels7.CreateCopy();
+                var spell_list7 = newAddClassLevels7.MemorizeSpells.RemoveFromArray(SummonNaturesAllyVII);
+                newAddClassLevels7.MemorizeSpells = spell_list7;
+                hateotnymph.ReplaceComponent(nymphLevels7, newAddClassLevels7);
+
+                var nymphLevels8 = hateotnymph.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels8 = nymphLevels8.CreateCopy();
+                var spell_list8 = newAddClassLevels8.MemorizeSpells.RemoveFromArray(SummonNaturesAllyVIII);
+                newAddClassLevels8.MemorizeSpells = spell_list8;
+                hateotnymph.ReplaceComponent(nymphLevels8, newAddClassLevels8);
+
+                var nymphLevels9 = hateotnymph.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == nymphclass);
+                var newAddClassLevels9 = nymphLevels9.CreateCopy();
+                var spell_list9 = newAddClassLevels9.MemorizeSpells.RemoveFromArray(SummonNaturesAllyVIII);
+                newAddClassLevels9.MemorizeSpells = spell_list9;
+                hateotnymph.ReplaceComponent(nymphLevels9, newAddClassLevels9);
 
                 var auto_metamgic3 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
                 auto_metamgic3.GetComponent<AutoMetamagic>().Abilities.Add(Spells.seamantle);
@@ -20980,14 +21147,18 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
                 var auto_metamgic2 = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
                 auto_metamgic2.GetComponent<AutoMetamagic>().Abilities.Add(Spells.barkskin);
 
+                var dumbmonsterbrain = library.Get<BlueprintBrain>("5abc8884c6f15204c8604cb01a2efbab");
+
+                var new_actions = dumbmonsterbrain.Actions;
+
+                hateotnymph.Brain.Actions = new_actions;
 
 
-
-                var brain = defaced_sister.Brain;
-                brain.Actions = brain.Actions.AddToArray( AiActions.healspell, AiActions.castgreaterdispellsisterabandoned, AiActions.tarpool,
-                                                            AiActions.chainlightningsister, AiActions.seamantle, AiActions.castfreedomofmovement, AiActions.lightningboltsister,
-                                                            AiActions.castfiresnakesister, AiActions.castvinetrap, AiActions.barkskingoblinking,
-                                                            AiActions.calllightninglostsister, AiActions.castflurryofsnowballssister, AiActions.castsnowballlostsister, AiActions.castshockgraspsister);
+                var brain = hateotnymph.Brain;
+                brain.Actions = brain.Actions.AddToArray(AiActions.healspell, AiActions.castgreaterdispellsisterabandoned, AiActions.tarpoolnymph, AiActions.stoneskincommunalsprig,AiActions.coneofcoldbloodmoon,
+                                                            AiActions.chainlightningsister, AiActions.seamantle, AiActions.castfreedomofmovement, AiActions.lightningboltsister, AiActions.umbral_strikehateot,
+                                                            AiActions.castfiresnakesister, AiActions.castvinetrap, AiActions.barkskingoblinking, AiActions.summonelderearthelemental,
+                                                             AiActions.castflurryofsnowballssister, AiActions.castsnowballlostsister,AiActions.calllightningnymph,AiActions.calllightningstormnymph);
             }
         }
 
@@ -21023,6 +21194,600 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
             brain.Actions = brain.Actions.AddToArray(AiActions.coneofcoldelderwater,AiActions.cleave);
 
             ElderWater.GetComponent<Experience>().CR = 16;
+
+
+        }
+
+        static void changeMedusaSorcererArcane()
+        {
+
+            var MedusaSorcerer = library.Get<BlueprintUnit>("2ed270b0aef7bc944b7539bb3fbfc017");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var monsterClass = library.Get<BlueprintCharacterClass>("8a3c86893f383214da070e9c84c1e95b");
+            var summonmonsterVI = library.Get<BlueprintAbility>("e740afbab0147944dab35d83faa0ae1c");
+            var sorcererClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var oldmagicmissleswift = library.Get<BlueprintAiCastSpell>("e8c30e8f2729fc44baedaa287fd8e9a5");
+            var magicmissleswift = library.Get<BlueprintAbility>("e4fc6161735811f44b6ee8b2043fc086");
+            var dragonsbreathblue = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var augmentsummon = library.Get<BlueprintFeature>("38155ca9e4055bb48a89240a2055dcc3");
+            var superiorsummmoning = library.Get<BlueprintFeature>("0477936c0f74841498b5c8753a8062a3");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+            var hurricanebow = library.Get<BlueprintAbility>("3e9d1119d43d07c4c8ba9ebfd1671952");
+            var magusClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var eldritcharcher = library.Get<BlueprintArchetype>("44388c01eb4a29d4d90a25cc0574320d");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
+            var disintegrate = library.Get<BlueprintAbility>("4aa7942c3e62a164387a73184bca3fc1");
+            var frigidtouch = library.Get<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
+            var shockinggrasp = library.Get<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
+            var phantasmalkiller = library.Get<BlueprintAbility>("6717dbaef00c0eb4897a1c908a75dfe5");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var catsgrace = library.Get<BlueprintAbility>("de7a025d48ad5da4991e7d3c682cf69d");
+            var dimensionstrikefeat = library.Get<BlueprintFeature>("cb6916027e3c25e4185de068249254dc");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var catsgracebuff = library.Get<BlueprintBuff>("f011d0ab4a405e54aa0e83cd10e54430");
+            var electricalfeat = library.Get<BlueprintFeature>("05ed8b77c652483b9ecda069592a29ae");
+            var firebrandbuff = library.Get<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
+            var frostfeat = library.Get<BlueprintFeature>("8b4e01f6322d464a90105182d2ebcb01");
+            var controlledfireball = library.Get<BlueprintAbility>("f72f8f03bf0136c4180cd1d70eb773a5");
+            var scorchingray = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+            var lightningbolt = library.Get<BlueprintAbility>("d2cff9243a7ee804cb6d5be47af30c73");
+            var balefulpolymorph = library.Get<BlueprintAbility>("3105d6e9febdc3f41a08d2b7dda1fe74");
+            var snowball = library.Get<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
+            var chainlightning = library.Get<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+            var rapidshot = library.Get<BlueprintFeature>("9c928dc570bb9e54a9649b3ebfe47a41");
+            var rapidshotbuff = library.Get<BlueprintBuff>("0f310c1e709e15e4fa693db15a4baeb4");
+            var deadlyaim = library.Get<BlueprintFeature>("f47df34d53f8c904f9981a3ee8e84892");
+            var deadlyaimbuff = library.Get<BlueprintBuff>("6aaf11aa06ae0e7499a71b79725828df");
+            var InvisibilityGreater = library.Get<BlueprintAbility>("ecaa0def35b38f949bd1976a6c9539e0");
+            var weaponfocusshortbow = library.Get<BlueprintFeature>("3dfac9eea9750c14b8851852b8d77dee");
+            var hellfireray = library.Get<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
+            var manyshot = library.Get<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");
+
+
+            MedusaSorcerer.AddFacts = MedusaSorcerer.AddFacts.AddToArray(quicken, electricalfeat,frostfeat,rapidshotbuff,rapidshot,weaponfocusshortbow);
+
+            var magusLevels = MedusaSorcerer.ComponentsArray
+ .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == sorcererClass);
+            var newAddClassLevels = magusLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            newAddClassLevels.Levels = 18;
+            var archetype = newAddClassLevels.Archetypes.AddToArray(eldritcharcher);
+            newAddClassLevels.Archetypes = archetype;
+            MedusaSorcerer.ReplaceComponent(magusLevels, newAddClassLevels);
+
+            var magusLevels2 = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels2 = magusLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(slow,  hurricanebow, displacement, InvisibilityGreater, mirrorimage,
+                                                                          mirrorimage,stoneskin,haste,catsgrace,scorchingray,scorchingray,snowball,snowball,scorchingray,controlledfireball,controlledfireball,balefulpolymorph,snowball,hellfireray,hellfireray);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            MedusaSorcerer.ReplaceComponent(magusLevels2, newAddClassLevels2);
+
+            var magusLevels4 = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels4 = magusLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.SelectSpells.AddToArray(slow, mirrorimage, InvisibilityGreater, hurricanebow, displacement, haste,stoneskin,catsgrace,shockinggrasp,scorchingray,controlledfireball,lightningbolt,balefulpolymorph,snowball,hellfireray);
+            newAddClassLevels4.SelectSpells = spell_list4;
+            MedusaSorcerer.ReplaceComponent(magusLevels4, newAddClassLevels4);
+
+            var abberationLevels = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == monsterClass);
+            var newAddClassLevels3 = abberationLevels.CreateCopy();
+            newAddClassLevels3.Levels = 6;
+            MedusaSorcerer.ReplaceComponent(abberationLevels, newAddClassLevels3);
+
+            MedusaSorcerer.Intelligence = 26;
+            MedusaSorcerer.Dexterity = 28;
+            MedusaSorcerer.Strength = 20;
+            MedusaSorcerer.Charisma = 17;
+
+            MedusaSorcerer.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("2f1673e87242d2941a1e49b850dbc9f2"); //shortbow +3
+            MedusaSorcerer.Body.Head = library.Get<BlueprintItemEquipmentHead>("b9b49933be6ac7f4aa3c71c602227332"); //Headband of Mental Perfection +2
+            MedusaSorcerer.Body.Wrist = library.Get<BlueprintItemEquipmentWrist>("4811d69bde8fb0243b61c2b41300ebe7"); //Bracers of Armor +6
+
+
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+
+
+
+            var brain = MedusaSorcerer.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage,AiActions.mirrorimagerecast, AiActions.hurricanebowgoblinking,AiActions.castcatsgrace,AiActions.displacementvordakai,
+                                                    AiActions.stoneskin, AiActions.castphantasmalkillermagus,  AiActions.castscorchingraymedusa, AiActions.castinvisibilitygreater, AiActions.casthastemedusa,
+                                                    AiActions.castcontrolledfireballmedusa,AiActions.castlightningboltmedusa,AiActions.castbalefulpolymorphmedusa,AiActions.castsnowballmedusa,AiActions.casthellfireraymedusa);
+
+
+        }
+
+        static void changeMedusaSorcererDivine()
+        {
+
+            var MedusaSorcerer = library.Get<BlueprintUnit>("a1c4c86d82cbadb4b8169de35f2cf113");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var monsterClass = library.Get<BlueprintCharacterClass>("8a3c86893f383214da070e9c84c1e95b");
+            var summonmonsterVI = library.Get<BlueprintAbility>("e740afbab0147944dab35d83faa0ae1c");
+            var sorcererClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var oldmagicmissleswift = library.Get<BlueprintAiCastSpell>("e8c30e8f2729fc44baedaa287fd8e9a5");
+            var magicmissleswift = library.Get<BlueprintAbility>("e4fc6161735811f44b6ee8b2043fc086");
+            var dragonsbreathblue = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var augmentsummon = library.Get<BlueprintFeature>("38155ca9e4055bb48a89240a2055dcc3");
+            var superiorsummmoning = library.Get<BlueprintFeature>("0477936c0f74841498b5c8753a8062a3");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+            var hurricanebow = library.Get<BlueprintAbility>("3e9d1119d43d07c4c8ba9ebfd1671952");
+            var magusClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var eldritcharcher = library.Get<BlueprintArchetype>("44388c01eb4a29d4d90a25cc0574320d");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
+            var disintegrate = library.Get<BlueprintAbility>("4aa7942c3e62a164387a73184bca3fc1");
+            var frigidtouch = library.Get<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
+            var shockinggrasp = library.Get<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
+            var phantasmalkiller = library.Get<BlueprintAbility>("6717dbaef00c0eb4897a1c908a75dfe5");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var catsgrace = library.Get<BlueprintAbility>("de7a025d48ad5da4991e7d3c682cf69d");
+            var dimensionstrikefeat = library.Get<BlueprintFeature>("cb6916027e3c25e4185de068249254dc");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var catsgracebuff = library.Get<BlueprintBuff>("f011d0ab4a405e54aa0e83cd10e54430");
+            var electricalfeat = library.Get<BlueprintFeature>("05ed8b77c652483b9ecda069592a29ae");
+            var firebrandbuff = library.Get<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
+            var frostfeat = library.Get<BlueprintFeature>("8b4e01f6322d464a90105182d2ebcb01");
+            var controlledfireball = library.Get<BlueprintAbility>("f72f8f03bf0136c4180cd1d70eb773a5");
+            var scorchingray = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+            var lightningbolt = library.Get<BlueprintAbility>("d2cff9243a7ee804cb6d5be47af30c73");
+            var balefulpolymorph = library.Get<BlueprintAbility>("3105d6e9febdc3f41a08d2b7dda1fe74");
+            var snowball = library.Get<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
+            var chainlightning = library.Get<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+            var rapidshot = library.Get<BlueprintFeature>("9c928dc570bb9e54a9649b3ebfe47a41");
+            var rapidshotbuff = library.Get<BlueprintBuff>("0f310c1e709e15e4fa693db15a4baeb4");
+            var deadlyaim = library.Get<BlueprintFeature>("f47df34d53f8c904f9981a3ee8e84892");
+            var deadlyaimbuff = library.Get<BlueprintBuff>("6aaf11aa06ae0e7499a71b79725828df");
+            var InvisibilityGreater = library.Get<BlueprintAbility>("ecaa0def35b38f949bd1976a6c9539e0");
+            var weaponfocusshortbow = library.Get<BlueprintFeature>("3dfac9eea9750c14b8851852b8d77dee");
+            var hellfireray = library.Get<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
+            var manyshot = library.Get<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");
+
+            MedusaSorcerer.AddFacts = MedusaSorcerer.AddFacts.AddToArray(quicken, electricalfeat, frostfeat, rapidshotbuff, rapidshot, weaponfocusshortbow);
+
+            var magusLevels = MedusaSorcerer.ComponentsArray
+ .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == sorcererClass);
+            var newAddClassLevels = magusLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            newAddClassLevels.Levels = 18;
+            var archetype = newAddClassLevels.Archetypes.AddToArray(eldritcharcher);
+            newAddClassLevels.Archetypes = archetype;
+            MedusaSorcerer.ReplaceComponent(magusLevels, newAddClassLevels);
+
+            var magusLevels2 = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels2 = magusLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(slow, hurricanebow, displacement, InvisibilityGreater, mirrorimage,
+                                                                          mirrorimage, stoneskin, haste, catsgrace, scorchingray, scorchingray, snowball, snowball, scorchingray, controlledfireball, controlledfireball, balefulpolymorph, snowball, hellfireray, hellfireray);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            MedusaSorcerer.ReplaceComponent(magusLevels2, newAddClassLevels2);
+
+            var magusLevels4 = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels4 = magusLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.SelectSpells.AddToArray(slow, mirrorimage, InvisibilityGreater, hurricanebow, displacement, haste, stoneskin, catsgrace, shockinggrasp, scorchingray, controlledfireball, lightningbolt, balefulpolymorph, snowball, hellfireray);
+            newAddClassLevels4.SelectSpells = spell_list4;
+            MedusaSorcerer.ReplaceComponent(magusLevels4, newAddClassLevels4);
+
+            var abberationLevels = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == monsterClass);
+            var newAddClassLevels3 = abberationLevels.CreateCopy();
+            newAddClassLevels3.Levels = 6;
+            MedusaSorcerer.ReplaceComponent(abberationLevels, newAddClassLevels3);
+
+            MedusaSorcerer.Intelligence = 26;
+            MedusaSorcerer.Dexterity = 28;
+            MedusaSorcerer.Strength = 20;
+            MedusaSorcerer.Charisma = 17;
+
+            MedusaSorcerer.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("2f1673e87242d2941a1e49b850dbc9f2"); //shortbow +3
+            MedusaSorcerer.Body.Head = library.Get<BlueprintItemEquipmentHead>("b9b49933be6ac7f4aa3c71c602227332"); //Headband of Mental Perfection +2
+            MedusaSorcerer.Body.Wrist = library.Get<BlueprintItemEquipmentWrist>("4811d69bde8fb0243b61c2b41300ebe7"); //Bracers of Armor +6
+
+
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+
+
+
+            var brain = MedusaSorcerer.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage, AiActions.mirrorimagerecast, AiActions.hurricanebowgoblinking, AiActions.castcatsgrace, AiActions.displacementvordakai,
+                                                    AiActions.stoneskin, AiActions.castphantasmalkillermagus, AiActions.castscorchingraymedusa, AiActions.castinvisibilitygreater, AiActions.casthastemedusa,
+                                                    AiActions.castcontrolledfireballmedusa, AiActions.castlightningboltmedusa, AiActions.castbalefulpolymorphmedusa, AiActions.castsnowballmedusa, AiActions.casthellfireraymedusa);
+
+
+        }
+
+        static void changeHATEOTMedusa()
+        {
+
+            var MedusaSorcerer = library.Get<BlueprintUnit>("09faf70175679be42867590d2af100b8");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var monsterClass = library.Get<BlueprintCharacterClass>("8a3c86893f383214da070e9c84c1e95b");
+            var summonmonsterVI = library.Get<BlueprintAbility>("e740afbab0147944dab35d83faa0ae1c");
+            var fighterClass = library.Get<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var oldmagicmissleswift = library.Get<BlueprintAiCastSpell>("e8c30e8f2729fc44baedaa287fd8e9a5");
+            var magicmissleswift = library.Get<BlueprintAbility>("e4fc6161735811f44b6ee8b2043fc086");
+            var dragonsbreathblue = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var augmentsummon = library.Get<BlueprintFeature>("38155ca9e4055bb48a89240a2055dcc3");
+            var superiorsummmoning = library.Get<BlueprintFeature>("0477936c0f74841498b5c8753a8062a3");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+            var hurricanebow = library.Get<BlueprintAbility>("3e9d1119d43d07c4c8ba9ebfd1671952");
+            var magusClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var eldritcharcher = library.Get<BlueprintArchetype>("44388c01eb4a29d4d90a25cc0574320d");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
+            var disintegrate = library.Get<BlueprintAbility>("4aa7942c3e62a164387a73184bca3fc1");
+            var frigidtouch = library.Get<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
+            var shockinggrasp = library.Get<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
+            var phantasmalkiller = library.Get<BlueprintAbility>("6717dbaef00c0eb4897a1c908a75dfe5");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var catsgrace = library.Get<BlueprintAbility>("de7a025d48ad5da4991e7d3c682cf69d");
+            var dimensionstrikefeat = library.Get<BlueprintFeature>("cb6916027e3c25e4185de068249254dc");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var catsgracebuff = library.Get<BlueprintBuff>("f011d0ab4a405e54aa0e83cd10e54430");
+            var electricalfeat = library.Get<BlueprintFeature>("05ed8b77c652483b9ecda069592a29ae");
+            var firebrandbuff = library.Get<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
+            var frostfeat = library.Get<BlueprintFeature>("8b4e01f6322d464a90105182d2ebcb01");
+            var controlledfireball = library.Get<BlueprintAbility>("f72f8f03bf0136c4180cd1d70eb773a5");
+            var scorchingray = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+            var lightningbolt = library.Get<BlueprintAbility>("d2cff9243a7ee804cb6d5be47af30c73");
+            var balefulpolymorph = library.Get<BlueprintAbility>("3105d6e9febdc3f41a08d2b7dda1fe74");
+            var snowball = library.Get<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
+            var chainlightning = library.Get<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+            var rapidshot = library.Get<BlueprintFeature>("9c928dc570bb9e54a9649b3ebfe47a41");
+            var rapidshotbuff = library.Get<BlueprintBuff>("0f310c1e709e15e4fa693db15a4baeb4");
+            var deadlyaim = library.Get<BlueprintFeature>("f47df34d53f8c904f9981a3ee8e84892");
+            var deadlyaimbuff = library.Get<BlueprintBuff>("6aaf11aa06ae0e7499a71b79725828df");
+            var InvisibilityGreater = library.Get<BlueprintAbility>("ecaa0def35b38f949bd1976a6c9539e0");
+            var weaponfocusshortbow = library.Get<BlueprintFeature>("3dfac9eea9750c14b8851852b8d77dee");
+            var hellfireray = library.Get<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
+            var shield = library.Get<BlueprintAbility>("ef768022b0785eb43a18969903c537c4");
+            var branded = library.Get<BlueprintUnitTemplate>("b3fb486ae387c6b4ab8bc52afa6d4131");
+            var SpellFocusTransmutation = library.Get<BlueprintFeature>("49907a2e51b49d641aad3c9781a3a698");
+            var GreaterSpellFocusTransmutation = library.Get<BlueprintFeature>("74fd23356fc4c9847986d48f1a40bc7a");
+
+
+
+            MedusaSorcerer.AdditionalTemplates = MedusaSorcerer.AdditionalTemplates.RemoveFromArray(branded);
+
+            MedusaSorcerer.AddFacts = MedusaSorcerer.AddFacts.RemoveFromArray(deadlyaimbuff);
+            MedusaSorcerer.AddFacts = MedusaSorcerer.AddFacts.AddToArray(quicken, electricalfeat, frostfeat, rapidshotbuff, rapidshot, weaponfocusshortbow,SpellFocusTransmutation,GreaterSpellFocusTransmutation);
+
+            var magusLevels = MedusaSorcerer.ComponentsArray
+ .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == fighterClass);
+            var newAddClassLevels = magusLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            newAddClassLevels.Levels = 18;
+            var archetype = newAddClassLevels.Archetypes.AddToArray(eldritcharcher);
+            newAddClassLevels.Archetypes = archetype;
+            MedusaSorcerer.ReplaceComponent(magusLevels, newAddClassLevels);
+
+            var magusLevels2 = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels2 = magusLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(slow, hurricanebow, displacement, InvisibilityGreater, mirrorimage,
+                                                                          mirrorimage, stoneskin, haste, catsgrace, scorchingray, scorchingray,shield, snowball, snowball, scorchingray, controlledfireball, controlledfireball, balefulpolymorph, snowball, hellfireray, hellfireray);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            MedusaSorcerer.ReplaceComponent(magusLevels2, newAddClassLevels2);
+
+            var magusLevels4 = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels4 = magusLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.SelectSpells.AddToArray(slow, mirrorimage, InvisibilityGreater, hurricanebow, displacement, haste,shield, stoneskin, catsgrace, shockinggrasp, scorchingray, controlledfireball, lightningbolt, balefulpolymorph, snowball, hellfireray);
+            newAddClassLevels4.SelectSpells = spell_list4;
+            MedusaSorcerer.ReplaceComponent(magusLevels4, newAddClassLevels4);
+
+            var abberationLevels = MedusaSorcerer.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == monsterClass);
+            var newAddClassLevels3 = abberationLevels.CreateCopy();
+            newAddClassLevels3.Levels = 6;
+            MedusaSorcerer.ReplaceComponent(abberationLevels, newAddClassLevels3);
+
+            MedusaSorcerer.Intelligence = 26;
+            MedusaSorcerer.Dexterity = 28;
+            MedusaSorcerer.Strength = 20;
+            MedusaSorcerer.Charisma = 17;
+
+            MedusaSorcerer.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("2f1673e87242d2941a1e49b850dbc9f2"); //shortbow +3
+            MedusaSorcerer.Body.Head = library.Get<BlueprintItemEquipmentHead>("b9b49933be6ac7f4aa3c71c602227332"); //Headband of Mental Perfection +2
+            MedusaSorcerer.Body.Wrist = library.Get<BlueprintItemEquipmentWrist>("4811d69bde8fb0243b61c2b41300ebe7"); //Bracers of Armor +6
+
+
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+
+
+
+            var brain = MedusaSorcerer.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage, AiActions.mirrorimagerecast, AiActions.hurricanebowgoblinking, AiActions.castcatsgrace, AiActions.displacementvordakai, AiActions.castshieldsprig,
+                                                    AiActions.stoneskin, AiActions.castphantasmalkillermagus, AiActions.castscorchingraymedusa, AiActions.castinvisibilitygreater, AiActions.casthastemedusa,
+                                                    AiActions.castcontrolledfireballmedusa, AiActions.castlightningboltmedusa, AiActions.castbalefulpolymorphmedusa, AiActions.castsnowballmedusa, AiActions.casthellfireraymedusa);
+
+
+        }
+
+        static void changeMedusaPhomandala()
+        {
+
+            var MedusaPhomandala = library.Get<BlueprintUnit>("5e656378f2d6e6c428938d06de0ee677");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var monsterClass = library.Get<BlueprintCharacterClass>("8a3c86893f383214da070e9c84c1e95b");
+            var sorcererClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var oldmagicmissleswift = library.Get<BlueprintAiCastSpell>("e8c30e8f2729fc44baedaa287fd8e9a5");
+            var magicmissleswift = library.Get<BlueprintAbility>("e4fc6161735811f44b6ee8b2043fc086");
+            var dragonsbreathblue = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var augmentsummon = library.Get<BlueprintFeature>("38155ca9e4055bb48a89240a2055dcc3");
+            var superiorsummmoning = library.Get<BlueprintFeature>("0477936c0f74841498b5c8753a8062a3");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+            var hurricanebow = library.Get<BlueprintAbility>("3e9d1119d43d07c4c8ba9ebfd1671952");
+            var magusClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var eldritcharcher = library.Get<BlueprintArchetype>("44388c01eb4a29d4d90a25cc0574320d");
+            var haste = library.Get<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var stoneskin = library.Get<BlueprintAbility>("c66e86905f7606c4eaa5c774f0357b2b");
+            var disintegrate = library.Get<BlueprintAbility>("4aa7942c3e62a164387a73184bca3fc1");
+            var frigidtouch = library.Get<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
+            var shockinggrasp = library.Get<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
+            var phantasmalkiller = library.Get<BlueprintAbility>("6717dbaef00c0eb4897a1c908a75dfe5");
+            var vampirictouch = library.Get<BlueprintAbility>("8a28a811ca5d20d49a863e832c31cce1");
+            var catsgrace = library.Get<BlueprintAbility>("de7a025d48ad5da4991e7d3c682cf69d");
+            var dimensionstrikefeat = library.Get<BlueprintFeature>("cb6916027e3c25e4185de068249254dc");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var catsgracebuff = library.Get<BlueprintBuff>("f011d0ab4a405e54aa0e83cd10e54430");
+            var electricalfeat = library.Get<BlueprintFeature>("05ed8b77c652483b9ecda069592a29ae");
+            var firebrandbuff = library.Get<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
+            var frostfeat = library.Get<BlueprintFeature>("8b4e01f6322d464a90105182d2ebcb01");
+            var controlledfireball = library.Get<BlueprintAbility>("f72f8f03bf0136c4180cd1d70eb773a5");
+            var scorchingray = library.Get<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
+            var lightningbolt = library.Get<BlueprintAbility>("d2cff9243a7ee804cb6d5be47af30c73");
+            var balefulpolymorph = library.Get<BlueprintAbility>("3105d6e9febdc3f41a08d2b7dda1fe74");
+            var snowball = library.Get<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
+            var chainlightning = library.Get<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+            var rapidshot = library.Get<BlueprintFeature>("9c928dc570bb9e54a9649b3ebfe47a41");
+            var rapidshotbuff = library.Get<BlueprintBuff>("0f310c1e709e15e4fa693db15a4baeb4");
+            var deadlyaim = library.Get<BlueprintFeature>("f47df34d53f8c904f9981a3ee8e84892");
+            var deadlyaimbuff = library.Get<BlueprintBuff>("6aaf11aa06ae0e7499a71b79725828df");
+            var InvisibilityGreater = library.Get<BlueprintAbility>("ecaa0def35b38f949bd1976a6c9539e0");
+            var weaponfocusshortbow = library.Get<BlueprintFeature>("3dfac9eea9750c14b8851852b8d77dee");
+            var hellfireray = library.Get<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
+            var manyshot = library.Get<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");
+            var BarkskinFixedBuff5 = library.Get<BlueprintBuff>("063773c63d55dd94a94f9ffe3e710f95");
+            var MageShieldBuff = library.Get<BlueprintBuff>("9c0fa9b438ada3f43864be8dd8b3e741");
+            var EcholocationBuff = library.Get<BlueprintBuff>("cbfd2f5279f5946439fe82570fd61df2");
+            var TrueSeeingBuff = library.Get<BlueprintBuff>("09b4b69169304474296484c74aa12027");
+            var VampiricShadowShieldBuff = library.Get<BlueprintBuff>("b23eb856f521ba041bccd05a0e472604");
+            var vampireshield = library.Get<BlueprintAbility>("a34921035f2a6714e9be5ca76c5e34b5");
+            var boneshatter = library.Get<BlueprintAbility>("f2f1efac32ea2884e84ecaf14657298b");
+            var firesnake = library.Get<BlueprintAbility>("ebade19998e1f8542a1b55bd4da766b3");
+
+
+
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.RemoveFromArray(catsgracebuff);
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.RemoveFromArray(EcholocationBuff);
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.RemoveFromArray(TrueSeeingBuff);
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.RemoveFromArray(VampiricShadowShieldBuff);
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.RemoveFromArray(MageShieldBuff);
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.RemoveFromArray(BarkskinFixedBuff5);
+            MedusaPhomandala.AddFacts = MedusaPhomandala.AddFacts.AddToArray(quicken, electricalfeat, frostfeat, rapidshotbuff, rapidshot, weaponfocusshortbow,boneshatter);
+
+            var magusLevels = MedusaPhomandala.ComponentsArray
+ .OfType<AddClassLevels>()
+   .First(c => c.CharacterClass == sorcererClass);
+            var newAddClassLevels = magusLevels.CreateCopy();
+            newAddClassLevels.CharacterClass = library.Get<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            newAddClassLevels.Levels = 20;
+            var archetype = newAddClassLevels.Archetypes.AddToArray(eldritcharcher);
+            newAddClassLevels.Archetypes = archetype;
+            MedusaPhomandala.ReplaceComponent(magusLevels, newAddClassLevels);
+
+            var magusLevels2 = MedusaPhomandala.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels2 = magusLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(slow, hurricanebow, displacement, InvisibilityGreater, firesnake,firesnake,
+                                                                          mirrorimage, stoneskin, haste, catsgrace, scorchingray, scorchingray, mirrorimage,
+                                                                          snowball, snowball, scorchingray, balefulpolymorph, snowball,vampireshield,disintegrate,disintegrate,disintegrate,disintegrate,disintegrate);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            MedusaPhomandala.ReplaceComponent(magusLevels2, newAddClassLevels2);
+
+            var magusLevels4 = MedusaPhomandala.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == magusClass);
+            var newAddClassLevels4 = magusLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.SelectSpells.AddToArray(slow, mirrorimage, InvisibilityGreater, hurricanebow, firesnake, displacement, haste, stoneskin, catsgrace, shockinggrasp, scorchingray, controlledfireball,disintegrate, balefulpolymorph, snowball, hellfireray,vampireshield);
+            newAddClassLevels4.SelectSpells = spell_list4;
+            MedusaPhomandala.ReplaceComponent(magusLevels4, newAddClassLevels4);
+
+            var abberationLevels = MedusaPhomandala.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == monsterClass);
+            var newAddClassLevels3 = abberationLevels.CreateCopy();
+            newAddClassLevels3.Levels = 8;
+            MedusaPhomandala.ReplaceComponent(abberationLevels, newAddClassLevels3);
+
+            MedusaPhomandala.Intelligence = 26;
+            MedusaPhomandala.Dexterity = 28;
+            MedusaPhomandala.Strength = 20;
+            MedusaPhomandala.Charisma = 17;
+
+            MedusaPhomandala.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("327cd32ab719b1042bef7c45222eedf4"); //shortbow +4
+            MedusaPhomandala.Body.Head = library.Get<BlueprintItemEquipmentHead>("df2aa195ecce07c4c8dcabb5ea8c696e"); //Headband of Mental Perfection +4
+            MedusaPhomandala.Body.Wrist = library.Get<BlueprintItemEquipmentWrist>("4811d69bde8fb0243b61c2b41300ebe7"); //Bracers of Armor +6
+            MedusaPhomandala.Body.Ring1  = library.Get<BlueprintItemEquipmentRing>("31315100c28e6a2418396fb152466fcd"); //Ring of Prot +3
+            MedusaPhomandala.Body.Shoulders = library.Get<BlueprintItemEquipmentShoulders>("04dff7841c5f499478c91487d9bbdcef"); //Cloak of Protection +2
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+
+
+
+            var brain = MedusaPhomandala.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.mirrorimage, AiActions.mirrorimagerecast, AiActions.hurricanebowgoblinking, AiActions.castcatsgrace, AiActions.displacementvordakai,AiActions.castvampiricshadowshield,
+                                                    AiActions.stoneskin, AiActions.castphantasmalkillermagus, AiActions.castscorchingraymedusa, AiActions.castinvisibilitygreater, 
+                                                    AiActions.casthastemedusa, AiActions.trueseeing, AiActions.castdisintegratearcane,
+                                                    AiActions.castcontrolledfireballmedusa, AiActions.castlightningboltmedusa, AiActions.castbalefulpolymorphmedusa, AiActions.castsnowballmedusa, AiActions.casthellfireraymedusa);
+
+
+        }
+
+        static void updateMisbegottenTroll()
+        {
+
+
+            
+            var humanoidClass = library.Get<BlueprintCharacterClass>("6ab4526f94d2e3e439af0599a29b6675");
+            var MisbegottenTroll = library.Get<BlueprintUnit>("872755872c228ee4c8428fd1567523ea");
+            var TrollClaw = library.Get<BlueprintItemWeapon>("de21b6c00e6adaa409a6e7c2ae9f87f4");
+            var Claw2d6 = library.Get<BlueprintItemWeapon>("75254f19ca6e1d048a88b7545bb65221");
+            var improvedinitiative = library.Get<BlueprintFeature>("797f25d709f559546b29e7bcb181cc74");
+            var powerattackfeature = library.Get<BlueprintFeature>("9972f33f977fc724c838e59641b2fca5");
+            var MisbegottenTrollFeatures = library.Get<BlueprintFeature>("5b79afbe20f63d5488516f9e3db95c11");
+            var combatcasting = library.Get<BlueprintFeature>("06964d468fde1dc4aa71a92ea04d930d");
+            var NaturalArmor15 = library.Get<BlueprintUnitFact>("72c294dca841e3944869fb087bacf272");
+            var deflectionarmor9 = library.Get<BlueprintUnitFact>("3d6b4c5d23d7d7a4c8b338b995d32b8b");
+            var NaturalArmor6 = library.Get<BlueprintUnitFact>("987ba44303e88054c9504cb3083ba0c9");
+            var unholyaura = library.Get<BlueprintAbility>("47f9cb1c367a5e4489cfa32fce290f86");
+            var heroism = library.Get<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var clericClass = library.Get<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+            var prayer = library.Get<BlueprintAbility>("faabd2cc67efa4646ac58c7bb3e40fcc");
+            var constrictingcoils = library.Get<BlueprintAbility>("3fce8e988a51a2a4ea366324d6153001");
+            var coldicestrike = library.Get<BlueprintAbility>("5ef85d426783a5347b420546f91a677b");
+            var HealCast = library.Get<BlueprintAbility>("5da172c4c89f9eb4cbb614f3a67357d3");
+            var UnholyAura = library.Get<BlueprintAbility>("47f9cb1c367a5e4489cfa32fce290f86");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var FrightfulAspect = library.Get<BlueprintAbility>("e788b02f8d21014488067bdd3ba7b325");
+
+
+            MisbegottenTroll.AddFacts = MisbegottenTroll.AddFacts.RemoveFromArray(NaturalArmor15);
+            MisbegottenTroll.AddFacts = MisbegottenTroll.AddFacts.RemoveFromArray(MisbegottenTrollFeatures);
+            MisbegottenTroll.AddFacts = MisbegottenTroll.AddFacts.AddToArray(improvedinitiative,combatcasting,deflectionarmor9,NaturalArmor6,quicken);
+
+
+
+
+
+
+
+            var humanoidLevels = MisbegottenTroll.ComponentsArray
+             .OfType<AddClassLevels>()
+               .First(c => c.CharacterClass == humanoidClass);
+            var newhumanoidLevels = humanoidLevels.CreateCopy();
+            newhumanoidLevels.Levels = 10;
+            MisbegottenTroll.ReplaceComponent(humanoidLevels, newhumanoidLevels);
+
+            var clericLevels2 = MisbegottenTroll.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels2 = clericLevels2.CreateCopy();
+            var spell_list = newAddClassLevels2.MemorizeSpells.AddToArray(prayer,coldicestrike,coldicestrike,constrictingcoils,constrictingcoils);
+            newAddClassLevels2.MemorizeSpells = spell_list;
+            MisbegottenTroll.ReplaceComponent(clericLevels2, newAddClassLevels2);
+
+            var clericLevels3 = MisbegottenTroll.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels3 = clericLevels3.CreateCopy();
+            var spell_list3 = newAddClassLevels3.MemorizeSpells.RemoveFromArray(HealCast);
+            newAddClassLevels3.MemorizeSpells = spell_list3;
+            MisbegottenTroll.ReplaceComponent(clericLevels3, newAddClassLevels3);
+
+            var clericLevels4 = MisbegottenTroll.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels4 = clericLevels4.CreateCopy();
+            var spell_list4 = newAddClassLevels4.MemorizeSpells.RemoveFromArray(HealCast);
+            newAddClassLevels4.MemorizeSpells = spell_list4;
+            MisbegottenTroll.ReplaceComponent(clericLevels4, newAddClassLevels4);
+
+            var clericLevels5 = MisbegottenTroll.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels5 = clericLevels5.CreateCopy();
+            var spell_list5 = newAddClassLevels5.MemorizeSpells.RemoveFromArray(UnholyAura);
+            newAddClassLevels5.MemorizeSpells = spell_list5;
+            MisbegottenTroll.ReplaceComponent(clericLevels5, newAddClassLevels5);
+
+  
+
+            var clericLevels6 = MisbegottenTroll.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels6 = clericLevels6.CreateCopy();
+            var spell_list6 = newAddClassLevels6.MemorizeSpells.RemoveFromArray(FrightfulAspect);
+            newAddClassLevels6.MemorizeSpells = spell_list6;
+            MisbegottenTroll.ReplaceComponent(clericLevels6, newAddClassLevels6);
+
+            var clericLevels7 = MisbegottenTroll.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == clericClass);
+            var newAddClassLevels7 = clericLevels7.CreateCopy();
+            var spell_list7 = newAddClassLevels7.MemorizeSpells.RemoveFromArray(FrightfulAspect);
+            newAddClassLevels7.MemorizeSpells = spell_list7;
+            MisbegottenTroll.ReplaceComponent(clericLevels7, newAddClassLevels7);
+
+
+            MisbegottenTroll.Body.PrimaryHand = library.Get<BlueprintItemWeapon>("ded1c626212256641ae0fb07b7944711"); //Longspear +4
+
+
+            var dumbmonsterbrain = library.Get<BlueprintBrain>("5abc8884c6f15204c8604cb01a2efbab");
+
+            var new_actions = dumbmonsterbrain.Actions;
+
+            MisbegottenTroll.Brain.Actions = new_actions;
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.prayer);
+
+
+            var brain = MisbegottenTroll.Brain;
+            brain.Actions = brain.Actions.AddToArray(AiActions.unholyaura,AiActions.castdivinepowerdelaypitax,AiActions.frightfulaspect,
+                 AiActions.prayerbandit,AiActions.castconstrictingmisbegotten,AiActions.coldicestrikeghostmage,AiActions.Casthealspellmisbegotten);
 
 
         }
@@ -21101,6 +21866,8 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
             var brain = wrigglingman.Brain;
             brain.Actions = brain.Actions.AddToArray(AiActions.displacement_first);
 
+            wrigglingman.Body.Shoulders = library.Get<BlueprintItemEquipmentShoulders>("a34cd0f80d04ec647af741d924a3e2a3"); //Cloak of Protection +5
+
         }
 
         static void updateNyrissaBoss()
@@ -21137,7 +21904,7 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
 
 
             defaced_sister.AddFacts = defaced_sister.AddFacts.RemoveFromArray(NaturalArmor6);
-            defaced_sister.AddFacts = defaced_sister.AddFacts.AddToArray(quicken, lightningbolt, freedomofmovementbuff);
+            defaced_sister.AddFacts = defaced_sister.AddFacts.AddToArray(quicken, lightningbolt, freedomofmovementbuff,calllightningability);
 
             {
 
@@ -21153,7 +21920,7 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
                 var newdruidLevels = druidLevels.CreateCopy();
                 newdruidLevels.CharacterClass = library.Get<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
                 newdruidLevels.Levels = 20;
-                var spell_list = newdruidLevels.MemorizeSpells.AddToArray(fire_storm, greaterdispel, greaterdispel, heal, tarpool, seamantle, freedomofmovement,
+                var spell_list = newdruidLevels.MemorizeSpells.AddToArray(fire_storm, greaterdispel, greaterdispel, heal, tarpool, seamantle, freedomofmovement, calllightningstorm,
                                                                           firesnake, firesnake, vinetrap, barkskin, flurryofsnowballs, flurryofsnowballs, snowball, snowball, snowball, shockinggrasp, shockinggrasp);
                 newdruidLevels.MemorizeSpells = spell_list;
                 defaced_sister.AddComponent(newdruidLevels);
@@ -21470,6 +22237,76 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
 
             var brain = Owlbearillusion.Brain;
             brain.Actions = brain.Actions.AddToArray(AiActions.castmirrorimagebloodmoon,AiActions.displacementrecastowlbear);
+
+
+        }
+
+        static void changeAncientWarWisp()
+        {
+
+            var AncientWarwisp = library.Get<BlueprintUnit>("8cf8d0e90b593014bac6f0c11283ade5");
+            var displacementbuff = library.Get<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var abberationClass = library.Get<BlueprintCharacterClass>("e40e01860956b8b4d80059d4437996f5");
+            var summonmonsterVI = library.Get<BlueprintAbility>("e740afbab0147944dab35d83faa0ae1c");
+            var sorcererClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var oldmagicmissleswift = library.Get<BlueprintAiCastSpell>("e8c30e8f2729fc44baedaa287fd8e9a5");
+            var magicmissleswift = library.Get<BlueprintAbility>("e4fc6161735811f44b6ee8b2043fc086");
+            var dragonsbreathblue = library.Get<BlueprintAbility>("5e826bcdfde7f82468776b55315b2403");
+            var augmentsummon = library.Get<BlueprintFeature>("38155ca9e4055bb48a89240a2055dcc3");
+            var superiorsummmoning = library.Get<BlueprintFeature>("0477936c0f74841498b5c8753a8062a3");
+            var slow = library.Get<BlueprintAbility>("f492622e473d34747806bdb39356eb89");
+            var mirrorimage = library.Get<BlueprintAbility>("3e4ab69ada402d145a5e0ad3ad4b8564");
+            var quicken = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            var stormbolt = library.Get<BlueprintAbility>("7cfbefe0931257344b2cb7ddc4cdff6f");
+            var chainlightningai = library.Get<BlueprintAiAction>("2c50bf74c89aceb44a0fea93e39efcb3");
+            var natarmor2 = library.Get<BlueprintUnitFact>("45a52ce762f637f4c80cc741c91f58b7");
+            var deflectarmor3 = library.Get<BlueprintUnitFact>("6b0b0aa011d26da438a999b35ca97137");
+            var deflectarmor8 = library.Get<BlueprintUnitFact>("05425bd28cbb71d4b9dbce0f83231333");
+            var wavesofecstasy = library.Get<BlueprintAbility>("1e2d1489781b10a45a3b70192bba9be3");
+            var coneofcold = library.Get<BlueprintAbility>("e7c530f8137630f4d9d7ee1aa7b1edc0");
+            var displacement = library.Get<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var crushingdespair = library.Get<BlueprintAbility>("4baf4109145de4345861fe0f2209d903");
+            var controlledfireball = library.Get<BlueprintAbility>("f72f8f03bf0136c4180cd1d70eb773a5");
+            var icyprison = library.Get<BlueprintAbility>("65e8d23aef5e7784dbeb27b1fca40931");
+            var firesnake = library.Get<BlueprintAbility>("ebade19998e1f8542a1b55bd4da766b3");
+            var chainlightning = library.Get<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+
+            var sorcererLevels = AncientWarwisp.ComponentsArray
+.OfType<AddClassLevels>()
+.First(c => c.CharacterClass == abberationClass);
+            var newAddClassLevels = sorcererLevels.CreateCopy();
+            newAddClassLevels.Levels = 4;
+            AncientWarwisp.ReplaceComponent(sorcererLevels, newAddClassLevels);
+
+            var druidLevels = AncientWarwisp.GetComponent<AddClassLevels>();
+            var newdruidLevels = druidLevels.CreateCopy();
+            newdruidLevels.CharacterClass = library.Get<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            newdruidLevels.Levels = 16;
+            var spell_list = newdruidLevels.SelectSpells.AddToArray(stormbolt, slow, mirrorimage, controlledfireball,
+                                                                     chainlightning, displacement, crushingdespair, icyprison);
+            newdruidLevels.SelectSpells = spell_list;
+            AncientWarwisp.AddComponent(newdruidLevels);
+
+
+
+
+
+
+
+            AncientWarwisp.AddFacts = AncientWarwisp.AddFacts.AddToArray(quicken);
+
+
+            var auto_metamgic = library.Get<BlueprintFeature>("f65fc9a042f5e7247a03702dca121936");
+            auto_metamgic.GetComponent<AutoMetamagic>().Abilities.Add(Spells.mirrorimage);
+
+            var brain = AncientWarwisp.Brain;
+            brain.Actions = brain.Actions.RemoveFromArray(oldmagicmissleswift);
+            brain.Actions = brain.Actions.RemoveFromArray(chainlightningai);
+            brain.Actions = brain.Actions.AddToArray(AiActions.caststormboltbloodmoon,
+                                                    AiActions.magicmissleswift, AiActions.castslow,
+                                                    AiActions.castmirrorimagebloodmoon, AiActions.castchainlightningbloodmoon,
+                                                    AiActions.castdisplacementbloodmoon, 
+                                                    AiActions.casticyprisonbloodmoon, AiActions.castcontrolledfireball);
 
 
         }
@@ -22149,7 +22986,7 @@ base_score: 30.0f, combat_count: 1, start_cooldown_rounds: 4);
                                                     AiActions.magicmissleswift, AiActions.castslow,
                                                     AiActions.castmirrorimagebloodmoon,AiActions.castchainlightningbloodmoon,
                                                     AiActions.castwavesofecstasy,AiActions.castdisplacementbloodmoon,AiActions.castcrushingdespair,
-                                                    AiActions.casticyprisonbloodmoon,AiActions.coneofcoldbloodmoon, AiActions.castcontrolledfireball,AiActions.casticyprisonghostmage);
+                                                    AiActions.casticyprisonbloodmoon,AiActions.coneofcoldbloodmoon, AiActions.castcontrolledfireball);
 
 
         }
