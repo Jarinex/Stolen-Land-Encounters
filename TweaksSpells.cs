@@ -302,6 +302,39 @@ namespace Kingmaker.UnitLogic.Mechanics.Actions
 
 }
 
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster9 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(0, 4, 2);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
 namespace TweakMod
 {
     class SpellsTweaks
@@ -320,6 +353,11 @@ namespace TweakMod
             callghostsdevourer();
             summonrangedfriends();
             callVenegefulghosts();
+            callDamnedTrolls();
+            callHATEOTFrostGiant();
+            callErinyes();
+            callPurpleWorms();
+            callTreants();
 
         }
 
@@ -559,6 +597,138 @@ namespace TweakMod
         }
 
 
+        static void callDamnedTrolls()
+        {
+            var DamnedTrolls = library.Get<BlueprintUnit>("1f35ffdfefb2442bb6f4d970831e44d6");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = DamnedTrolls),
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = DamnedTrolls));
+
+            var ability = Helpers.CreateAbility("Summon Damned Trolls",
+                "Summon Damned Trolls",
+               "Summon Trolls to your side",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonDamnedTrollsresource4 = Helpers.CreateAbilityResource("SummonDamnedTrollsresource4", "", "", "", null);
+            SummonDamnedTrollsresource4.SetFixedResource(1);
+
+        }
+
+        static void callHATEOTFrostGiant()
+        {
+            var HATEOTFrostGiant = library.Get<BlueprintUnit>("6828d36959036054895d1b9cc0094d96");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = HATEOTFrostGiant),
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = HATEOTFrostGiant));
+
+            var ability = Helpers.CreateAbility("Summon Frost Giants",
+                "Summon Frost Giants",
+               "Summon Frost Giants to your side",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonHATEOTFrostGiantresource4 = Helpers.CreateAbilityResource("SummonHATEOTFrostGiantresource4", "", "", "", null);
+            SummonHATEOTFrostGiantresource4.SetFixedResource(1);
+
+        }
+
+        static void callErinyes()
+        {
+            var Erinyes = library.Get<BlueprintUnit>("0f36e9346d3f43948596f6a2ae41a5b8");
+            var HATEOTFrostGiant = library.Get<BlueprintUnit>("6828d36959036054895d1b9cc0094d96");
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = Erinyes),
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = Erinyes),
+               Helpers.Create<CustomContextActionSpawnMonster9>(c => c.Blueprint = Erinyes)); //Spawns on his right (my left), move it down on the y axis
+
+            var ability = Helpers.CreateAbility("Summon Erinyes Devils",
+                "Summon Erinyes Devils",
+               "Summon Erinyes Devils to your side",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonErinyesDevilsresource = Helpers.CreateAbilityResource("SummonErinyesDevilsresource4", "", "", "", null);
+            SummonErinyesDevilsresource.SetFixedResource(1);
+
+        }
+
+        static void callPurpleWorms()
+        {
+            var PurpleWorm = library.Get<BlueprintUnit>("f647bb3c11f1478cbb47f150bceb0a1e");
+
+
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = PurpleWorm),
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = PurpleWorm));
+
+
+            var ability = Helpers.CreateAbility("Summon Elder Worms",
+                "Summon Elder Worms",
+               "Summon Elder Worms to your side",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonElderWormsresource = Helpers.CreateAbilityResource("SummonElderWormsresource4", "", "", "", null);
+            SummonElderWormsresource.SetFixedResource(1);
+
+        }
+
+        static void callTreants()
+        {
+            var Treant = library.Get<BlueprintUnit>("5c322493e13040c3a36981ed67d6f590");
+
+
+
+            var actions = Helpers.CreateRunActions(
+               Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = Treant),
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = Treant));
+
+
+            var ability = Helpers.CreateAbility("Summon Treants",
+                "Summon Treants",
+               "Summon Treants to your side",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonTreantresource = Helpers.CreateAbilityResource("SummonTreantresource", "", "", "", null);
+            SummonTreantresource.SetFixedResource(1);
+
+        }
 
         // static void callcyclops()
         // {
