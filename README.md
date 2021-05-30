@@ -413,6 +413,87 @@ Owlcat for the game itself!
    	- Changed Cleave
    	- Gave 80 HP
 
+**Lonely Barrow** (NOTE: There are much higher level enemies here now. I would suggest doing this AFTER the bloom.
+
+- Bandit Archer
+   	- Changed Level (8)
+   	- Changed CR Rating (6)
+   	- Gave Heavy Crossbow +1
+   	
+- Bandit Melee
+   	- Changed Level (8)
+   	- Changed CR Rating (6)
+   	- Gave Longsword +1
+   	- Gave Banded Armor
+   	- Gave 20 HP
+   	- Gave Armor Training
+   	- Gave Disarm
+   	- Changed Cleave AI
+
+- Bandit Melee Two (Changed to a Cleric)
+	- Gave Cleric Features
+   	- Changed Level (8)
+   	- Changed CR Rating (6)
+	- Gave Quicken and Combat Casting
+	- Gave Divine Power, Searing Light, and Shield of Faith (has other spells too)
+	- Gave Heavy Mace +1
+
+- Bandit Archer Two (Changed to a Wizard)
+	- Gave Wizard Features
+    	- Changed Level (8)
+   	- Changed CR Rating (6)
+	- Gave Quicken and Combat Casting
+	- Gave Haste, Mirror Image, Displacement and lightning bolt (has other spells too)
+	- Gave Light Crossbow +1
+
+
+- Grave Robber (Changed to an Inquisitor)
+	- Gave Inquisitor Features
+    	- Changed Level (11)
+   	- Changed CR Rating (8)
+	- Gave Stoneskin Buff, Quicken, Aid Buff, Judgement of Protection, Judgement of Justice, Precise Strike, 
+	  Shake it off, Shield Wall, Toughness, Combat Casting, Dodge, Bane
+	- Gave heroism, fester, dispel, aid, shield of faith, )
+	- Gave Corrosive Rapier +2
+	- Gave Breastplate +1
+	- Gave Heavy Shield +1
+
+- Lonely Barrow Skeletons
+	- Changed Fighter Levels (7)
+	- Changed Undead Levels (2)
+	- Changed Cleave AI
+
+- Lonely Barrow Skeletal Archer
+	- Changed Fighter Levels (10)
+	- Changed CR Rating (8)
+	- Gave Composite Bow +1
+
+- Lone Warrior
+	- Changed CR Rating (15)
+	- Gave Cornugon, Toughness, Inspre Ferocity
+	- Gave Greatsword of Frost +2
+	- Changed Cleave AI
+
+
+**Lizardfolk Quest**
+
+- King Vesket
+	- Changed Barbarian Levels (9)
+	- Gave Reckless Stance and Inspire Ferocity
+
+- Lizard Rattler
+	- Changed Cleric Levels (7)
+	- Gave Reckless Stance and Inspire Ferocity
+	- Gave combat casting and quicken
+	- Gave divine power and searing light (has other spells)
+
+
+- Melee Lizards
+	- Changed Fighter Levels (7)
+	- Gave Charge
+	- Changed Cleave AI
+
+
 
 
 Chapter 3
