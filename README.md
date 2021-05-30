@@ -450,7 +450,7 @@ Owlcat for the game itself!
 - Grave Robber (Changed to an Inquisitor)
 	- Gave Inquisitor Features
     	- Changed Level (11)
-   	- Changed CR Rating (8)
+   	- Changed  (8)
 	- Gave Stoneskin Buff, Quicken, Aid Buff, Judgement of Protection, Judgement of Justice, Precise Strike, 
 	  Shake it off, Shield Wall, Toughness, Combat Casting, Dodge, Bane
 	- Gave heroism, fester, dispel, aid, shield of faith, )
@@ -469,7 +469,7 @@ Owlcat for the game itself!
 	- Gave Composite Bow +1
 
 - Lone Warrior
-	- Changed CR Rating (15)
+	- Changed CR (15)
 	- Gave Cornugon, Toughness, Inspre Ferocity
 	- Gave Greatsword of Frost +2
 	- Changed Cleave AI
@@ -493,6 +493,66 @@ Owlcat for the game itself!
 	- Gave Charge
 	- Changed Cleave AI
 
+**Silverstep**
+
+- Silverstep Frogs
+	- Changed Animal Levels (6)
+	- Changed CR (5)
+	- Gave natural armor 8
+	- Gave Dodge and Toughness
+
+- Silverstep Small Tatzlwyrm
+	- Changed Dragon Levels (6)
+	- Changed Stats Around (Similar to Quickling Tatzylwyrm)
+	- Changed CR (9)
+	- Changed Natural Armor to 4
+	- Gave Dodge, Toughness and Quickling Features
+	- Gave Dodge and Toughness
+	- Changed Bite (2d6)
+	- Changed Claw (1d6) x2
+
+- Silverstep Large Tatzlwyrm
+	- Changed Dragon Levels (8)
+	- Gave Dodge and Toughness
+	- Changed CR (8)
+	- Gave HP (15)
+
+- Silverstep Bandit Necromancer Leader
+	- Changed Wizard Levels (9)
+	- Gave Quicken
+	- Changed Intelligence (20)
+	- Gave Cone of Cold, Haste, Mirror Image, Fear, Boneshatter, Hold Person, Boneshaker, Magic Missle
+	- Removed Enervation, Blindness and Vampiric Touch
+	- Gave Light Crossbow +1
+	- Gave CR (8)
+
+- Silverstep Bandit Melee
+	- Changed Fighter Levels (8)
+	- Gave Disarm
+	- Gave Banded Armor 
+	- Gave Longsword +1
+	- Changed Cleave AI
+	
+- Silverstep Bandit Rogue
+	- Changed Rogue Levels (8)
+	- Changed Feature List (Rogue Level 7 List)
+	- Add Dirty Trick (Blind)
+	- Gave Two Dagger +1
+
+- Silverstep Bandit Archer
+	- Changed Rogue Levels (6)
+	- Changed Feature List (Rangeed 7 List)
+	- Gave Masterwork Composite Longbow
+	- Changed CR (5)
+
+- Silverstep Werewolf
+	- Changed Fighter Levels (11)
+	- Gave Cornugon
+	- Gave Armor Focus (Chainmail)
+	- Gave Diplomacy (10)
+	- Changed Constitution (20)
+	- Gave HP (15)
+	- Changed Cleave AI
 
 
 
