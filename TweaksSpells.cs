@@ -435,6 +435,309 @@ namespace Kingmaker.UnitLogic.Mechanics.Actions
 }
 
 
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster13 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(-3, 0, -2);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster14 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(-2, 0, -5);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster15 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(1, 0, -6);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster16 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(0, 0, 20);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster17 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(6, 0, 10);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster18 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(-4, 0, 15);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster19 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(3, 0, 7);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster20 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(1, 0, 7);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+namespace Kingmaker.UnitLogic.Mechanics.Actions
+{
+    public class CustomContextActionSpawnMonster21 : ContextAction
+    {
+
+        public override string GetCaption()
+        {
+            return "Summon monster";
+
+        }
+
+        public override void RunAction()
+        {
+            UnitEntityData maybeCaster = base.Context.MaybeCaster;
+            if (maybeCaster == null)
+            {
+                UberDebug.LogError(this, "Caster is missing", Array.Empty<object>());
+                return;
+            }
+            Vector3 vector = base.Target.Point;
+            vector += new Vector3(5, 0, 7);
+            vector = ObstacleAnalyzer.GetNearestNode(vector).clampedPosition;
+            UnitEntityView unitEntityView = this.Blueprint.Prefab.Load(false);
+            float radius = (unitEntityView != null) ? unitEntityView.Corpulence : 0.5f;
+            FreePlaceSelector.PlaceSpawnPlaces(3, radius, vector);
+            Game.Instance.EntityCreator.SpawnUnit(this.Blueprint, vector, Quaternion.identity, maybeCaster.HoldingState);
+        }
+
+        public BlueprintUnit Blueprint;
+    }
+
+}
+
+
+
+
 namespace TweakMod
 {
     class SpellsTweaks
@@ -464,6 +767,9 @@ namespace TweakMod
             callElementals();
             callElementalsTwo();
             callDryadHelpers();
+            callNeriedHelpers();
+            callOozeHelpers();
+            calldeva();
 
         }
 
@@ -988,8 +1294,7 @@ namespace TweakMod
 
             var actions = Helpers.CreateRunActions(
                  Helpers.Create<CustomContextActionSpawnMonster5>(c => c.Blueprint = DryadHelp),
-               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = DryadHelp),
-               Helpers.Create<CustomContextActionSpawnMonster12>(c => c.Blueprint = CR17Treant)); //Spawns on his right (my left), move it down on the y axis
+               Helpers.Create<CustomContextActionSpawnMonster8>(c => c.Blueprint = DryadHelp)); //Spawns on his right (my left), move it down on the y axis
 
             var ability = Helpers.CreateAbility("Aid of the Forest",
                 "Aid of the Forest",
@@ -1005,6 +1310,93 @@ namespace TweakMod
 
             var SummonForestresource = Helpers.CreateAbilityResource("SummonForestresource", "", "", "", null);
             SummonForestresource.SetFixedResource(1);
+
+        }
+
+
+        static void callNeriedHelpers()
+        {
+            var nereidHelp = library.Get<BlueprintUnit>("9a9b22c8d9024798a36ef6848da7c7a2");
+            var elderwater = library.Get<BlueprintUnit>("993612e826514bc9b3c6caaff5adefaa");
+
+            var actions = Helpers.CreateRunActions(
+                 Helpers.Create<CustomContextActionSpawnMonster13>(c => c.Blueprint = nereidHelp),
+                 Helpers.Create<CustomContextActionSpawnMonster15>(c => c.Blueprint = nereidHelp),
+               Helpers.Create<CustomContextActionSpawnMonster14>(c => c.Blueprint = elderwater)); //Spawns on his right (my left), move it down on the y axis
+
+            var ability = Helpers.CreateAbility("Aid of the Lake",
+                "Aid of the Lake",
+               "Summon Lake Helpers to your side.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var SummonLakeresource = Helpers.CreateAbilityResource("SummonLakeresource", "", "", "", null);
+            SummonLakeresource.SetFixedResource(1);
+
+
+
+
+        }
+
+
+        static void callOozeHelpers()
+        {
+            var oozea = library.Get<BlueprintUnit>("6216383fc3ea4b8a950c7bdfcb707547");
+
+
+            var actions = Helpers.CreateRunActions(
+                Helpers.Create<CustomContextActionSpawnMonster16>(c => c.Blueprint = oozea),
+                Helpers.Create<CustomContextActionSpawnMonster17>(c => c.Blueprint = oozea),
+               Helpers.Create<CustomContextActionSpawnMonster18>(c => c.Blueprint = oozea)); //Spawns on his right (my left), move it down on the y axis
+
+            var ability = Helpers.CreateAbility("Split",
+                "Split",
+               "Split and make more oozes",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var Summonoozeresource = Helpers.CreateAbilityResource("Summonoozeresource", "", "", "", null);
+            Summonoozeresource.SetFixedResource(1);
+        }
+
+
+        static void calldeva()
+        {
+            var deva = library.Get<BlueprintUnit>("051dce1d2c60412d92a4c29081e18c08");
+
+            var actions = Helpers.CreateRunActions(
+
+
+                  Helpers.Create<CustomContextActionSpawnMonster21>(c => c.Blueprint = deva),
+                Helpers.Create<CustomContextActionSpawnMonster19>(c => c.Blueprint = deva),
+               Helpers.Create<CustomContextActionSpawnMonster20>(c => c.Blueprint = deva));
+
+            var ability = Helpers.CreateAbility("Call Fallen",
+                "Call Fallen",
+               "Summon Fallen Deva to your side.",
+                "",
+                null,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityType.Extraordinary,
+                Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift,
+                Kingmaker.UnitLogic.Abilities.Blueprints.AbilityRange.Close,
+                "",
+                "",
+                actions);
+
+            var summondeva_resource2 = Helpers.CreateAbilityResource("summondevaResource2", "", "", "", null);
+            summondeva_resource2.SetFixedResource(2);
 
         }
 
